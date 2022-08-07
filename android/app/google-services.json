@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "17112337661",
+    "project_id": "wydatki-47ef7",
+    "storage_bucket": "wydatki-47ef7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:17112337661:android:3370470dcbe0f8885a4294",
+        "android_client_info": {
+          "package_name": "com.dariuki.wydatki"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "17112337661-cf6vmvqbub9cs1fqn7q1iotnvhagee15.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDv5Yyl8y64CA_bYebtwG5Y98RJVfQ94r0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "17112337661-cf6vmvqbub9cs1fqn7q1iotnvhagee15.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
