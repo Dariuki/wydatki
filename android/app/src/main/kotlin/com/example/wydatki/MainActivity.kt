@@ -1,4 +1,4 @@
-package com.example.wydatki
+package com.dariuki.wydatki
 
 import io.flutter.embedding.android.FlutterActivity
 
