@@ -21,7 +21,7 @@ class ListItemView extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(document['title']),
+          Text(document['title'],),
         ],
       ),
     );

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:wydatki/account/user_profile.dart';
-
 import 'package:wydatki/add/pages/add_category_page.dart';
 import 'package:wydatki/home/pages/home_body.dart';
 
@@ -35,7 +34,7 @@ class HomePage extends StatelessWidget {
         onPressed: () {
           Navigator.of(context).push(
             MaterialPageRoute(
-              builder: (context) => const AddCategoryPage(),
+              builder: (context) =>  AddCategoryPage(),
               fullscreenDialog: true,
             ),
           );

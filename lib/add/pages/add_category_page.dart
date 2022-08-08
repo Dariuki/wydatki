@@ -3,8 +3,11 @@ import 'package:flutter/material.dart';
 
 class AddCategoryPage extends StatefulWidget {
   const AddCategoryPage({
+    
     Key? key,
   }) : super(key: key);
+
+  
 
   @override
   State<AddCategoryPage> createState() => _AddCategoryPageState();
@@ -18,14 +21,18 @@ class _AddCategoryPageState extends State<AddCategoryPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Dodaj Kategorie'),
-        // actions: [
-        //   IconButton(
-        //     onPressed: () {
-        //       FirebaseFirestore.instance.collection('categories').snapshots();
-        //     },
-        //     icon: const Icon(Icons.check_box),
-        //   ),
-        // ],
+        actions: [
+          IconButton(
+            onPressed: categoriesName.isEmpty
+                ? null
+                : () {
+                    FirebaseFirestore.instance.collection('categories').add({
+                      'title': categoriesName,
+                    });
+                  },
+            icon: const Icon(Icons.check_box),
+          ),
+        ],
       ),
       body: _AddCategoryBody(
         onTitleChanged: (newValue) {
@@ -61,13 +68,6 @@ class _AddCategoryBody extends StatelessWidget {
             label: Text('Tytuł Kategorii'),
           ),
         ),
-        ElevatedButton(
-            onPressed: () {
-              FirebaseFirestore.instance
-                  .collection('categories')
-                  .add({'title': onTitleChanged});
-            },
-            child: const Text('Dodaj'))
       ],
     );
   }

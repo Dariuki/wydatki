@@ -10,7 +10,10 @@ class HomePageBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
-      stream: FirebaseFirestore.instance.collection('categories').snapshots(),
+      stream: FirebaseFirestore.instance
+          .collection('categories')
+          .orderBy('title')
+          .snapshots(),
       builder: (context, snapshot) {
         if (snapshot.hasError) {
           return const Center(
