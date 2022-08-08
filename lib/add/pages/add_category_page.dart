@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class AddCategoryPage extends StatefulWidget {
@@ -17,12 +18,14 @@ class _AddCategoryPageState extends State<AddCategoryPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Dodaj Kategorie'),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.check_box),
-          ),
-        ],
+        // actions: [
+        //   IconButton(
+        //     onPressed: () {
+        //       FirebaseFirestore.instance.collection('categories').snapshots();
+        //     },
+        //     icon: const Icon(Icons.check_box),
+        //   ),
+        // ],
       ),
       body: _AddCategoryBody(
         onTitleChanged: (newValue) {
@@ -46,7 +49,10 @@ class _AddCategoryBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+      padding: const EdgeInsets.symmetric(
+        horizontal: 20,
+        vertical: 20,
+      ),
       children: [
         TextField(
           onChanged: onTitleChanged,
@@ -54,7 +60,14 @@ class _AddCategoryBody extends StatelessWidget {
             border: OutlineInputBorder(),
             label: Text('Tytuł Kategorii'),
           ),
-        )
+        ),
+        ElevatedButton(
+            onPressed: () {
+              FirebaseFirestore.instance
+                  .collection('categories')
+                  .add({'title': onTitleChanged});
+            },
+            child: const Text('Dodaj'))
       ],
     );
   }
