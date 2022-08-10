@@ -34,7 +34,7 @@ class HomePage extends StatelessWidget {
         onPressed: () {
           Navigator.of(context).push(
             MaterialPageRoute(
-              builder: (context) =>  AddCategoryPage(),
+              builder: (context) =>  const AddCategoryPage(),
               fullscreenDialog: true,
             ),
           );

@@ -1,9 +1,8 @@
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-class ListItemView extends StatelessWidget {
-  const ListItemView({
+class ItemListView extends StatelessWidget {
+  const ItemListView({
     Key? key,
     required this.document,
   }) : super(key: key);
@@ -21,7 +20,9 @@ class ListItemView extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(document['title'],),
+          Text(document['shop']),
+          Text(document['title']),
+          Text(document['amount'].toString())
         ],
       ),
     );

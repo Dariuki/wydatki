@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:wydatki/home/pages/home_items.dart';
+import 'package:wydatki/spendings/pages/spendings_items.dart';
 
-class HomePageBody extends StatelessWidget {
-  const HomePageBody({
+class SpendingsBody extends StatelessWidget {
+  const SpendingsBody({
     Key? key,
   }) : super(key: key);
 
@@ -11,8 +11,8 @@ class HomePageBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
       stream: FirebaseFirestore.instance
-          .collection('categories')
-          .orderBy('type')
+          .collection('spendings')
+          .orderBy('title')
           .snapshots(),
       builder: (context, snapshot) {
         if (snapshot.hasError) {
@@ -34,7 +34,7 @@ class HomePageBody extends StatelessWidget {
                   horizontal: 20,
                   vertical: 10,
                 ),
-                child: ListItemView(document: document),
+                child: ItemListView(document: document),
               ),
             ],
           ],
