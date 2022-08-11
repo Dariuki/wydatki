@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:wydatki/home/cubit/home_cubit.dart';
-import 'package:wydatki/home/pages/home_items.dart';
+import 'package:wydatki/features/home/cubit/home_cubit.dart';
+import 'package:wydatki/features/home/pages/home_items.dart';
+
 
 class HomePageBody extends StatelessWidget {
   const HomePageBody({

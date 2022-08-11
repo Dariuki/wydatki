@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:wydatki/add/pages/add_spendings_page.dart';
-import 'package:wydatki/spendings/pages/spendings_body.dart';
+import 'package:wydatki/features/add/pages/add_spendings_page.dart';
+import 'package:wydatki/features/spendings/pages/spendings_body.dart';
+
 
 class SpendingsPage extends StatelessWidget {
   const SpendingsPage({

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:wydatki/spendings/cubit/spendings_cubit.dart';
-import 'package:wydatki/spendings/pages/spendings_items.dart';
+import 'package:wydatki/features/spendings/cubit/spendings_cubit.dart';
+import 'package:wydatki/features/spendings/pages/spendings_items.dart';
+
 
 class SpendingsBody extends StatelessWidget {
   const SpendingsBody({
@@ -11,7 +12,7 @@ class SpendingsBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => SpendingsCubit(),
+      create: (context) => SpendingsCubit()..start(),
       child: BlocBuilder<SpendingsCubit, SpendingsState>(
         builder: (context, state) {
           if (state.errorMessage.isNotEmpty) {

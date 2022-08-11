@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:wydatki/spendings/pages/spendings_page.dart';
+import 'package:wydatki/features/spendings/pages/spendings_page.dart';
+
 
 class ListItemView extends StatelessWidget {
   const ListItemView({

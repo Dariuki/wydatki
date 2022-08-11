@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:wydatki/account/user_profile.dart';
-import 'package:wydatki/add/pages/add_category_page.dart';
-import 'package:wydatki/home/pages/home_body.dart';
+import 'package:wydatki/features/account/user_profile.dart';
+import 'package:wydatki/features/add/pages/add_category_page.dart';
+import 'package:wydatki/features/home/pages/home_body.dart';
+
 
 class HomePage extends StatelessWidget {
   const HomePage({
