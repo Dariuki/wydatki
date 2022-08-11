@@ -1,5 +1,6 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:wydatki/home/cubit/home_cubit.dart';
 import 'package:wydatki/home/pages/home_items.dart';
 
 class HomePageBody extends StatelessWidget {
@@ -9,37 +10,36 @@ class HomePageBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
-      stream: FirebaseFirestore.instance
-          .collection('categories')
-          .orderBy('type')
-          .snapshots(),
-      builder: (context, snapshot) {
-        if (snapshot.hasError) {
-          return const Center(
-            child: Text('coś nie działa'),
-          );
-        }
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Center(child: CircularProgressIndicator());
-        }
+    return BlocProvider(
+      create: (context) => HomeCubit()..start(),
+      child: BlocBuilder<HomeCubit, HomeState>(
+        builder: (context, state) {
+          if (state.errorMessage.isNotEmpty) {
+            return Center(
+              child: Text(state.errorMessage),
+            );
+          }
+          if (state.isLoading) {
+            return const Center(child: CircularProgressIndicator());
+          }
 
-        final documents = snapshot.data!.docs;
+          final documents = state.documents;
 
-        return ListView(
-          children: [
-            for (final document in documents) ...[
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 20,
-                  vertical: 10,
+          return ListView(
+            children: [
+              for (final document in documents) ...[
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 10,
+                  ),
+                  child: ListItemView(document: document),
                 ),
-                child: ListItemView(document: document),
-              ),
+              ],
             ],
-          ],
-        );
-      },
+          );
+        },
+      ),
     );
   }
 }
