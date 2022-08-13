@@ -63,4 +63,6 @@ class AddCubit extends Cubit<AddState> {
     //   }
     // }
   }
+
+  signOut() {}
 }
