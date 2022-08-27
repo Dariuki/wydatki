@@ -21,83 +21,89 @@ class _AddSpendingsPageState extends State<AddSpendingsPage> {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => AddCubit(),
-      child: BlocBuilder<AddCubit, AddState>(
-        builder: (context, state) {
-          return Scaffold(
-              appBar: AppBar(
-                title: const Text('Dodaj Kategorie'),
-                actions: [
-                  IconButton(
-                    onPressed: spendingsName.isEmpty ||
-                            shopName.isEmpty ||
-                            amountName.isEmpty
-                        ? null
-                        : () {
-                            context.read<AddCubit>().addSpendings(
-                                  spendingsName,
-                                  shopName,
-                                  amountName,
-                                );
-                            Navigator.of(context).pop();
-                          },
-                    icon: const Icon(Icons.check_box),
-                  ),
-                ],
-              ),
-              body: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: ListView(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 20,
-                    vertical: 20,
-                  ),
-                  children: [
-                    TextField(
-                      onChanged: (newValue) {
-                        setState(() {
-                          shopName = newValue;
-                        });
-                      },
-                      decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
-                        label: Text('Nazwa Sklepu'),
-                      ),
+      child: BlocListener<AddCubit, AddState>(
+        listener: (context, state) {
+          if (state.saved) {
+            Navigator.of(context).pop();
+          }
+        },
+        child: BlocBuilder<AddCubit, AddState>(
+          builder: (context, state) {
+            return Scaffold(
+                appBar: AppBar(
+                  title: const Text('Dodaj Kategorie'),
+                  actions: [
+                    IconButton(
+                      onPressed: spendingsName.isEmpty ||
+                              shopName.isEmpty ||
+                              amountName.isEmpty
+                          ? null
+                          : () {
+                              context.read<AddCubit>().addSpendings(
+                                    spendingsName,
+                                    shopName,
+                                    amountName,
+                                  );
+                            },
+                      icon: const Icon(Icons.check_box),
                     ),
-                    const SizedBox(
-                      height: 10,
+                  ],
+                ),
+                body: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ListView(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 20,
+                      vertical: 20,
                     ),
-                    TextField(
-                      onChanged: (newValue) {
-                        setState(() {
-                          spendingsName = newValue;
-                        });
-                      },
-                      decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
-                        label: Text('Typ wydatku'),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    TextFormField(
+                    children: [
+                      TextField(
                         onChanged: (newValue) {
                           setState(() {
-                            amountName = newValue.toString();
+                            shopName = newValue;
                           });
                         },
                         decoration: const InputDecoration(
                           border: OutlineInputBorder(),
-                          label: Text('Kwota Wydatku'),
+                          label: Text('Nazwa Sklepu'),
                         ),
-                        keyboardType: TextInputType.number,
-                        inputFormatters: <TextInputFormatter>[
-                          FilteringTextInputFormatter.singleLineFormatter
-                        ])
-                  ],
-                ),
-              ));
-        },
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      TextField(
+                        onChanged: (newValue) {
+                          setState(() {
+                            spendingsName = newValue;
+                          });
+                        },
+                        decoration: const InputDecoration(
+                          border: OutlineInputBorder(),
+                          label: Text('Typ wydatku'),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      TextFormField(
+                          onChanged: (newValue) {
+                            setState(() {
+                              amountName = newValue.toString();
+                            });
+                          },
+                          decoration: const InputDecoration(
+                            border: OutlineInputBorder(),
+                            label: Text('Kwota Wydatku'),
+                          ),
+                          keyboardType: TextInputType.number,
+                          inputFormatters: <TextInputFormatter>[
+                            FilteringTextInputFormatter.singleLineFormatter
+                          ])
+                    ],
+                  ),
+                ));
+          },
+        ),
       ),
     );
   }

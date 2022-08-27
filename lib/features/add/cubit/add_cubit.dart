@@ -31,37 +31,6 @@ class AddCubit extends Cubit<AddState> {
     } catch (error) {
       emit(AddState(errorMessage: error.toString()));
     }
-
-    // Future<void> add(String type) async {
-    //   try {
-    //     CollectionReference users =
-    //         FirebaseFirestore.instance.collection('categories');
-    //     var result = await users.add({'type': type});
-    //     await addMultipleCollections( id: result.id);
-    //     emit(const AddCategoryState(saved: true));
-    //   } catch (error) {
-    //     emit(AddCategoryState(errorMessage: error.toString()));
-    //   }
-    // }
-
-    // Future<void> addMultipleCollections(
-
-    //     {String? id}) async {
-    //   try {
-    //     CollectionReference users =
-    //         FirebaseFirestore.instance.collection('categories');
-
-    //     users.doc(id).collection('spendings').add({
-    //       'id': id,
-    //       'title': '',
-    //       'shop': '',
-    //       'amount': '',
-    //     });
-    //     emit(const AddCategoryState(saved: true));
-    //   } catch (error) {
-    //     emit(AddCategoryState(errorMessage: error.toString()));
-    //   }
-    // }
   }
 
   signOut() {}

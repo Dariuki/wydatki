@@ -24,7 +24,7 @@ class HomePageBody extends StatelessWidget {
             return const Center(child: CircularProgressIndicator());
           }
 
-          final documents = state.documents;
+          final documents = state.model;
 
           return ListView(
             children: [

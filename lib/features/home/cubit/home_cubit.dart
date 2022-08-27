@@ -10,7 +10,7 @@ class HomeCubit extends Cubit<HomeState> {
   HomeCubit()
       : super(
           const HomeState(
-            documents: [],
+            model: [],
             errorMessage: '',
             isLoading: false,
           ),
@@ -21,7 +21,7 @@ class HomeCubit extends Cubit<HomeState> {
   Future<void> start() async {
     emit(
       const HomeState(
-        documents: [],
+        model: [],
         errorMessage: '',
         isLoading: true,
       ),
@@ -33,7 +33,7 @@ class HomeCubit extends Cubit<HomeState> {
         .listen((data) {
       emit(
         HomeState(
-          documents: data.docs,
+          model: data.docs,
           isLoading: false,
           errorMessage: '',
         ),
@@ -42,7 +42,7 @@ class HomeCubit extends Cubit<HomeState> {
       ..onError((error) {
         emit(
           HomeState(
-            documents: const [],
+            model: const [],
             isLoading: false,
             errorMessage: error.toString(),
           ),
