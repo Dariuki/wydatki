@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:wydatki/features/add/cubit/add_cubit.dart';
+import 'package:wydatki/features/screan/add/cubit/add_cubit.dart';
 
 class AddCategoryPage extends StatefulWidget {
   const AddCategoryPage({
@@ -22,6 +22,14 @@ class _AddCategoryPageState extends State<AddCategoryPage> {
         listener: (context, state) {
           if (state.saved) {
             Navigator.of(context).pop();
+          }
+          if (state.errorMessage.isNotEmpty) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(state.errorMessage),
+                backgroundColor: Colors.red,
+              ),
+            );
           }
         },
         child: BlocBuilder<AddCubit, AddState>(

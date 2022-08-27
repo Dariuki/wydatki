@@ -8,7 +8,9 @@ part 'add_state.dart';
 class AddCubit extends Cubit<AddState> {
   AddCubit() : super(const AddState());
 
-  Future<void> addCategory(String type) async {
+  Future<void> addCategory(
+    String type,
+  ) async {
     try {
       await FirebaseFirestore.instance.collection('categories').add({
         'type': type,
@@ -20,7 +22,10 @@ class AddCubit extends Cubit<AddState> {
   }
 
   Future<void> addSpendings(
-      String spendingsName, String shopName, String amountName) async {
+    String spendingsName,
+    String shopName,
+    String amountName,
+  ) async {
     try {
       await FirebaseFirestore.instance.collection('spendings').add({
         'title': spendingsName,
