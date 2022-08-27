@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:wydatki/features/ropositories/category_repository.dart';
 import 'package:wydatki/features/screan/add/cubit/add_cubit.dart';
 
 class AddCategoryPage extends StatefulWidget {
@@ -17,7 +18,7 @@ class _AddCategoryPageState extends State<AddCategoryPage> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => AddCubit(),
+      create: (context) => AddCubit(CategoriesRepository()),
       child: BlocListener<AddCubit, AddState>(
         listener: (context, state) {
           if (state.saved) {
