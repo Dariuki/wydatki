@@ -1,16 +1,18 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'package:flutter/material.dart';
 import 'package:wydatki/features/ropositories/category_repository.dart';
+import 'package:wydatki/features/ropositories/spending_repository.dart';
 
 part 'add_state.dart';
 
 class AddCubit extends Cubit<AddState> {
-  AddCubit(this._categoriesRepository) : super(const AddState());
+  AddCubit(this._categoriesRepository, this._spendingsRepository)
+      : super(const AddState());
 
   final CategoriesRepository _categoriesRepository;
-
+  final SpendingsRepository _spendingsRepository;
   Future<void> addCategory(
     String type,
   ) async {
@@ -28,11 +30,12 @@ class AddCubit extends Cubit<AddState> {
     String amountName,
   ) async {
     try {
-      await FirebaseFirestore.instance.collection('spendings').add({
-        'title': spendingsName,
-        'shop': shopName,
-        'amount': amountName,
-      });
+      await _spendingsRepository.addSpending(
+        spendingsName,
+        shopName,
+        amountName,
+    
+      );
       emit(const AddState(saved: true));
     } catch (error) {
       emit(AddState(errorMessage: error.toString()));

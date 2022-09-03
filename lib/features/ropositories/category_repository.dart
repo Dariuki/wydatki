@@ -3,9 +3,8 @@ import 'package:wydatki/features/models/category_model.dart';
 
 class CategoriesRepository {
   CategoriesRepository();
-  
  
-  Future addCategory(
+  Future <void> addCategory(
     String type,
   ) async {
      final docCategory =
@@ -15,5 +14,6 @@ class CategoriesRepository {
       await docCategory.set(json);
     
   }
-  
+
+
 }

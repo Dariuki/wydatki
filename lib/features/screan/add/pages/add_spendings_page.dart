@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wydatki/features/ropositories/category_repository.dart';
+import 'package:wydatki/features/ropositories/spending_repository.dart';
 import 'package:wydatki/features/screan/add/cubit/add_cubit.dart';
 
 class AddSpendingsPage extends StatefulWidget {
@@ -21,7 +22,8 @@ class _AddSpendingsPageState extends State<AddSpendingsPage> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => AddCubit(CategoriesRepository()),
+      create: (context) =>
+          AddCubit(CategoriesRepository(), SpendingsRepository()),
       child: BlocListener<AddCubit, AddState>(
         listener: (context, state) {
           if (state.saved) {
