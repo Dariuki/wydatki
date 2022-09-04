@@ -1,7 +1,8 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wydatki/features/account/user_profile.dart';
+import 'package:wydatki/features/models/category_model.dart';
+import 'package:wydatki/features/ropositories/category_repository.dart';
 import 'package:wydatki/features/screan/add/pages/add_category_page.dart';
 import 'package:wydatki/features/screan/home/cubit/home_cubit.dart';
 import 'package:wydatki/features/screan/spendings/pages/spendings_page.dart';
@@ -56,20 +57,20 @@ class _HomePageBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => HomeCubit()..start(),
+      create: (context) => HomeCubit(CategoriesRepository())..start(),
       child: BlocBuilder<HomeCubit, HomeState>(
         builder: (context, state) {
-          final docs = state.items?.docs;
-          if (docs == null) {
+          final itemModels = state.items;
+          if (itemModels.isEmpty) {
             return const SizedBox.shrink();
           }
 
           return ListView(
             padding: const EdgeInsets.symmetric(vertical: 20),
             children: [
-              for (final doc in docs)
+              for (final itemModel in itemModels)
                 Dismissible(
-                  key: ValueKey(doc.id),
+                  key: ValueKey(itemModel.id),
                   background: const DecoratedBox(
                     decoration: BoxDecoration(
                       color: Colors.red,
@@ -86,9 +87,9 @@ class _HomePageBody extends StatelessWidget {
                     return direction == DismissDirection.endToStart;
                   },
                   onDismissed: (direction) {
-                    context.read<HomeCubit>().remove(documentID: doc.id);
+                    context.read<HomeCubit>().remove(documentID: itemModel.id);
                   },
-                  child: _ListItemView(document: doc),
+                  child: _ListItemView(itemModel: itemModel),
                 ),
             ],
           );
@@ -101,10 +102,10 @@ class _HomePageBody extends StatelessWidget {
 class _ListItemView extends StatelessWidget {
   const _ListItemView({
     Key? key,
-    required this.document,
+    required this.itemModel,
   }) : super(key: key);
 
-  final QueryDocumentSnapshot<Map<String, dynamic>> document;
+  final CategoryModel itemModel;
 
   @override
   Widget build(BuildContext context) {
@@ -135,7 +136,7 @@ class _ListItemView extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
                           Text(
-                            document['type'],
+                            itemModel.type,
                             style: const TextStyle(
                               fontSize: 20.0,
                               fontWeight: FontWeight.bold,

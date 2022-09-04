@@ -1,20 +1,19 @@
 import 'dart:async';
-
 import 'package:bloc/bloc.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:wydatki/features/models/category_model.dart';
+import 'package:wydatki/features/ropositories/category_repository.dart';
 
 part 'home_state.dart';
 
 class HomeCubit extends Cubit<HomeState> {
-  HomeCubit() : super(const HomeState());
+  HomeCubit(this._categoriesRepository) : super(const HomeState());
+
+  final CategoriesRepository _categoriesRepository;
 
   StreamSubscription? _streamSubscription;
 
   Future<void> start() async {
-    _streamSubscription = FirebaseFirestore.instance
-        .collection('categories')
-        .orderBy('type')
-        .snapshots().listen(
+    _streamSubscription = _categoriesRepository.getCategoryStream().listen(
       (items) {
         emit(HomeState(items: items));
       },
@@ -27,10 +26,7 @@ class HomeCubit extends Cubit<HomeState> {
 
   Future<void> remove({required String documentID}) async {
     try {
-      await FirebaseFirestore.instance
-          .collection('categories')
-          .doc(documentID)
-          .delete();
+      await _categoriesRepository.delete(id: documentID);
     } catch (error) {
       emit(
         const HomeState(removingError: true),

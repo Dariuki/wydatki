@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
-
 import 'package:flutter/material.dart';
 import 'package:wydatki/features/ropositories/category_repository.dart';
 import 'package:wydatki/features/ropositories/spending_repository.dart';
@@ -34,7 +33,6 @@ class AddCubit extends Cubit<AddState> {
         spendingsName,
         shopName,
         amountName,
-    
       );
       emit(const AddState(saved: true));
     } catch (error) {

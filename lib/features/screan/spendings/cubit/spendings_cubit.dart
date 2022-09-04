@@ -1,18 +1,18 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:wydatki/features/models/spendings_model.dart';
+import 'package:wydatki/features/ropositories/spending_repository.dart';
 
 part 'spendings_state.dart';
-class SpendingsCubit extends Cubit<SpendingsState> {
-  SpendingsCubit() : super(const SpendingsState());
 
+class SpendingsCubit extends Cubit<SpendingsState> {
+  SpendingsCubit(this._spendingsRepository) : super(const SpendingsState());
+
+  final SpendingsRepository _spendingsRepository;
   StreamSubscription? _streamSubscription;
 
   Future<void> fetchData() async {
-    _streamSubscription = FirebaseFirestore.instance
-        .collection('spendings')
-        .orderBy('title')
-        .snapshots().listen(
+    _streamSubscription = _spendingsRepository.getSpendingStream().listen(
       (items) {
         emit(SpendingsState(items: items));
       },
@@ -25,10 +25,7 @@ class SpendingsCubit extends Cubit<SpendingsState> {
 
   Future<void> remove({required String documentID}) async {
     try {
-      await FirebaseFirestore.instance
-          .collection('spendings')
-          .doc(documentID)
-          .delete();
+      await _spendingsRepository.delete(id: documentID);
     } catch (error) {
       emit(
         const SpendingsState(removingError: true),

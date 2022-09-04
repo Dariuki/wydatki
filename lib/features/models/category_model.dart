@@ -1,10 +1,10 @@
 class CategoryModel {
-  final String type;
+ String type;
   String id;
   
 
   CategoryModel({
-    required this.type,
+    this.type = '',
     this.id = '',
   });
   Map<String, dynamic> toJson() => {
