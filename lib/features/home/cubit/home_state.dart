@@ -1,6 +1,5 @@
 part of 'home_cubit.dart';
 
-
 class HomeState {
   final List<CategoryModel> items;
   final bool loadingError;

@@ -13,7 +13,6 @@ class SpendingModel {
     this.categoryID = '',
   });
 
-
   Map<String, dynamic> toJson() => {
         'id': id,
         'title': title,

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:wydatki/features/models/category_model.dart';
-import 'package:wydatki/features/ropositories/category_repository.dart';
-import 'package:wydatki/features/ropositories/spending_repository.dart';
-import 'package:wydatki/features/screan/add/cubit/add_cubit.dart';
+import 'package:wydatki/domain/models/category_model.dart';
+import 'package:wydatki/domain/ropositories/category_repository.dart';
+import 'package:wydatki/domain/ropositories/spending_repository.dart';
+import 'package:wydatki/features/add/cubit/add_cubit.dart';
+
 
 class AddSpendingsPage extends StatefulWidget {
   const AddSpendingsPage({

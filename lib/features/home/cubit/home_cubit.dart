@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
-import 'package:wydatki/features/models/category_model.dart';
-import 'package:wydatki/features/ropositories/category_repository.dart';
+import 'package:wydatki/domain/models/category_model.dart';
+import 'package:wydatki/domain/ropositories/category_repository.dart';
 
 part 'home_state.dart';
 

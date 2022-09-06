@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-
-import 'package:wydatki/features/models/spendings_model.dart';
+import 'package:wydatki/domain/models/spendings_model.dart';
 
 class SpendingsRepository {
   Stream<List<SpendingModel>> getSpendingStream() {

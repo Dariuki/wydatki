@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:wydatki/features/models/category_model.dart';
+import 'package:wydatki/domain/models/category_model.dart';
 
 class CategoriesRepository {
   Stream<List<CategoryModel>> getCategoryStream() {

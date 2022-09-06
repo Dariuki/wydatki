@@ -1,7 +1,6 @@
 class CategoryModel {
- String type;
+  String type;
   String id;
-  
 
   CategoryModel({
     this.type = '',

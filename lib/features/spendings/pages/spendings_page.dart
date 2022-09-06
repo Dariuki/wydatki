@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:wydatki/features/models/category_model.dart';
-import 'package:wydatki/features/models/spendings_model.dart';
-import 'package:wydatki/features/ropositories/spending_repository.dart';
-import 'package:wydatki/features/screan/add/pages/add_spendings_page.dart';
-import 'package:wydatki/features/screan/spendings/cubit/spendings_cubit.dart';
+import 'package:wydatki/domain/models/category_model.dart';
+import 'package:wydatki/domain/models/spendings_model.dart';
+import 'package:wydatki/domain/ropositories/spending_repository.dart';
+import 'package:wydatki/features/add/pages/add_spendings_page.dart';
+import 'package:wydatki/features/spendings/cubit/spendings_cubit.dart';
 
 class SpendingsPage extends StatelessWidget {
   const SpendingsPage({
@@ -19,8 +19,7 @@ class SpendingsPage extends StatelessWidget {
         title: Center(child: Text(category.type)),
       ),
       body: BlocProvider(
-        create: (context) => SpendingsCubit(SpendingsRepository())
-          ..fetchData(),
+        create: (context) => SpendingsCubit(SpendingsRepository())..fetchData(),
         child: BlocBuilder<SpendingsCubit, SpendingsState>(
           builder: (context, state) {
             final itemsModels = state.items;
@@ -65,7 +64,7 @@ class SpendingsPage extends StatelessWidget {
         onPressed: () {
           Navigator.of(context).push(
             MaterialPageRoute(
-              builder: (context) =>AddSpendingsPage(model : category),
+              builder: (context) => AddSpendingsPage(model: category),
               fullscreenDialog: true,
             ),
           );

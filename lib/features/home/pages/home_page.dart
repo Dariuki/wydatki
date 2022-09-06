@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:wydatki/domain/models/category_model.dart';
+import 'package:wydatki/domain/ropositories/category_repository.dart';
 import 'package:wydatki/features/account/user_profile.dart';
-import 'package:wydatki/features/models/category_model.dart';
-import 'package:wydatki/features/ropositories/category_repository.dart';
-import 'package:wydatki/features/screan/add/pages/add_category_page.dart';
-import 'package:wydatki/features/screan/home/cubit/home_cubit.dart';
-import 'package:wydatki/features/screan/spendings/pages/spendings_page.dart';
+import 'package:wydatki/features/add/pages/add_category_page.dart';
+import 'package:wydatki/features/home/cubit/home_cubit.dart';
+import 'package:wydatki/features/spendings/pages/spendings_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({

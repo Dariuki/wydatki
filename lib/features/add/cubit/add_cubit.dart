@@ -1,9 +1,9 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:wydatki/features/models/category_model.dart';
-import 'package:wydatki/features/ropositories/category_repository.dart';
-import 'package:wydatki/features/ropositories/spending_repository.dart';
+import 'package:wydatki/domain/models/category_model.dart';
+import 'package:wydatki/domain/ropositories/category_repository.dart';
+import 'package:wydatki/domain/ropositories/spending_repository.dart';
 
 part 'add_state.dart';
 
