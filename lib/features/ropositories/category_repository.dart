@@ -27,13 +27,16 @@ class CategoriesRepository {
     await docCategory.set(json);
   }
 
-Future<void> delete({required String id}) {
-  return FirebaseFirestore.instance
-          .collection('categories')
-          .doc(id)
-          .delete();
-}
+  Future<void> delete({required String id}) {
+    return FirebaseFirestore.instance.collection('categories').doc(id).delete();
+  }
 
-
-
+  Future<CategoryModel> get({required String id}) async {
+    final doc =
+        await FirebaseFirestore.instance.collection('categories').doc(id).get();
+    return CategoryModel(
+      type: doc['type'],
+      id: doc.id,
+    );
+  }
 }

@@ -1,23 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:wydatki/features/models/category_model.dart';
 import 'package:wydatki/features/ropositories/category_repository.dart';
 import 'package:wydatki/features/ropositories/spending_repository.dart';
 import 'package:wydatki/features/screan/add/cubit/add_cubit.dart';
 
 class AddSpendingsPage extends StatefulWidget {
   const AddSpendingsPage({
+    required this.model,
     Key? key,
   }) : super(key: key);
+
+  final CategoryModel model;
 
   @override
   State<AddSpendingsPage> createState() => _AddSpendingsPageState();
 }
 
 class _AddSpendingsPageState extends State<AddSpendingsPage> {
-  var spendingsName = '';
-  var shopName = '';
-  var amountName = '';
+  var title = '';
+  var shop = '';
+  var amount = '';
 
   @override
   Widget build(BuildContext context) {
@@ -42,18 +46,17 @@ class _AddSpendingsPageState extends State<AddSpendingsPage> {
           builder: (context, state) {
             return Scaffold(
                 appBar: AppBar(
-                  title: const Text('Dodaj Kategorie'),
+                  title: Text(widget.model.type),
                   actions: [
                     IconButton(
-                      onPressed: spendingsName.isEmpty ||
-                              shopName.isEmpty ||
-                              amountName.isEmpty
+                      onPressed: title.isEmpty || shop.isEmpty || amount.isEmpty
                           ? null
                           : () {
                               context.read<AddCubit>().addSpendings(
-                                    spendingsName,
-                                    shopName,
-                                    amountName,
+                                    title,
+                                    shop,
+                                    amount,
+                                    widget.model.id,
                                   );
                             },
                       icon: const Icon(Icons.check_box),
@@ -71,7 +74,7 @@ class _AddSpendingsPageState extends State<AddSpendingsPage> {
                       TextField(
                         onChanged: (newValue) {
                           setState(() {
-                            shopName = newValue;
+                            shop = newValue;
                           });
                         },
                         decoration: const InputDecoration(
@@ -85,7 +88,7 @@ class _AddSpendingsPageState extends State<AddSpendingsPage> {
                       TextField(
                         onChanged: (newValue) {
                           setState(() {
-                            spendingsName = newValue;
+                            title = newValue;
                           });
                         },
                         decoration: const InputDecoration(
@@ -99,7 +102,7 @@ class _AddSpendingsPageState extends State<AddSpendingsPage> {
                       TextFormField(
                           onChanged: (newValue) {
                             setState(() {
-                              amountName = newValue.toString();
+                              amount = newValue.toString();
                             });
                           },
                           decoration: const InputDecoration(

@@ -6,7 +6,9 @@ import 'package:wydatki/features/ropositories/spending_repository.dart';
 part 'spendings_state.dart';
 
 class SpendingsCubit extends Cubit<SpendingsState> {
-  SpendingsCubit(this._spendingsRepository) : super(const SpendingsState());
+  SpendingsCubit(
+    this._spendingsRepository,
+  ) : super(const SpendingsState());
 
   final SpendingsRepository _spendingsRepository;
   StreamSubscription? _streamSubscription;
@@ -14,7 +16,9 @@ class SpendingsCubit extends Cubit<SpendingsState> {
   Future<void> fetchData() async {
     _streamSubscription = _spendingsRepository.getSpendingStream().listen(
       (items) {
-        emit(SpendingsState(items: items));
+        emit(SpendingsState(
+          items: items,
+        ));
       },
     )..onError(
         (error) {

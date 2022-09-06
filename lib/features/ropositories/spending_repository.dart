@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'package:wydatki/features/models/spendings_model.dart';
 
 class SpendingsRepository {
@@ -20,19 +21,19 @@ class SpendingsRepository {
   }
 
   Future<void> addSpending(
-    String spendingsName,
-    String shopName,
-    String amountName,
+    String title,
+    String shop,
+    String amount,
+    String categoryId,
   ) async {
     final docSpending =
         FirebaseFirestore.instance.collection('spendings').doc();
     final spending = SpendingModel(
-      title: spendingsName,
-      shop: shopName,
-      amount: amountName,
-      id: docSpending.id,
-      categoryID: '',
-    );
+        title: title,
+        shop: shop,
+        amount: amount,
+        id: docSpending.id,
+        categoryID: categoryId);
     final json = spending.toJson();
     await docSpending.set(json);
   }

@@ -112,7 +112,9 @@ class _ListItemView extends StatelessWidget {
     return InkWell(
       onTap: () {
         Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => const SpendingsPage(),
+          builder: (context) => SpendingsPage(
+            category: itemModel,
+          ),
         ));
       },
       child: Padding(

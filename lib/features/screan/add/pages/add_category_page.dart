@@ -9,6 +9,8 @@ class AddCategoryPage extends StatefulWidget {
     Key? key,
   }) : super(key: key);
 
+  
+
   @override
   State<AddCategoryPage> createState() => _AddCategoryPageState();
 }
