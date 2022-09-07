@@ -55,10 +55,5 @@ class AddCubit extends Cubit<AddState> {
     }
   }
 
-  Future<void> getItemWhitID(String id) async {
-    final itemModel = await _categoriesRepository.get(id: id);
-    emit(AddState(itemModel: itemModel));
-  }
-
   signOut() {}
 }

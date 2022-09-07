@@ -13,18 +13,19 @@ class SpendingsCubit extends Cubit<SpendingsState> {
   final SpendingsRepository _spendingsRepository;
   StreamSubscription? _streamSubscription;
 
-  Future<void> fetchData() async {
-    _streamSubscription = _spendingsRepository.getSpendingStream().listen(
+  Future<void> fetchData({required String categoryID}) async {
+    _streamSubscription =
+        _spendingsRepository.getSpendingForCategoryId(categoryID).listen(
       (items) {
         emit(SpendingsState(
           items: items,
         ));
       },
     )..onError(
-        (error) {
-          emit(const SpendingsState(loadingError: true));
-        },
-      );
+            (error) {
+              emit(const SpendingsState(loadingError: true));
+            },
+          );
   }
 
   Future<void> remove({required String documentID}) async {
@@ -34,7 +35,7 @@ class SpendingsCubit extends Cubit<SpendingsState> {
       emit(
         const SpendingsState(removingError: true),
       );
-      fetchData();
+      fetchData(categoryID: '');
     }
   }
 

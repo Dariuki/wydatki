@@ -10,4 +10,8 @@ class CategoryModel {
         'id': id,
         'type': type,
       };
+
+  CategoryModel.fromJson(Map<String, dynamic> json)
+      : id = json['id'],
+        type = json['type'];
 }

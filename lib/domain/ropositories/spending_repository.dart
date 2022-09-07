@@ -1,21 +1,19 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:wydatki/data/remote_data_sourse/spending_remote_data_source.dart';
 import 'package:wydatki/domain/models/spendings_model.dart';
 
 class SpendingsRepository {
-  Stream<List<SpendingModel>> getSpendingStream() {
-    return FirebaseFirestore.instance
-        .collection('spendings')
-        .orderBy('title')
-        .snapshots()
-        .map((querySnapshot) {
-      return querySnapshot.docs.map((doc) {
-        return SpendingModel(
-          title: doc['title'],
-          shop: doc['shop'],
-          amount: doc['amount'],
-          id: doc.id,
-        );
-      }).toList();
+  SpendingsRepository(this._spendingRemoteDataSource);
+
+  final SpendingRemoteDataSource _spendingRemoteDataSource;
+
+  Stream<List<SpendingModel>> getSpendingForCategoryId(String categoryId) {
+    return _spendingRemoteDataSource.getAllDocsStream().map((querySnapshot) {
+      final allSpendings = querySnapshot.docs
+          .map((doc) => SpendingModel.fromJson(doc.data()))
+          .toList();
+      return allSpendings
+          .where((spending) => spending.categoryID == categoryId)
+          .toList();
     });
   }
 
@@ -25,8 +23,7 @@ class SpendingsRepository {
     String amount,
     String categoryId,
   ) async {
-    final docSpending =
-        FirebaseFirestore.instance.collection('spendings').doc();
+    final docSpending = _spendingRemoteDataSource.addSpending();
     final spending = SpendingModel(
         title: title,
         shop: shop,
@@ -38,6 +35,6 @@ class SpendingsRepository {
   }
 
   Future<void> delete({required String id}) {
-    return FirebaseFirestore.instance.collection('spendings').doc(id).delete();
+    return _spendingRemoteDataSource.delete(id: id);
   }
 }

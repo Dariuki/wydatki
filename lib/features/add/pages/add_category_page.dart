@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:wydatki/data/remote_data_sourse/category_remote_data_source.dart';
+import 'package:wydatki/data/remote_data_sourse/spending_remote_data_source.dart';
 import 'package:wydatki/domain/ropositories/category_repository.dart';
 import 'package:wydatki/domain/ropositories/spending_repository.dart';
 import 'package:wydatki/features/add/cubit/add_cubit.dart';
-
 
 class AddCategoryPage extends StatefulWidget {
   const AddCategoryPage({
     Key? key,
   }) : super(key: key);
-
-  
 
   @override
   State<AddCategoryPage> createState() => _AddCategoryPageState();
@@ -22,7 +21,9 @@ class _AddCategoryPageState extends State<AddCategoryPage> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => AddCubit(CategoriesRepository(), SpendingsRepository()),
+      create: (context) => AddCubit(
+          CategoriesRepository(CategoryRemoteDataSource()),
+          SpendingsRepository(SpendingRemoteDataSource())),
       child: BlocListener<AddCubit, AddState>(
         listener: (context, state) {
           if (state.saved) {

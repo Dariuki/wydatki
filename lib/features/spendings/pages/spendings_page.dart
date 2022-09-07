@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:wydatki/data/remote_data_sourse/spending_remote_data_source.dart';
 import 'package:wydatki/domain/models/category_model.dart';
 import 'package:wydatki/domain/models/spendings_model.dart';
 import 'package:wydatki/domain/ropositories/spending_repository.dart';
@@ -19,7 +20,9 @@ class SpendingsPage extends StatelessWidget {
         title: Center(child: Text(category.type)),
       ),
       body: BlocProvider(
-        create: (context) => SpendingsCubit(SpendingsRepository())..fetchData(),
+        create: (context) =>
+            SpendingsCubit(SpendingsRepository(SpendingRemoteDataSource()))
+              ..fetchData(categoryID: category.id),
         child: BlocBuilder<SpendingsCubit, SpendingsState>(
           builder: (context, state) {
             final itemsModels = state.items;

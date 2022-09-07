@@ -20,4 +20,11 @@ class SpendingModel {
         'amount': amount,
         'categoryID': categoryID,
       };
+
+  SpendingModel.fromJson(Map<String, dynamic> json)
+      : amount = json['amount'],
+        title = json['title'],
+        shop = json['shop'],
+        id = json['id'],
+        categoryID = json['categoryID'];
 }
