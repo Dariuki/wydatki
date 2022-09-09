@@ -21,9 +21,9 @@ class AddSpendingsPage extends StatefulWidget {
 }
 
 class _AddSpendingsPageState extends State<AddSpendingsPage> {
-  var title = '';
-  var shop = '';
-  var amount = '';
+  String? _title;
+  String? _shop;
+  double? _amount;
 
   @override
   Widget build(BuildContext context) {
@@ -48,79 +48,103 @@ class _AddSpendingsPageState extends State<AddSpendingsPage> {
         child: BlocBuilder<AddCubit, AddState>(
           builder: (context, state) {
             return Scaffold(
-                appBar: AppBar(
-                  title: Text(widget.model.type),
-                  actions: [
-                    IconButton(
-                      onPressed: title.isEmpty || shop.isEmpty || amount.isEmpty
-                          ? null
-                          : () {
-                              context.read<AddCubit>().addSpendings(
-                                    title,
-                                    shop,
-                                    amount,
-                                    widget.model.id,
-                                  );
-                            },
-                      icon: const Icon(Icons.check_box),
-                    ),
-                  ],
-                ),
-                body: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: ListView(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 20,
-                      vertical: 20,
-                    ),
-                    children: [
-                      TextField(
-                        onChanged: (newValue) {
-                          setState(() {
-                            shop = newValue;
-                          });
-                        },
-                        decoration: const InputDecoration(
-                          border: OutlineInputBorder(),
-                          label: Text('Nazwa Sklepu'),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      TextField(
-                        onChanged: (newValue) {
-                          setState(() {
-                            title = newValue;
-                          });
-                        },
-                        decoration: const InputDecoration(
-                          border: OutlineInputBorder(),
-                          label: Text('Typ wydatku'),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      TextFormField(
-                          onChanged: (newValue) {
-                            setState(() {
-                              amount = newValue.toString();
-                            });
-                          },
-                          decoration: const InputDecoration(
-                            border: OutlineInputBorder(),
-                            label: Text('Kwota Wydatku'),
-                          ),
-                          keyboardType: TextInputType.number,
-                          inputFormatters: <TextInputFormatter>[
-                            FilteringTextInputFormatter.singleLineFormatter
-                          ])
-                    ],
+              appBar: AppBar(
+                title: Text(widget.model.type),
+                actions: [
+                  IconButton(
+                    onPressed:
+                        _title == null || _shop == null || _amount == null
+                            ? null
+                            : () {
+                                context.read<AddCubit>().addSpendings(
+                                      _title!,
+                                      _shop!,
+                                      _amount!,
+                                      widget.model.id,
+                                    );
+                              },
+                    icon: const Icon(Icons.check_box),
                   ),
-                ));
+                ],
+              ),
+              body: _AddSpendingsPageBody(
+                onShopChanged: (newValue) {
+                  setState(() {
+                    _shop = newValue;
+                  });
+                },
+                onTitleChanged: (newValue) {
+                  setState(() {
+                    _title = newValue;
+                  });
+                },
+                onAmountChanged: (newValue) {
+                  setState(() {
+                    _amount = double.tryParse(newValue);
+                  });
+                },
+              ),
+            );
           },
         ),
+      ),
+    );
+  }
+}
+
+class _AddSpendingsPageBody extends StatelessWidget {
+  const _AddSpendingsPageBody({
+    Key? key,
+    required this.onTitleChanged,
+    required this.onAmountChanged,
+    required this.onShopChanged,
+  }) : super(key: key);
+
+  final Function(String) onTitleChanged;
+  final Function(String) onShopChanged;
+  final Function(String) onAmountChanged;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: ListView(
+        padding: const EdgeInsets.symmetric(
+          horizontal: 20,
+          vertical: 20,
+        ),
+        children: [
+          TextField(
+            onChanged: onShopChanged,
+            decoration: const InputDecoration(
+              border: OutlineInputBorder(),
+              label: Text('Nazwa Sklepu'),
+            ),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          TextField(
+            onChanged: onTitleChanged,
+            decoration: const InputDecoration(
+              border: OutlineInputBorder(),
+              label: Text('Typ wydatku'),
+            ),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          TextField(
+              onChanged: onAmountChanged,
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(),
+                label: Text('Kwota Wydatku'),
+              ),
+              keyboardType: TextInputType.number,
+              inputFormatters: <TextInputFormatter>[
+                FilteringTextInputFormatter.singleLineFormatter
+              ])
+        ],
       ),
     );
   }

@@ -1,10 +1,9 @@
-class SpendingModel {
-  final String title;
-  final String shop;
-  final String amount;
-  final String id;
-  final String categoryID;
+import 'package:json_annotation/json_annotation.dart';
 
+part 'spendings_model.g.dart';
+
+@JsonSerializable()
+class SpendingModel {
   SpendingModel({
     required this.title,
     required this.shop,
@@ -13,18 +12,18 @@ class SpendingModel {
     this.categoryID = '',
   });
 
-  Map<String, dynamic> toJson() => {
-        'id': id,
-        'title': title,
-        'shop': shop,
-        'amount': amount,
-        'categoryID': categoryID,
-      };
+  final String title;
 
-  SpendingModel.fromJson(Map<String, dynamic> json)
-      : amount = json['amount'],
-        title = json['title'],
-        shop = json['shop'],
-        id = json['id'],
-        categoryID = json['categoryID'];
+  final String shop;
+
+  final double amount;
+
+  final String id;
+
+  final String categoryID;
+
+  factory SpendingModel.fromJson(Map<String, dynamic> json) =>
+      _$SpendingModelFromJson(json);
+
+  Map<String, dynamic> toJson() => _$SpendingModelToJson(this);
 }

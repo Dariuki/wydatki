@@ -1,17 +1,20 @@
-class CategoryModel {
-  String type;
-  String id;
+import 'package:json_annotation/json_annotation.dart';
 
+part 'category_model.g.dart';
+
+@JsonSerializable()
+class CategoryModel {
   CategoryModel({
     this.type = '',
     this.id = '',
   });
-  Map<String, dynamic> toJson() => {
-        'id': id,
-        'type': type,
-      };
+  @JsonKey(name: 'type')
+  String type;
+  @JsonKey(name: 'id')
+  String id;
 
-  CategoryModel.fromJson(Map<String, dynamic> json)
-      : id = json['id'],
-        type = json['type'];
+  factory CategoryModel.fromJson(Map<String, dynamic> json) =>
+      _$CategoryModelFromJson(json);
+
+  Map<String, dynamic> toJson() => _$CategoryModelToJson(this);
 }

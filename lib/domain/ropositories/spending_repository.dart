@@ -17,17 +17,21 @@ class SpendingsRepository {
     });
   }
 
+ 
+
+
+
   Future<void> addSpending(
     String title,
     String shop,
-    String amount,
+    double amount,
     String categoryId,
   ) async {
     final docSpending = _spendingRemoteDataSource.addSpending();
     final spending = SpendingModel(
         title: title,
         shop: shop,
-        amount: amount,
+        amount:amount,
         id: docSpending.id,
         categoryID: categoryId);
     final json = spending.toJson();
@@ -37,4 +41,7 @@ class SpendingsRepository {
   Future<void> delete({required String id}) {
     return _spendingRemoteDataSource.delete(id: id);
   }
+
+
+
 }

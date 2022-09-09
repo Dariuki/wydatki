@@ -34,7 +34,7 @@ class AddCubit extends Cubit<AddState> {
   Future<void> addSpendings(
     String title,
     String shop,
-    String amount,
+    double amount,
     String id,
   ) async {
     try {
