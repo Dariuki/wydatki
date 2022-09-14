@@ -49,7 +49,9 @@ class _AddSpendingsPageState extends State<AddSpendingsPage> {
           builder: (context, state) {
             return Scaffold(
               appBar: AppBar(
-                title: Text(widget.model.type),
+                title: Center(
+                  child: Text('Dodaj wydatek - ${widget.model.type}'),
+                ),
                 actions: [
                   IconButton(
                     onPressed:

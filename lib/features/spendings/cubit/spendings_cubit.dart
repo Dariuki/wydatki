@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
+
 import 'package:wydatki/domain/models/spendings_model.dart';
 import 'package:wydatki/domain/ropositories/spending_repository.dart';
 
@@ -17,8 +18,15 @@ class SpendingsCubit extends Cubit<SpendingsState> {
     _streamSubscription =
         _spendingsRepository.getSpendingForCategoryId(categoryID).listen(
       (items) {
+        double totalAmount = 0.0;
+        for (SpendingModel item in items) {
+          totalAmount += item.amount;
+        }
+        totalAmount;
+
         emit(SpendingsState(
           items: items,
+          sum: totalAmount,
         ));
       },
     )..onError(

@@ -2,11 +2,14 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class SpendingRemoteDataSource {
+  
+
   Stream<QuerySnapshot<Map<String, dynamic>>> getAllDocsStream() {
     final userID = FirebaseAuth.instance.currentUser?.uid;
     if (userID == null) {
       throw Exception('User is not logged in');
     }
+    
     return FirebaseFirestore.instance
         .collection('users')
         .doc(userID)

@@ -13,11 +13,14 @@ class SpendingsPage extends StatelessWidget {
     Key? key,
   }) : super(key: key);
   final CategoryModel category;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(child: Text(category.type)),
+        title: Center(
+          child: Text('Lista wydatków - ${category.type}'),
+        ),
       ),
       body: BlocProvider(
         create: (context) =>
@@ -26,6 +29,7 @@ class SpendingsPage extends StatelessWidget {
         child: BlocBuilder<SpendingsCubit, SpendingsState>(
           builder: (context, state) {
             final itemsModels = state.items;
+
             if (itemsModels.isEmpty) {
               return const SizedBox.shrink();
             }
@@ -58,6 +62,39 @@ class SpendingsPage extends StatelessWidget {
                     },
                     child: _ListItemView(itemModel: itemModel),
                   ),
+                Padding(
+                  padding: const EdgeInsets.all(30),
+                  child: Container(
+                    decoration: const BoxDecoration(
+                      color: Colors.black26,
+                    ),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 20, vertical: 20),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        const SizedBox(width: 10),
+                        const Text(
+                          'Suma:',
+                          style: TextStyle(
+                            fontSize: 30.0,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        const SizedBox(width: 20),
+                        Expanded(
+                          child: Text(
+                            state.sum.toString(),
+                            style: const TextStyle(
+                              fontSize: 30.0,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                )
               ],
             );
           },

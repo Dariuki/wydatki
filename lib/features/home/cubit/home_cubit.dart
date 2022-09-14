@@ -15,7 +15,9 @@ class HomeCubit extends Cubit<HomeState> {
   Future<void> start() async {
     _streamSubscription = _categoriesRepository.getCategory().listen(
       (items) {
-        emit(HomeState(items: items));
+        emit(HomeState(
+          items: items,
+        ));
       },
     )..onError(
         (error) {
@@ -40,4 +42,7 @@ class HomeCubit extends Cubit<HomeState> {
     _streamSubscription?.cancel();
     return super.close();
   }
+
+
+  
 }

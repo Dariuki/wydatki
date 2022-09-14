@@ -17,9 +17,7 @@ class SpendingsRepository {
     });
   }
 
- 
-
-
+  
 
   Future<void> addSpending(
     String title,

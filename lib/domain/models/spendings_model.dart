@@ -10,6 +10,7 @@ class SpendingModel {
     required this.amount,
     this.id = '',
     this.categoryID = '',
+    
   });
 
   final String title;
