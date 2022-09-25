@@ -137,7 +137,6 @@ class _ListItemView extends StatelessWidget {
                       margin: const EdgeInsets.all(10),
                       padding: const EdgeInsets.all(10),
                       child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
                           Text(
                             itemModel.type,
@@ -150,25 +149,25 @@ class _ListItemView extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Container(
-                    decoration: const BoxDecoration(
-                      color: Colors.white70,
-                    ),
-                    margin: const EdgeInsets.all(10),
-                    padding: const EdgeInsets.all(10),
-                    child: Column(
-                      children: const [
-                        Text(
-                          '0',
-                          style: TextStyle(
-                            fontSize: 20.0,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        Text('PLN'),
-                      ],
-                    ),
-                  ),
+                  // Container(
+                  //   decoration: const BoxDecoration(
+                  //     color: Colors.white70,
+                  //   ),
+                  //   margin: const EdgeInsets.all(10),
+                  //   padding: const EdgeInsets.all(10),
+                  //   child: Column(
+                  //     children: const [
+                  //       Text(
+                  //         '0',
+                  //         style: TextStyle(
+                  //           fontSize: 20.0,
+                  //           fontWeight: FontWeight.bold,
+                  //         ),
+                  //       ),
+                  //       Text('PLN'),
+                  //     ],
+                  //   ),
+                  // ),
                 ],
               ),
             ],

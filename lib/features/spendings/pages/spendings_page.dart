@@ -84,7 +84,7 @@ class SpendingsPage extends StatelessWidget {
                         const SizedBox(width: 20),
                         Expanded(
                           child: Text(
-                            state.sum.toString(),
+                            state.sum.toStringAsFixed(2),
                             style: const TextStyle(
                               fontSize: 30.0,
                               fontWeight: FontWeight.bold,

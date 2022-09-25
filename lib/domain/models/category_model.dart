@@ -8,9 +8,9 @@ class CategoryModel {
     this.type = '',
     this.id = '',
   });
-  @JsonKey(name: 'type')
+ 
   String type;
-  @JsonKey(name: 'id')
+ 
   String id;
 
   factory CategoryModel.fromJson(Map<String, dynamic> json) =>
