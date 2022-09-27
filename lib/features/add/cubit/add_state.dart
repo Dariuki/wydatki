@@ -1,14 +1,12 @@
 part of 'add_cubit.dart';
 
-@immutable
-class AddState {
-  final bool saved;
-  final String errorMessage;
-  final List<CategoryModel> itemModel;
+@freezed
+class AddState with _$AddState {
+  factory AddState({
   
-  const AddState({
-    this.saved = false,
-    this.errorMessage = '',
-    this.itemModel = const [],
-  });
+    bool? saved,
+    String? errorMessage,
+  }) = _AddState;
 }
+
+

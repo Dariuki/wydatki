@@ -1,13 +1,14 @@
 part of 'home_cubit.dart';
 
-class HomeState {
-  final List<CategoryModel> items;
-  final bool loadingError;
-  final bool removingError;
 
-  const HomeState({
-    this.items = const [],
-    this.loadingError = false,
-    this.removingError = false,
-  });
+
+@freezed
+class HomeState with _$HomeState {
+  factory HomeState({
+  @Default([])List<CategoryModel> items,
+    bool? loadingError,
+    bool? removingError,
+  }) = _HomeState;
 }
+
+

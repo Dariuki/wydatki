@@ -1,15 +1,15 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
-import 'package:flutter/material.dart';
-import 'package:wydatki/domain/models/category_model.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:wydatki/domain/ropositories/category_repository.dart';
 import 'package:wydatki/domain/ropositories/spending_repository.dart';
 
+part 'add_cubit.freezed.dart';
 part 'add_state.dart';
 
 class AddCubit extends Cubit<AddState> {
   AddCubit(this._categoriesRepository, this._spendingsRepository)
-      : super(const AddState());
+      : super(AddState());
 
   final CategoriesRepository _categoriesRepository;
   final SpendingsRepository _spendingsRepository;
@@ -19,14 +19,12 @@ class AddCubit extends Cubit<AddState> {
   ) async {
     try {
       await _categoriesRepository.addCategory(type);
-      emit(const AddState(
+      emit(AddState(
         saved: true,
-        itemModel: []
       ));
     } catch (error) {
       emit(AddState(
         errorMessage: error.toString(),
-        itemModel: const [],
       ));
     }
   }
@@ -45,12 +43,13 @@ class AddCubit extends Cubit<AddState> {
         id,
       );
       emit(
-        const AddState(saved: true, itemModel: []),
+        AddState(
+          saved: true,
+        ),
       );
     } catch (error) {
       emit(AddState(
         errorMessage: error.toString(),
-        itemModel: const [],
       ));
     }
   }

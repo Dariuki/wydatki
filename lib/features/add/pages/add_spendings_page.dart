@@ -33,13 +33,13 @@ class _AddSpendingsPageState extends State<AddSpendingsPage> {
           SpendingsRepository(SpendingRemoteDataSource())),
       child: BlocListener<AddCubit, AddState>(
         listener: (context, state) {
-          if (state.saved) {
+          if (state.saved!) {
             Navigator.of(context).pop();
           }
-          if (state.errorMessage.isNotEmpty) {
+          if (state.errorMessage!.isNotEmpty) {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
-                content: Text(state.errorMessage),
+                content: Text(state.errorMessage!),
                 backgroundColor: Colors.red,
               ),
             );

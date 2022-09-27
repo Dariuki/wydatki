@@ -1,15 +1,16 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
-
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:wydatki/domain/models/spendings_model.dart';
 import 'package:wydatki/domain/ropositories/spending_repository.dart';
 
+part 'spendings_cubit.freezed.dart';
 part 'spendings_state.dart';
 
 class SpendingsCubit extends Cubit<SpendingsState> {
   SpendingsCubit(
     this._spendingsRepository,
-  ) : super(const SpendingsState());
+  ) : super(SpendingsState());
 
   final SpendingsRepository _spendingsRepository;
   StreamSubscription? _streamSubscription;
@@ -31,7 +32,7 @@ class SpendingsCubit extends Cubit<SpendingsState> {
       },
     )..onError(
             (error) {
-              emit(const SpendingsState(loadingError: true));
+              emit(SpendingsState(loadingError: true));
             },
           );
   }
@@ -41,7 +42,7 @@ class SpendingsCubit extends Cubit<SpendingsState> {
       await _spendingsRepository.delete(id: documentID);
     } catch (error) {
       emit(
-        const SpendingsState(removingError: true),
+        SpendingsState(removingError: true),
       );
       fetchData(categoryID: '');
     }

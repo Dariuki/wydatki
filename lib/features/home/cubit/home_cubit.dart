@@ -1,12 +1,15 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:wydatki/domain/models/category_model.dart';
 import 'package:wydatki/domain/ropositories/category_repository.dart';
 
+
+part 'home_cubit.freezed.dart';
 part 'home_state.dart';
 
 class HomeCubit extends Cubit<HomeState> {
-  HomeCubit(this._categoriesRepository) : super(const HomeState());
+  HomeCubit(this._categoriesRepository) : super( HomeState());
 
   final CategoriesRepository _categoriesRepository;
 
@@ -21,7 +24,7 @@ class HomeCubit extends Cubit<HomeState> {
       },
     )..onError(
         (error) {
-          emit(const HomeState(loadingError: true));
+          emit(HomeState(loadingError: true));
         },
       );
   }
@@ -31,7 +34,7 @@ class HomeCubit extends Cubit<HomeState> {
       await _categoriesRepository.delete(id: documentID);
     } catch (error) {
       emit(
-        const HomeState(removingError: true),
+         HomeState(removingError: true),
       );
       start();
     }
