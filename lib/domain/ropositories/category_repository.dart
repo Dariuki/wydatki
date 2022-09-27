@@ -18,7 +18,7 @@ class CategoriesRepository {
     String type,
   ) async {
     final docCategory = _categoryRemoteDataSource.addCategory();
-    final category = CategoryModel(type: type, id: docCategory.id);
+    final category = CategoryModel(type, docCategory.id);
     final json = category.toJson();
     return docCategory.set(json);
   }

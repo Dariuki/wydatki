@@ -9,7 +9,7 @@ part 'add_state.dart';
 
 class AddCubit extends Cubit<AddState> {
   AddCubit(this._categoriesRepository, this._spendingsRepository)
-      : super(const AddState(itemModel: null));
+      : super(const AddState());
 
   final CategoriesRepository _categoriesRepository;
   final SpendingsRepository _spendingsRepository;
@@ -21,12 +21,12 @@ class AddCubit extends Cubit<AddState> {
       await _categoriesRepository.addCategory(type);
       emit(const AddState(
         saved: true,
-        itemModel: null,
+        itemModel: []
       ));
     } catch (error) {
       emit(AddState(
         errorMessage: error.toString(),
-        itemModel: null,
+        itemModel: const [],
       ));
     }
   }
@@ -45,12 +45,12 @@ class AddCubit extends Cubit<AddState> {
         id,
       );
       emit(
-        const AddState(saved: true, itemModel: null),
+        const AddState(saved: true, itemModel: []),
       );
     } catch (error) {
       emit(AddState(
         errorMessage: error.toString(),
-        itemModel: null,
+        itemModel: const [],
       ));
     }
   }

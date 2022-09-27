@@ -2,13 +2,13 @@ part of 'add_cubit.dart';
 
 @immutable
 class AddState {
+  final bool saved;
+  final String errorMessage;
+  final List<CategoryModel> itemModel;
+  
   const AddState({
     this.saved = false,
     this.errorMessage = '',
-    required this.itemModel,
+    this.itemModel = const [],
   });
-
-  final bool saved;
-  final String errorMessage;
-  final CategoryModel? itemModel;
 }
