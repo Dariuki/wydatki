@@ -12,11 +12,30 @@ part of 'category_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 CategoryModel _$CategoryModelFromJson(Map<String, dynamic> json) {
   return _CategoryModel.fromJson(json);
 }
+
+/// @nodoc
+class _$CategoryModelTearOff {
+  const _$CategoryModelTearOff();
+
+  _CategoryModel call(String type, String id) {
+    return _CategoryModel(
+      type,
+      id,
+    );
+  }
+
+  CategoryModel fromJson(Map<String, Object?> json) {
+    return CategoryModel.fromJson(json);
+  }
+}
+
+/// @nodoc
+const $CategoryModel = _$CategoryModelTearOff();
 
 /// @nodoc
 mixin _$CategoryModel {
@@ -65,32 +84,32 @@ class _$CategoryModelCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$$_CategoryModelCopyWith<$Res>
+abstract class _$CategoryModelCopyWith<$Res>
     implements $CategoryModelCopyWith<$Res> {
-  factory _$$_CategoryModelCopyWith(
-          _$_CategoryModel value, $Res Function(_$_CategoryModel) then) =
-      __$$_CategoryModelCopyWithImpl<$Res>;
+  factory _$CategoryModelCopyWith(
+          _CategoryModel value, $Res Function(_CategoryModel) then) =
+      __$CategoryModelCopyWithImpl<$Res>;
   @override
   $Res call({String type, String id});
 }
 
 /// @nodoc
-class __$$_CategoryModelCopyWithImpl<$Res>
+class __$CategoryModelCopyWithImpl<$Res>
     extends _$CategoryModelCopyWithImpl<$Res>
-    implements _$$_CategoryModelCopyWith<$Res> {
-  __$$_CategoryModelCopyWithImpl(
-      _$_CategoryModel _value, $Res Function(_$_CategoryModel) _then)
-      : super(_value, (v) => _then(v as _$_CategoryModel));
+    implements _$CategoryModelCopyWith<$Res> {
+  __$CategoryModelCopyWithImpl(
+      _CategoryModel _value, $Res Function(_CategoryModel) _then)
+      : super(_value, (v) => _then(v as _CategoryModel));
 
   @override
-  _$_CategoryModel get _value => super._value as _$_CategoryModel;
+  _CategoryModel get _value => super._value as _CategoryModel;
 
   @override
   $Res call({
     Object? type = freezed,
     Object? id = freezed,
   }) {
-    return _then(_$_CategoryModel(
+    return _then(_CategoryModel(
       type == freezed
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -125,12 +144,11 @@ class _$_CategoryModel implements _CategoryModel {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CategoryModel &&
+            other is _CategoryModel &&
             const DeepCollectionEquality().equals(other.type, type) &&
             const DeepCollectionEquality().equals(other.id, id));
   }
 
-  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -139,19 +157,17 @@ class _$_CategoryModel implements _CategoryModel {
 
   @JsonKey(ignore: true)
   @override
-  _$$_CategoryModelCopyWith<_$_CategoryModel> get copyWith =>
-      __$$_CategoryModelCopyWithImpl<_$_CategoryModel>(this, _$identity);
+  _$CategoryModelCopyWith<_CategoryModel> get copyWith =>
+      __$CategoryModelCopyWithImpl<_CategoryModel>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CategoryModelToJson(
-      this,
-    );
+    return _$$_CategoryModelToJson(this);
   }
 }
 
 abstract class _CategoryModel implements CategoryModel {
-  factory _CategoryModel(final String type, final String id) = _$_CategoryModel;
+  factory _CategoryModel(String type, String id) = _$_CategoryModel;
 
   factory _CategoryModel.fromJson(Map<String, dynamic> json) =
       _$_CategoryModel.fromJson;
@@ -162,6 +178,6 @@ abstract class _CategoryModel implements CategoryModel {
   String get id;
   @override
   @JsonKey(ignore: true)
-  _$$_CategoryModelCopyWith<_$_CategoryModel> get copyWith =>
+  _$CategoryModelCopyWith<_CategoryModel> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -12,11 +12,34 @@ part of 'spendings_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 SpendingModel _$SpendingModelFromJson(Map<String, dynamic> json) {
   return _SpendingModel.fromJson(json);
 }
+
+/// @nodoc
+class _$SpendingModelTearOff {
+  const _$SpendingModelTearOff();
+
+  _SpendingModel call(
+      String title, String shop, double amount, String id, String categoryID) {
+    return _SpendingModel(
+      title,
+      shop,
+      amount,
+      id,
+      categoryID,
+    );
+  }
+
+  SpendingModel fromJson(Map<String, Object?> json) {
+    return SpendingModel.fromJson(json);
+  }
+}
+
+/// @nodoc
+const $SpendingModel = _$SpendingModelTearOff();
 
 /// @nodoc
 mixin _$SpendingModel {
@@ -84,26 +107,26 @@ class _$SpendingModelCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$$_SpendingModelCopyWith<$Res>
+abstract class _$SpendingModelCopyWith<$Res>
     implements $SpendingModelCopyWith<$Res> {
-  factory _$$_SpendingModelCopyWith(
-          _$_SpendingModel value, $Res Function(_$_SpendingModel) then) =
-      __$$_SpendingModelCopyWithImpl<$Res>;
+  factory _$SpendingModelCopyWith(
+          _SpendingModel value, $Res Function(_SpendingModel) then) =
+      __$SpendingModelCopyWithImpl<$Res>;
   @override
   $Res call(
       {String title, String shop, double amount, String id, String categoryID});
 }
 
 /// @nodoc
-class __$$_SpendingModelCopyWithImpl<$Res>
+class __$SpendingModelCopyWithImpl<$Res>
     extends _$SpendingModelCopyWithImpl<$Res>
-    implements _$$_SpendingModelCopyWith<$Res> {
-  __$$_SpendingModelCopyWithImpl(
-      _$_SpendingModel _value, $Res Function(_$_SpendingModel) _then)
-      : super(_value, (v) => _then(v as _$_SpendingModel));
+    implements _$SpendingModelCopyWith<$Res> {
+  __$SpendingModelCopyWithImpl(
+      _SpendingModel _value, $Res Function(_SpendingModel) _then)
+      : super(_value, (v) => _then(v as _SpendingModel));
 
   @override
-  _$_SpendingModel get _value => super._value as _$_SpendingModel;
+  _SpendingModel get _value => super._value as _SpendingModel;
 
   @override
   $Res call({
@@ -113,7 +136,7 @@ class __$$_SpendingModelCopyWithImpl<$Res>
     Object? id = freezed,
     Object? categoryID = freezed,
   }) {
-    return _then(_$_SpendingModel(
+    return _then(_SpendingModel(
       title == freezed
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -167,7 +190,7 @@ class _$_SpendingModel implements _SpendingModel {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SpendingModel &&
+            other is _SpendingModel &&
             const DeepCollectionEquality().equals(other.title, title) &&
             const DeepCollectionEquality().equals(other.shop, shop) &&
             const DeepCollectionEquality().equals(other.amount, amount) &&
@@ -176,7 +199,6 @@ class _$_SpendingModel implements _SpendingModel {
                 .equals(other.categoryID, categoryID));
   }
 
-  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -188,24 +210,18 @@ class _$_SpendingModel implements _SpendingModel {
 
   @JsonKey(ignore: true)
   @override
-  _$$_SpendingModelCopyWith<_$_SpendingModel> get copyWith =>
-      __$$_SpendingModelCopyWithImpl<_$_SpendingModel>(this, _$identity);
+  _$SpendingModelCopyWith<_SpendingModel> get copyWith =>
+      __$SpendingModelCopyWithImpl<_SpendingModel>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SpendingModelToJson(
-      this,
-    );
+    return _$$_SpendingModelToJson(this);
   }
 }
 
 abstract class _SpendingModel implements SpendingModel {
-  factory _SpendingModel(
-      final String title,
-      final String shop,
-      final double amount,
-      final String id,
-      final String categoryID) = _$_SpendingModel;
+  factory _SpendingModel(String title, String shop, double amount, String id,
+      String categoryID) = _$_SpendingModel;
 
   factory _SpendingModel.fromJson(Map<String, dynamic> json) =
       _$_SpendingModel.fromJson;
@@ -222,6 +238,6 @@ abstract class _SpendingModel implements SpendingModel {
   String get categoryID;
   @override
   @JsonKey(ignore: true)
-  _$$_SpendingModelCopyWith<_$_SpendingModel> get copyWith =>
+  _$SpendingModelCopyWith<_SpendingModel> get copyWith =>
       throw _privateConstructorUsedError;
 }

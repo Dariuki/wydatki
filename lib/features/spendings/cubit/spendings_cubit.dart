@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+
 import 'package:wydatki/domain/models/spendings_model.dart';
 import 'package:wydatki/domain/ropositories/spending_repository.dart';
 
@@ -8,16 +9,14 @@ part 'spendings_cubit.freezed.dart';
 part 'spendings_state.dart';
 
 class SpendingsCubit extends Cubit<SpendingsState> {
-  SpendingsCubit(
-    this._spendingsRepository,
-  ) : super(SpendingsState());
+  SpendingsCubit({required this.spendingsRepository}) : super(SpendingsState());
 
-  final SpendingsRepository _spendingsRepository;
+  final SpendingsRepository spendingsRepository;
   StreamSubscription? _streamSubscription;
 
   Future<void> fetchData({required String categoryID}) async {
     _streamSubscription =
-        _spendingsRepository.getSpendingForCategoryId(categoryID).listen(
+        spendingsRepository.getSpendingForCategoryId(categoryID).listen(
       (items) {
         double totalAmount = 0.0;
         for (SpendingModel item in items) {
@@ -39,7 +38,7 @@ class SpendingsCubit extends Cubit<SpendingsState> {
 
   Future<void> remove({required String documentID}) async {
     try {
-      await _spendingsRepository.delete(id: documentID);
+      await spendingsRepository.delete(id: documentID);
     } catch (error) {
       emit(
         SpendingsState(removingError: true),

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:wydatki/data/remote_data_sourse/category_remote_data_source.dart';
+import 'package:wydatki/app/injection/injection_container.dart';
 import 'package:wydatki/domain/models/category_model.dart';
-import 'package:wydatki/domain/ropositories/category_repository.dart';
 import 'package:wydatki/features/account/user_profile.dart';
 import 'package:wydatki/features/add/pages/add_category_page.dart';
 import 'package:wydatki/features/home/cubit/home_cubit.dart';
@@ -57,9 +56,10 @@ class _HomePageBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) =>
-          HomeCubit(CategoriesRepository(CategoryRemoteDataSource()))..start(),
+    return BlocProvider<HomeCubit>(
+      create: (context) {
+        return getIt()..start();
+      },
       child: BlocBuilder<HomeCubit, HomeState>(
         builder: (context, state) {
           final itemModels = state.items;

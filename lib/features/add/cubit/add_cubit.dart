@@ -8,17 +8,17 @@ part 'add_cubit.freezed.dart';
 part 'add_state.dart';
 
 class AddCubit extends Cubit<AddState> {
-  AddCubit(this._categoriesRepository, this._spendingsRepository)
+  AddCubit({required this.categoriesRepository, required this.spendingsRepository})
       : super(AddState());
 
-  final CategoriesRepository _categoriesRepository;
-  final SpendingsRepository _spendingsRepository;
+  final CategoriesRepository categoriesRepository;
+  final SpendingsRepository spendingsRepository;
 
   Future<void> addCategory(
     String type,
   ) async {
     try {
-      await _categoriesRepository.addCategory(type);
+      await categoriesRepository.addCategory(type);
       emit(AddState(
         saved: true,
       ));
@@ -36,7 +36,7 @@ class AddCubit extends Cubit<AddState> {
     String id,
   ) async {
     try {
-      await _spendingsRepository.addSpending(
+      await spendingsRepository.addSpending(
         title,
         shop,
         amount,

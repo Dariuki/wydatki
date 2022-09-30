@@ -12,12 +12,27 @@ part of 'add_cubit.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
+/// @nodoc
+class _$AddStateTearOff {
+  const _$AddStateTearOff();
+
+  _AddState call({String errorMessage = '', bool? saved}) {
+    return _AddState(
+      errorMessage: errorMessage,
+      saved: saved,
+    );
+  }
+}
+
+/// @nodoc
+const $AddState = _$AddStateTearOff();
 
 /// @nodoc
 mixin _$AddState {
+  String get errorMessage => throw _privateConstructorUsedError;
   bool? get saved => throw _privateConstructorUsedError;
-  String? get errorMessage => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AddStateCopyWith<AddState> get copyWith =>
@@ -28,7 +43,7 @@ mixin _$AddState {
 abstract class $AddStateCopyWith<$Res> {
   factory $AddStateCopyWith(AddState value, $Res Function(AddState) then) =
       _$AddStateCopyWithImpl<$Res>;
-  $Res call({bool? saved, String? errorMessage});
+  $Res call({String errorMessage, bool? saved});
 }
 
 /// @nodoc
@@ -41,55 +56,53 @@ class _$AddStateCopyWithImpl<$Res> implements $AddStateCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? saved = freezed,
     Object? errorMessage = freezed,
+    Object? saved = freezed,
   }) {
     return _then(_value.copyWith(
+      errorMessage: errorMessage == freezed
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String,
       saved: saved == freezed
           ? _value.saved
           : saved // ignore: cast_nullable_to_non_nullable
               as bool?,
-      errorMessage: errorMessage == freezed
-          ? _value.errorMessage
-          : errorMessage // ignore: cast_nullable_to_non_nullable
-              as String?,
     ));
   }
 }
 
 /// @nodoc
-abstract class _$$_AddStateCopyWith<$Res> implements $AddStateCopyWith<$Res> {
-  factory _$$_AddStateCopyWith(
-          _$_AddState value, $Res Function(_$_AddState) then) =
-      __$$_AddStateCopyWithImpl<$Res>;
+abstract class _$AddStateCopyWith<$Res> implements $AddStateCopyWith<$Res> {
+  factory _$AddStateCopyWith(_AddState value, $Res Function(_AddState) then) =
+      __$AddStateCopyWithImpl<$Res>;
   @override
-  $Res call({bool? saved, String? errorMessage});
+  $Res call({String errorMessage, bool? saved});
 }
 
 /// @nodoc
-class __$$_AddStateCopyWithImpl<$Res> extends _$AddStateCopyWithImpl<$Res>
-    implements _$$_AddStateCopyWith<$Res> {
-  __$$_AddStateCopyWithImpl(
-      _$_AddState _value, $Res Function(_$_AddState) _then)
-      : super(_value, (v) => _then(v as _$_AddState));
+class __$AddStateCopyWithImpl<$Res> extends _$AddStateCopyWithImpl<$Res>
+    implements _$AddStateCopyWith<$Res> {
+  __$AddStateCopyWithImpl(_AddState _value, $Res Function(_AddState) _then)
+      : super(_value, (v) => _then(v as _AddState));
 
   @override
-  _$_AddState get _value => super._value as _$_AddState;
+  _AddState get _value => super._value as _AddState;
 
   @override
   $Res call({
-    Object? saved = freezed,
     Object? errorMessage = freezed,
+    Object? saved = freezed,
   }) {
-    return _then(_$_AddState(
+    return _then(_AddState(
+      errorMessage: errorMessage == freezed
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String,
       saved: saved == freezed
           ? _value.saved
           : saved // ignore: cast_nullable_to_non_nullable
               as bool?,
-      errorMessage: errorMessage == freezed
-          ? _value.errorMessage
-          : errorMessage // ignore: cast_nullable_to_non_nullable
-              as String?,
     ));
   }
 }
@@ -97,50 +110,50 @@ class __$$_AddStateCopyWithImpl<$Res> extends _$AddStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_AddState implements _AddState {
-  _$_AddState({this.saved, this.errorMessage});
+  _$_AddState({this.errorMessage = '', this.saved});
 
+  @JsonKey()
+  @override
+  final String errorMessage;
   @override
   final bool? saved;
-  @override
-  final String? errorMessage;
 
   @override
   String toString() {
-    return 'AddState(saved: $saved, errorMessage: $errorMessage)';
+    return 'AddState(errorMessage: $errorMessage, saved: $saved)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AddState &&
-            const DeepCollectionEquality().equals(other.saved, saved) &&
+            other is _AddState &&
             const DeepCollectionEquality()
-                .equals(other.errorMessage, errorMessage));
+                .equals(other.errorMessage, errorMessage) &&
+            const DeepCollectionEquality().equals(other.saved, saved));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(saved),
-      const DeepCollectionEquality().hash(errorMessage));
+      const DeepCollectionEquality().hash(errorMessage),
+      const DeepCollectionEquality().hash(saved));
 
   @JsonKey(ignore: true)
   @override
-  _$$_AddStateCopyWith<_$_AddState> get copyWith =>
-      __$$_AddStateCopyWithImpl<_$_AddState>(this, _$identity);
+  _$AddStateCopyWith<_AddState> get copyWith =>
+      __$AddStateCopyWithImpl<_AddState>(this, _$identity);
 }
 
 abstract class _AddState implements AddState {
-  factory _AddState({final bool? saved, final String? errorMessage}) =
-      _$_AddState;
+  factory _AddState({String errorMessage, bool? saved}) = _$_AddState;
 
+  @override
+  String get errorMessage;
   @override
   bool? get saved;
   @override
-  String? get errorMessage;
-  @override
   @JsonKey(ignore: true)
-  _$$_AddStateCopyWith<_$_AddState> get copyWith =>
+  _$AddStateCopyWith<_AddState> get copyWith =>
       throw _privateConstructorUsedError;
 }

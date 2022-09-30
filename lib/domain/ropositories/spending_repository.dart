@@ -2,12 +2,12 @@ import 'package:wydatki/data/remote_data_sourse/spending_remote_data_source.dart
 import 'package:wydatki/domain/models/spendings_model.dart';
 
 class SpendingsRepository {
-  SpendingsRepository(this._spendingRemoteDataSource);
+  SpendingsRepository({required this.spendingRemoteDataSource});
 
-  final SpendingRemoteDataSource _spendingRemoteDataSource;
+  final SpendingRemoteDataSource spendingRemoteDataSource;
 
   Stream<List<SpendingModel>> getSpendingForCategoryId(String categoryId) {
-    return _spendingRemoteDataSource.getAllDocsStream().map((querySnapshot) {
+    return spendingRemoteDataSource.getAllDocsStream().map((querySnapshot) {
       final allSpendings = querySnapshot.docs
           .map((doc) => SpendingModel.fromJson(doc.data()))
           .toList();
@@ -23,7 +23,7 @@ class SpendingsRepository {
     double amount,
     String categoryId,
   ) async {
-    final docSpending = _spendingRemoteDataSource.addSpending();
+    final docSpending = spendingRemoteDataSource.addSpending();
     final spending =
         SpendingModel(title, shop, amount, docSpending.id, categoryId);
     final json = spending.toJson();
@@ -31,6 +31,6 @@ class SpendingsRepository {
   }
 
   Future<void> delete({required String id}) {
-    return _spendingRemoteDataSource.delete(id: id);
+    return spendingRemoteDataSource.delete(id: id);
   }
 }

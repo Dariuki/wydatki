@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:wydatki/data/remote_data_sourse/category_remote_data_source.dart';
-import 'package:wydatki/data/remote_data_sourse/spending_remote_data_source.dart';
+import 'package:wydatki/app/injection/injection_container.dart';
 import 'package:wydatki/domain/models/category_model.dart';
-import 'package:wydatki/domain/ropositories/category_repository.dart';
-import 'package:wydatki/domain/ropositories/spending_repository.dart';
 import 'package:wydatki/features/add/cubit/add_cubit.dart';
 
 class AddSpendingsPage extends StatefulWidget {
@@ -27,19 +24,19 @@ class _AddSpendingsPageState extends State<AddSpendingsPage> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => AddCubit(
-          CategoriesRepository(CategoryRemoteDataSource()),
-          SpendingsRepository(SpendingRemoteDataSource())),
+    return BlocProvider<AddCubit>(
+      create: (context) {
+        return getIt();
+      },
       child: BlocListener<AddCubit, AddState>(
         listener: (context, state) {
           if (state.saved!) {
             Navigator.of(context).pop();
           }
-          if (state.errorMessage!.isNotEmpty) {
+          if (state.errorMessage.isNotEmpty) {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
-                content: Text(state.errorMessage!),
+                content: Text(state.errorMessage),
                 backgroundColor: Colors.red,
               ),
             );
