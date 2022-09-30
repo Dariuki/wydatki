@@ -1,13 +1,14 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
 
 import 'package:wydatki/domain/models/spendings_model.dart';
 import 'package:wydatki/domain/ropositories/spending_repository.dart';
 
 part 'spendings_cubit.freezed.dart';
 part 'spendings_state.dart';
-
+@injectable 
 class SpendingsCubit extends Cubit<SpendingsState> {
   SpendingsCubit({required this.spendingsRepository}) : super(SpendingsState());
 

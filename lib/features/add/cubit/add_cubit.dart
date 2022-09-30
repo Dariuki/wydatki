@@ -1,12 +1,15 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
 import 'package:wydatki/domain/ropositories/category_repository.dart';
 import 'package:wydatki/domain/ropositories/spending_repository.dart';
 
 part 'add_cubit.freezed.dart';
 part 'add_state.dart';
 
+
+@injectable 
 class AddCubit extends Cubit<AddState> {
   AddCubit({required this.categoriesRepository, required this.spendingsRepository})
       : super(AddState());

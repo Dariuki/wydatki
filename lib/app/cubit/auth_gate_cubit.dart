@@ -3,6 +3,7 @@ import 'package:bloc/bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+
 part 'auth_gate_cubit.freezed.dart';
 part 'auth_gate_state.dart';
 
@@ -17,6 +18,7 @@ class AuthGateCubit extends Cubit<AuthGateState> {
         );
 
   StreamSubscription? _streamSubscription;
+
 
   Future<void> start() async {
     emit(AuthGateState(

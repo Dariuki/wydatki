@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
 
 import 'package:wydatki/domain/models/category_model.dart';
 import 'package:wydatki/domain/ropositories/category_repository.dart';
@@ -8,7 +9,7 @@ import 'package:wydatki/domain/ropositories/category_repository.dart';
 
 part 'home_cubit.freezed.dart';
 part 'home_state.dart';
-
+@injectable 
 class HomeCubit extends Cubit<HomeState> {
   HomeCubit({required this.categoriesRepository}) : super( HomeState());
 
