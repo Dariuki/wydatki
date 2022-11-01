@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:wydatki/app/injection/injection_container.dart';
 import 'package:wydatki/features/add/cubit/add_cubit.dart';
 
 class AddCategoryPage extends StatefulWidget {
@@ -16,46 +17,64 @@ class _AddCategoryPageState extends State<AddCategoryPage> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => AddCubit(),
-      child: BlocBuilder<AddCubit, AddState>(
-        builder: (context, state) {
-          return Scaffold(
-            appBar: AppBar(
-              title: const Text('Dodaj Kategorie'),
-              actions: [
-                IconButton(
-                  onPressed: categoriesName.isEmpty
-                      ? null
-                      : () {
-                          context.read<AddCubit>().addCategory(categoriesName);
-                          Navigator.of(context).pop();
-                        },
-                  icon: const Icon(Icons.check_box),
-                ),
-              ],
-            ),
-            body: ListView(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 20,
-                vertical: 20,
+    return BlocProvider<AddCubit>(
+      create: (context) {
+        return getIt();
+      },
+      child: BlocListener<AddCubit, AddState>(
+        listener: (context, state) {
+          if (state.saved!) {
+            Navigator.of(context).pop();
+          }
+          if (state.errorMessage.isNotEmpty) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(state.errorMessage),
+                backgroundColor: Colors.red,
               ),
-              children: [
-                TextField(
-                  onChanged: (newValue) {
-                    setState(() {
-                      categoriesName = newValue;
-                    });
-                  },
-                  decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                    label: Text('Tytuł Kategorii'),
-                  ),
-                ),
-              ],
-            ),
-          );
+            );
+          }
         },
+        child: BlocBuilder<AddCubit, AddState>(
+          builder: (context, state) {
+            return Scaffold(
+              appBar: AppBar(
+                title: const Text('Dodaj Kategorie'),
+                actions: [
+                  IconButton(
+                    onPressed: categoriesName.isEmpty
+                        ? null
+                        : () {
+                            context
+                                .read<AddCubit>()
+                                .addCategory(categoriesName);
+                          },
+                    icon: const Icon(Icons.check_box),
+                  ),
+                ],
+              ),
+              body: ListView(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 20,
+                  vertical: 20,
+                ),
+                children: [
+                  TextField(
+                    onChanged: (newValue) {
+                      setState(() {
+                        categoriesName = newValue;
+                      });
+                    },
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      label: Text('Tytuł Kategorii'),
+                    ),
+                  ),
+                ],
+              ),
+            );
+          },
+        ),
       ),
     );
   }

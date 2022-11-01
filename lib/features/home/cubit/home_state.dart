@@ -1,15 +1,14 @@
 part of 'home_cubit.dart';
 
-@immutable
-class HomeState {
-  final List<QueryDocumentSnapshot<Map<String, dynamic>>> documents;
 
-  final bool isLoading;
-  final String errorMessage;
 
-  const HomeState({
-    required this.documents,
-    required this.isLoading,
-    required this.errorMessage,
-  });
+@freezed
+class HomeState with _$HomeState {
+  factory HomeState({
+  @Default([])List<CategoryModel> items,
+    bool? loadingError,
+    bool? removingError,
+  }) = _HomeState;
 }
+
+

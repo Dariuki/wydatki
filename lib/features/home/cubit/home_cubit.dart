@@ -1,53 +1,45 @@
 import 'dart:async';
-
 import 'package:bloc/bloc.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/material.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
 
+import 'package:wydatki/domain/models/category_model.dart';
+import 'package:wydatki/domain/ropositories/category_repository.dart';
+
+
+part 'home_cubit.freezed.dart';
 part 'home_state.dart';
-
+@injectable 
 class HomeCubit extends Cubit<HomeState> {
-  HomeCubit()
-      : super(
-          const HomeState(
-            documents: [],
-            errorMessage: '',
-            isLoading: false,
-          ),
-        );
+  HomeCubit({required this.categoriesRepository}) : super( HomeState());
+
+  final CategoriesRepository categoriesRepository;
 
   StreamSubscription? _streamSubscription;
 
   Future<void> start() async {
-    emit(
-      const HomeState(
-        documents: [],
-        errorMessage: '',
-        isLoading: true,
-      ),
-    );
-    _streamSubscription = FirebaseFirestore.instance
-        .collection('categories')
-        .orderBy('type')
-        .snapshots()
-        .listen((data) {
-      emit(
-        HomeState(
-          documents: data.docs,
-          isLoading: false,
-          errorMessage: '',
-        ),
+    _streamSubscription = categoriesRepository.getCategory().listen(
+      (items) {
+        emit(HomeState(
+          items: items,
+        ));
+      },
+    )..onError(
+        (error) {
+          emit(HomeState(loadingError: true));
+        },
       );
-    })
-      ..onError((error) {
-        emit(
-          HomeState(
-            documents: const [],
-            isLoading: false,
-            errorMessage: error.toString(),
-          ),
-        );
-      });
+  }
+
+  Future<void> remove({required String documentID}) async {
+    try {
+      await categoriesRepository.delete(id: documentID);
+    } catch (error) {
+      emit(
+         HomeState(removingError: true),
+      );
+      start();
+    }
   }
 
   @override
@@ -55,4 +47,7 @@ class HomeCubit extends Cubit<HomeState> {
     _streamSubscription?.cancel();
     return super.close();
   }
+
+
+  
 }
