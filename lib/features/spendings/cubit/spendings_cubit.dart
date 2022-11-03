@@ -25,7 +25,8 @@ class SpendingsCubit extends Cubit<SpendingsState> {
         }
         totalAmount;
 
-        emit(SpendingsState(
+        emit(
+          SpendingsState(
           items: items,
           sum: totalAmount,
         ));

@@ -1,8 +1,8 @@
-
 import 'package:injectable/injectable.dart';
 import 'package:wydatki/data/remote_data_sourse/category_remote_data_source.dart';
 import 'package:wydatki/domain/models/category_model.dart';
-@injectable 
+
+@injectable
 class CategoriesRepository {
   CategoriesRepository({required this.categoryRemoteDataSource});
   final CategoryRemoteDataSource categoryRemoteDataSource;
@@ -19,8 +19,7 @@ class CategoriesRepository {
     String type,
   ) async {
     final docCategory = categoryRemoteDataSource.addCategory();
-    final category = CategoryModel(type, docCategory.id);
-    final json = category.toJson();
+    final json = CategoryModel(type, docCategory.id).toJson();
     return docCategory.set(json);
   }
 
