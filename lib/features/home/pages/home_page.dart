@@ -6,7 +6,7 @@ import 'package:wydatki/features/account/user_profile.dart';
 import 'package:wydatki/features/add/pages/add_category_page.dart';
 import 'package:wydatki/features/home/cubit/home_cubit.dart';
 import 'package:wydatki/features/spendings/pages/spendings_page.dart';
-import 'package:wydatki/features/weather/peages/weather.dart';
+import 'package:wydatki/features/weather/peages/weather_page.dart';
 
 
 
