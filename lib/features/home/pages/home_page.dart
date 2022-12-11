@@ -6,6 +6,7 @@ import 'package:wydatki/features/account/user_profile.dart';
 import 'package:wydatki/features/add/pages/add_category_page.dart';
 import 'package:wydatki/features/home/cubit/home_cubit.dart';
 import 'package:wydatki/features/spendings/pages/spendings_page.dart';
+import 'package:wydatki/features/weather/peages/weather.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({
@@ -30,7 +31,19 @@ class HomePage extends StatelessWidget {
               Icons.people,
               color: Colors.white,
             ),
-          )
+          ),
+          IconButton(
+            onPressed: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => const WeatherPage(),
+              ));
+            },
+            icon: const Icon(
+              Icons.cloud,
+              color: Colors.white,
+            ),
+          ),
+          
         ],
       ),
       body: const _HomePageBody(),
