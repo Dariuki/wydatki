@@ -12,23 +12,7 @@ part of 'auth_gate_cubit.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$AuthGateStateTearOff {
-  const _$AuthGateStateTearOff();
-
-  _AuthGateState call({User? user, bool? isLoading, String? errorMessage}) {
-    return _AuthGateState(
-      user: user,
-      isLoading: isLoading,
-      errorMessage: errorMessage,
-    );
-  }
-}
-
-/// @nodoc
-const $AuthGateState = _$AuthGateStateTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$AuthGateState {
@@ -82,25 +66,25 @@ class _$AuthGateStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$AuthGateStateCopyWith<$Res>
+abstract class _$$_AuthGateStateCopyWith<$Res>
     implements $AuthGateStateCopyWith<$Res> {
-  factory _$AuthGateStateCopyWith(
-          _AuthGateState value, $Res Function(_AuthGateState) then) =
-      __$AuthGateStateCopyWithImpl<$Res>;
+  factory _$$_AuthGateStateCopyWith(
+          _$_AuthGateState value, $Res Function(_$_AuthGateState) then) =
+      __$$_AuthGateStateCopyWithImpl<$Res>;
   @override
   $Res call({User? user, bool? isLoading, String? errorMessage});
 }
 
 /// @nodoc
-class __$AuthGateStateCopyWithImpl<$Res>
+class __$$_AuthGateStateCopyWithImpl<$Res>
     extends _$AuthGateStateCopyWithImpl<$Res>
-    implements _$AuthGateStateCopyWith<$Res> {
-  __$AuthGateStateCopyWithImpl(
-      _AuthGateState _value, $Res Function(_AuthGateState) _then)
-      : super(_value, (v) => _then(v as _AuthGateState));
+    implements _$$_AuthGateStateCopyWith<$Res> {
+  __$$_AuthGateStateCopyWithImpl(
+      _$_AuthGateState _value, $Res Function(_$_AuthGateState) _then)
+      : super(_value, (v) => _then(v as _$_AuthGateState));
 
   @override
-  _AuthGateState get _value => super._value as _AuthGateState;
+  _$_AuthGateState get _value => super._value as _$_AuthGateState;
 
   @override
   $Res call({
@@ -108,7 +92,7 @@ class __$AuthGateStateCopyWithImpl<$Res>
     Object? isLoading = freezed,
     Object? errorMessage = freezed,
   }) {
-    return _then(_AuthGateState(
+    return _then(_$_AuthGateState(
       user: user == freezed
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
@@ -146,7 +130,7 @@ class _$_AuthGateState implements _AuthGateState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _AuthGateState &&
+            other is _$_AuthGateState &&
             const DeepCollectionEquality().equals(other.user, user) &&
             const DeepCollectionEquality().equals(other.isLoading, isLoading) &&
             const DeepCollectionEquality()
@@ -162,13 +146,15 @@ class _$_AuthGateState implements _AuthGateState {
 
   @JsonKey(ignore: true)
   @override
-  _$AuthGateStateCopyWith<_AuthGateState> get copyWith =>
-      __$AuthGateStateCopyWithImpl<_AuthGateState>(this, _$identity);
+  _$$_AuthGateStateCopyWith<_$_AuthGateState> get copyWith =>
+      __$$_AuthGateStateCopyWithImpl<_$_AuthGateState>(this, _$identity);
 }
 
 abstract class _AuthGateState implements AuthGateState {
-  factory _AuthGateState({User? user, bool? isLoading, String? errorMessage}) =
-      _$_AuthGateState;
+  factory _AuthGateState(
+      {final User? user,
+      final bool? isLoading,
+      final String? errorMessage}) = _$_AuthGateState;
 
   @override
   User? get user;
@@ -178,6 +164,6 @@ abstract class _AuthGateState implements AuthGateState {
   String? get errorMessage;
   @override
   @JsonKey(ignore: true)
-  _$AuthGateStateCopyWith<_AuthGateState> get copyWith =>
+  _$$_AuthGateStateCopyWith<_$_AuthGateState> get copyWith =>
       throw _privateConstructorUsedError;
 }

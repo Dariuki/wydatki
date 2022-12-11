@@ -1,30 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wydatki/app/injection/injection_container.dart';
-import 'package:wydatki/domain/models/category_model.dart';
-import 'package:wydatki/domain/models/spendings_model.dart';
+import 'package:wydatki/domain/models/category_cofing.dart';
 import 'package:wydatki/features/add/pages/add_spendings_page.dart';
 import 'package:wydatki/features/spendings/cubit/spendings_cubit.dart';
 
 class SpendingsPage extends StatelessWidget {
   const SpendingsPage({
-    required this.category,
+    required this.model,
     Key? key,
   }) : super(key: key);
-  final CategoryModel category;
+  final CategoryModel model;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Center(
-          child: Text('Lista wydatków - ${category.type}'),
+          child: Text('Lista wydatków - ${model.type}'),
         ),
       ),
       body: BlocProvider<SpendingsCubit>(
         create: (context) {
           return getIt()
-              ..fetchData(categoryID: category.id);
+              ..fetchData(categoryID: model.id);
         },
         child: BlocBuilder<SpendingsCubit, SpendingsState>(
           builder: (context, state) {
@@ -104,7 +103,7 @@ class SpendingsPage extends StatelessWidget {
         onPressed: () {
           Navigator.of(context).push(
             MaterialPageRoute(
-              builder: (context) => AddSpendingsPage(model: category),
+              builder: (context) => AddSpendingsPage(model: model),
               fullscreenDialog: true,
             ),
           );

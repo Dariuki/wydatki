@@ -18,7 +18,7 @@ class WeatherModel with _$WeatherModel {
 class LocationModel with _$LocationModel {
   factory LocationModel(
     @JsonKey(name: 'name') String city,
-    @JsonKey(name: 'localtime') DateTime localTime,
+
   ) = _LocationModel;
 
   factory LocationModel.fromJson(Map<String, dynamic> json) =>
@@ -29,10 +29,24 @@ class LocationModel with _$LocationModel {
 class CurrentModel with _$CurrentModel {
   factory CurrentModel(
     @JsonKey(name: 'temp_c') double temperatureC,
-    @JsonKey(name: 'temp_f') double temperatureF,
+    @JsonKey(name: 'pressure_mb') double pressure,
+    ConditionModel condition,
     @JsonKey(name: 'wind_kph') double wind,
+    @JsonKey(name: 'feelslike_c') double tempFeels,
   ) = _CurrentModel;
 
   factory CurrentModel.fromJson(Map<String, dynamic> json) =>
       _$$_CurrentModelFromJson(json);
+}
+
+@freezed
+class ConditionModel with _$ConditionModel {
+  factory ConditionModel(
+    @JsonKey(name: 'icon') String imageUrl,
+    @JsonKey(name: 'text') String weatherCondition,
+   
+  ) = _ConditionModel;
+
+  factory ConditionModel.fromJson(Map<String, dynamic> json) =>
+      _$$_ConditionModelFromJson(json);
 }

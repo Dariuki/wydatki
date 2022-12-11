@@ -2,8 +2,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-
-import 'package:wydatki/domain/models/spendings_model.dart';
+import 'package:wydatki/domain/models/category_cofing.dart';
 import 'package:wydatki/domain/ropositories/spending_repository.dart';
 
 part 'spendings_cubit.freezed.dart';

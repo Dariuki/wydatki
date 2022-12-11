@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wydatki/app/injection/injection_container.dart';
-import 'package:wydatki/domain/models/category_model.dart';
+import 'package:wydatki/domain/models/category_cofing.dart';
 import 'package:wydatki/features/account/user_profile.dart';
 import 'package:wydatki/features/add/pages/add_category_page.dart';
 import 'package:wydatki/features/home/cubit/home_cubit.dart';
 import 'package:wydatki/features/spendings/pages/spendings_page.dart';
-import 'package:wydatki/features/weather/peages/weather.dart';
+import 'package:wydatki/features/weather/peages/weather_page.dart';
+
 
 class HomePage extends StatelessWidget {
   const HomePage({
@@ -43,7 +44,6 @@ class HomePage extends StatelessWidget {
               color: Colors.white,
             ),
           ),
-          
         ],
       ),
       body: const _HomePageBody(),
@@ -104,7 +104,7 @@ class _HomePageBody extends StatelessWidget {
                   onDismissed: (direction) {
                     context.read<HomeCubit>().remove(documentID: itemModel.id);
                   },
-                  child: _ListItemView(itemModel: itemModel),
+                  child: _ListItemView(itemModel:itemModel ),
                 ),
             ],
           );
@@ -128,7 +128,7 @@ class _ListItemView extends StatelessWidget {
       onTap: () {
         Navigator.of(context).push(MaterialPageRoute(
           builder: (context) => SpendingsPage(
-            category: itemModel,
+            model: itemModel,
           ),
         ));
       },

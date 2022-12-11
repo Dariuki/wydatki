@@ -12,26 +12,7 @@ part of 'home_cubit.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$HomeStateTearOff {
-  const _$HomeStateTearOff();
-
-  _HomeState call(
-      {List<CategoryModel> items = const [],
-      bool? loadingError,
-      bool? removingError}) {
-    return _HomeState(
-      items: items,
-      loadingError: loadingError,
-      removingError: removingError,
-    );
-  }
-}
-
-/// @nodoc
-const $HomeState = _$HomeStateTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$HomeState {
@@ -84,23 +65,24 @@ class _$HomeStateCopyWithImpl<$Res> implements $HomeStateCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$HomeStateCopyWith<$Res> implements $HomeStateCopyWith<$Res> {
-  factory _$HomeStateCopyWith(
-          _HomeState value, $Res Function(_HomeState) then) =
-      __$HomeStateCopyWithImpl<$Res>;
+abstract class _$$_HomeStateCopyWith<$Res> implements $HomeStateCopyWith<$Res> {
+  factory _$$_HomeStateCopyWith(
+          _$_HomeState value, $Res Function(_$_HomeState) then) =
+      __$$_HomeStateCopyWithImpl<$Res>;
   @override
   $Res call(
       {List<CategoryModel> items, bool? loadingError, bool? removingError});
 }
 
 /// @nodoc
-class __$HomeStateCopyWithImpl<$Res> extends _$HomeStateCopyWithImpl<$Res>
-    implements _$HomeStateCopyWith<$Res> {
-  __$HomeStateCopyWithImpl(_HomeState _value, $Res Function(_HomeState) _then)
-      : super(_value, (v) => _then(v as _HomeState));
+class __$$_HomeStateCopyWithImpl<$Res> extends _$HomeStateCopyWithImpl<$Res>
+    implements _$$_HomeStateCopyWith<$Res> {
+  __$$_HomeStateCopyWithImpl(
+      _$_HomeState _value, $Res Function(_$_HomeState) _then)
+      : super(_value, (v) => _then(v as _$_HomeState));
 
   @override
-  _HomeState get _value => super._value as _HomeState;
+  _$_HomeState get _value => super._value as _$_HomeState;
 
   @override
   $Res call({
@@ -108,9 +90,9 @@ class __$HomeStateCopyWithImpl<$Res> extends _$HomeStateCopyWithImpl<$Res>
     Object? loadingError = freezed,
     Object? removingError = freezed,
   }) {
-    return _then(_HomeState(
+    return _then(_$_HomeState(
       items: items == freezed
-          ? _value.items
+          ? _value._items
           : items // ignore: cast_nullable_to_non_nullable
               as List<CategoryModel>,
       loadingError: loadingError == freezed
@@ -128,11 +110,20 @@ class __$HomeStateCopyWithImpl<$Res> extends _$HomeStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_HomeState implements _HomeState {
-  _$_HomeState({this.items = const [], this.loadingError, this.removingError});
+  _$_HomeState(
+      {final List<CategoryModel> items = const [],
+      this.loadingError,
+      this.removingError})
+      : _items = items;
 
-  @JsonKey()
+  final List<CategoryModel> _items;
   @override
-  final List<CategoryModel> items;
+  @JsonKey()
+  List<CategoryModel> get items {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_items);
+  }
+
   @override
   final bool? loadingError;
   @override
@@ -147,8 +138,8 @@ class _$_HomeState implements _HomeState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _HomeState &&
-            const DeepCollectionEquality().equals(other.items, items) &&
+            other is _$_HomeState &&
+            const DeepCollectionEquality().equals(other._items, _items) &&
             const DeepCollectionEquality()
                 .equals(other.loadingError, loadingError) &&
             const DeepCollectionEquality()
@@ -158,21 +149,21 @@ class _$_HomeState implements _HomeState {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(items),
+      const DeepCollectionEquality().hash(_items),
       const DeepCollectionEquality().hash(loadingError),
       const DeepCollectionEquality().hash(removingError));
 
   @JsonKey(ignore: true)
   @override
-  _$HomeStateCopyWith<_HomeState> get copyWith =>
-      __$HomeStateCopyWithImpl<_HomeState>(this, _$identity);
+  _$$_HomeStateCopyWith<_$_HomeState> get copyWith =>
+      __$$_HomeStateCopyWithImpl<_$_HomeState>(this, _$identity);
 }
 
 abstract class _HomeState implements HomeState {
   factory _HomeState(
-      {List<CategoryModel> items,
-      bool? loadingError,
-      bool? removingError}) = _$_HomeState;
+      {final List<CategoryModel> items,
+      final bool? loadingError,
+      final bool? removingError}) = _$_HomeState;
 
   @override
   List<CategoryModel> get items;
@@ -182,6 +173,6 @@ abstract class _HomeState implements HomeState {
   bool? get removingError;
   @override
   @JsonKey(ignore: true)
-  _$HomeStateCopyWith<_HomeState> get copyWith =>
+  _$$_HomeStateCopyWith<_$_HomeState> get copyWith =>
       throw _privateConstructorUsedError;
 }

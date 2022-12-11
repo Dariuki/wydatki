@@ -13,18 +13,20 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.2
-  firebase_core: ^1.20.0
-  cloud_firestore: ^3.4.3
-  firebase_auth: ^3.6.2
-  flutterfire_ui: ^0.3.1
+  firebase_core: ^2.3.0
+  cloud_firestore: ^4.1.0
+  firebase_auth: ^4.1.5
+  flutterfire_ui: ^0.4.3+20
   intl: ^0.17.0
   bloc: ^8.1.0
   flutter_bloc: ^8.0.1
-  json_annotation: ^4.6.0
-  freezed_annotation: ^1.1.0
+  json_annotation: ^4.7.0
+  freezed_annotation: ^2.1.0
   get_it: ^7.2.0
-  injectable: ^1.5.3
-  dio: ^4.0.6
+  injectable: ^2.1.0
+  dio_http2_adapter: ^2.0.0
+  dio: ^4.0.4
+  retrofit: ^3.3.1
 
 
 dev_dependencies:
@@ -33,12 +35,14 @@ dev_dependencies:
   flutter_lints: ^2.0.0
   build_runner: ^2.2.0
   json_serializable: ^6.3.1
-  freezed: ^1.1.1
-  analyzer: ^3.0.0
-  injectable_generator: ^1.5.3
+  freezed: ^2.0.0
+  analyzer: ^4.7.0
+  injectable_generator: ^2.1.2
   bloc_test: ^9.1.0
   mocktail: ^0.3.0
+  retrofit_generator: ^4.2.0
 
 
 flutter:
   uses-material-design: true
+
