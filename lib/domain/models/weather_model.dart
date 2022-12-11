@@ -18,7 +18,6 @@ class WeatherModel with _$WeatherModel {
 class LocationModel with _$LocationModel {
   factory LocationModel(
     @JsonKey(name: 'name') String city,
-
   ) = _LocationModel;
 
   factory LocationModel.fromJson(Map<String, dynamic> json) =>
