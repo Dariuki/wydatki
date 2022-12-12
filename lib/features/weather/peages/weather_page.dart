@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wydatki/app/enum/enums.dart';
-import 'package:wydatki/data/remote_data_sourse/weather_remote_data_source.dart';
+import 'package:wydatki/app/injection/injection_container.dart';
 import 'package:wydatki/domain/models/weather_model.dart';
-import 'package:wydatki/domain/ropositories/weather_repository.dart';
 import 'package:wydatki/features/weather/cubit/weather_cubit.dart';
 
 class WeatherPage extends StatelessWidget {
@@ -13,10 +12,10 @@ class WeatherPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => WeatherCubit(
-        WeatherRepository(WeatherRemoteDataSource()),
-      ),
+    return BlocProvider<WeatherCubit>(
+      create: (context) {
+        return getIt<WeatherCubit>();
+      },
       child: BlocConsumer<WeatherCubit, WeatherState>(
         listener: (context, state) {
           if (state.status == Status.error) {
@@ -33,7 +32,7 @@ class WeatherPage extends StatelessWidget {
           final weatherModel = state.results;
           return Scaffold(
             appBar: AppBar(
-              title: const Text('Temperature'),
+              title: const Text('Pogoda'),
             ),
             body: Center(
               child: Builder(builder: (context) {
@@ -116,7 +115,9 @@ class _SearchWidget extends StatelessWidget {
           const SizedBox(width: 20),
           ElevatedButton(
             onPressed: () {
-              context.read<WeatherCubit>().getWeatherModel(city: _controller.text);
+              context
+                  .read<WeatherCubit>()
+                  .getWeatherModel(city: _controller.text);
             },
             child: const Text('Get'),
           ),
