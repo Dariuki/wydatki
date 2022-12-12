@@ -13,7 +13,7 @@ void configureDependencies() => getIt.init();
 @module
 abstract class RegisterModule {
   @Named("BaseUrl")
-  String get baseUrl => 'http://api.weatherapi.com/v1';
+  String get baseUrl => 'http://api.weatherapi.com/v1/';
 
   @lazySingleton
   Dio dio(@Named('BaseUrl') String url) => Dio(BaseOptions(baseUrl: url));
