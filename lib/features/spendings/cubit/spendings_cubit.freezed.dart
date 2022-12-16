@@ -12,28 +12,7 @@ part of 'spendings_cubit.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$SpendingsStateTearOff {
-  const _$SpendingsStateTearOff();
-
-  _SpendingsState call(
-      {List<SpendingModel> items = const [],
-      bool? loadingError,
-      bool? removingError,
-      double? sum}) {
-    return _SpendingsState(
-      items: items,
-      loadingError: loadingError,
-      removingError: removingError,
-      sum: sum,
-    );
-  }
-}
-
-/// @nodoc
-const $SpendingsState = _$SpendingsStateTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$SpendingsState {
@@ -97,11 +76,11 @@ class _$SpendingsStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$SpendingsStateCopyWith<$Res>
+abstract class _$$_SpendingsStateCopyWith<$Res>
     implements $SpendingsStateCopyWith<$Res> {
-  factory _$SpendingsStateCopyWith(
-          _SpendingsState value, $Res Function(_SpendingsState) then) =
-      __$SpendingsStateCopyWithImpl<$Res>;
+  factory _$$_SpendingsStateCopyWith(
+          _$_SpendingsState value, $Res Function(_$_SpendingsState) then) =
+      __$$_SpendingsStateCopyWithImpl<$Res>;
   @override
   $Res call(
       {List<SpendingModel> items,
@@ -111,15 +90,15 @@ abstract class _$SpendingsStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$SpendingsStateCopyWithImpl<$Res>
+class __$$_SpendingsStateCopyWithImpl<$Res>
     extends _$SpendingsStateCopyWithImpl<$Res>
-    implements _$SpendingsStateCopyWith<$Res> {
-  __$SpendingsStateCopyWithImpl(
-      _SpendingsState _value, $Res Function(_SpendingsState) _then)
-      : super(_value, (v) => _then(v as _SpendingsState));
+    implements _$$_SpendingsStateCopyWith<$Res> {
+  __$$_SpendingsStateCopyWithImpl(
+      _$_SpendingsState _value, $Res Function(_$_SpendingsState) _then)
+      : super(_value, (v) => _then(v as _$_SpendingsState));
 
   @override
-  _SpendingsState get _value => super._value as _SpendingsState;
+  _$_SpendingsState get _value => super._value as _$_SpendingsState;
 
   @override
   $Res call({
@@ -128,9 +107,9 @@ class __$SpendingsStateCopyWithImpl<$Res>
     Object? removingError = freezed,
     Object? sum = freezed,
   }) {
-    return _then(_SpendingsState(
+    return _then(_$_SpendingsState(
       items: items == freezed
-          ? _value.items
+          ? _value._items
           : items // ignore: cast_nullable_to_non_nullable
               as List<SpendingModel>,
       loadingError: loadingError == freezed
@@ -153,11 +132,20 @@ class __$SpendingsStateCopyWithImpl<$Res>
 
 class _$_SpendingsState implements _SpendingsState {
   _$_SpendingsState(
-      {this.items = const [], this.loadingError, this.removingError, this.sum});
+      {final List<SpendingModel> items = const [],
+      this.loadingError,
+      this.removingError,
+      this.sum})
+      : _items = items;
 
-  @JsonKey()
+  final List<SpendingModel> _items;
   @override
-  final List<SpendingModel> items;
+  @JsonKey()
+  List<SpendingModel> get items {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_items);
+  }
+
   @override
   final bool? loadingError;
   @override
@@ -174,8 +162,8 @@ class _$_SpendingsState implements _SpendingsState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _SpendingsState &&
-            const DeepCollectionEquality().equals(other.items, items) &&
+            other is _$_SpendingsState &&
+            const DeepCollectionEquality().equals(other._items, _items) &&
             const DeepCollectionEquality()
                 .equals(other.loadingError, loadingError) &&
             const DeepCollectionEquality()
@@ -186,23 +174,23 @@ class _$_SpendingsState implements _SpendingsState {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(items),
+      const DeepCollectionEquality().hash(_items),
       const DeepCollectionEquality().hash(loadingError),
       const DeepCollectionEquality().hash(removingError),
       const DeepCollectionEquality().hash(sum));
 
   @JsonKey(ignore: true)
   @override
-  _$SpendingsStateCopyWith<_SpendingsState> get copyWith =>
-      __$SpendingsStateCopyWithImpl<_SpendingsState>(this, _$identity);
+  _$$_SpendingsStateCopyWith<_$_SpendingsState> get copyWith =>
+      __$$_SpendingsStateCopyWithImpl<_$_SpendingsState>(this, _$identity);
 }
 
 abstract class _SpendingsState implements SpendingsState {
   factory _SpendingsState(
-      {List<SpendingModel> items,
-      bool? loadingError,
-      bool? removingError,
-      double? sum}) = _$_SpendingsState;
+      {final List<SpendingModel> items,
+      final bool? loadingError,
+      final bool? removingError,
+      final double? sum}) = _$_SpendingsState;
 
   @override
   List<SpendingModel> get items;
@@ -214,6 +202,6 @@ abstract class _SpendingsState implements SpendingsState {
   double? get sum;
   @override
   @JsonKey(ignore: true)
-  _$SpendingsStateCopyWith<_SpendingsState> get copyWith =>
+  _$$_SpendingsStateCopyWith<_$_SpendingsState> get copyWith =>
       throw _privateConstructorUsedError;
 }

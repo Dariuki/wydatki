@@ -12,22 +12,7 @@ part of 'add_cubit.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$AddStateTearOff {
-  const _$AddStateTearOff();
-
-  _AddState call({String errorMessage = '', bool? saved}) {
-    return _AddState(
-      errorMessage: errorMessage,
-      saved: saved,
-    );
-  }
-}
-
-/// @nodoc
-const $AddState = _$AddStateTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$AddState {
@@ -73,28 +58,30 @@ class _$AddStateCopyWithImpl<$Res> implements $AddStateCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$AddStateCopyWith<$Res> implements $AddStateCopyWith<$Res> {
-  factory _$AddStateCopyWith(_AddState value, $Res Function(_AddState) then) =
-      __$AddStateCopyWithImpl<$Res>;
+abstract class _$$_AddStateCopyWith<$Res> implements $AddStateCopyWith<$Res> {
+  factory _$$_AddStateCopyWith(
+          _$_AddState value, $Res Function(_$_AddState) then) =
+      __$$_AddStateCopyWithImpl<$Res>;
   @override
   $Res call({String errorMessage, bool? saved});
 }
 
 /// @nodoc
-class __$AddStateCopyWithImpl<$Res> extends _$AddStateCopyWithImpl<$Res>
-    implements _$AddStateCopyWith<$Res> {
-  __$AddStateCopyWithImpl(_AddState _value, $Res Function(_AddState) _then)
-      : super(_value, (v) => _then(v as _AddState));
+class __$$_AddStateCopyWithImpl<$Res> extends _$AddStateCopyWithImpl<$Res>
+    implements _$$_AddStateCopyWith<$Res> {
+  __$$_AddStateCopyWithImpl(
+      _$_AddState _value, $Res Function(_$_AddState) _then)
+      : super(_value, (v) => _then(v as _$_AddState));
 
   @override
-  _AddState get _value => super._value as _AddState;
+  _$_AddState get _value => super._value as _$_AddState;
 
   @override
   $Res call({
     Object? errorMessage = freezed,
     Object? saved = freezed,
   }) {
-    return _then(_AddState(
+    return _then(_$_AddState(
       errorMessage: errorMessage == freezed
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
@@ -112,8 +99,8 @@ class __$AddStateCopyWithImpl<$Res> extends _$AddStateCopyWithImpl<$Res>
 class _$_AddState implements _AddState {
   _$_AddState({this.errorMessage = '', this.saved});
 
-  @JsonKey()
   @override
+  @JsonKey()
   final String errorMessage;
   @override
   final bool? saved;
@@ -127,7 +114,7 @@ class _$_AddState implements _AddState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _AddState &&
+            other is _$_AddState &&
             const DeepCollectionEquality()
                 .equals(other.errorMessage, errorMessage) &&
             const DeepCollectionEquality().equals(other.saved, saved));
@@ -141,12 +128,13 @@ class _$_AddState implements _AddState {
 
   @JsonKey(ignore: true)
   @override
-  _$AddStateCopyWith<_AddState> get copyWith =>
-      __$AddStateCopyWithImpl<_AddState>(this, _$identity);
+  _$$_AddStateCopyWith<_$_AddState> get copyWith =>
+      __$$_AddStateCopyWithImpl<_$_AddState>(this, _$identity);
 }
 
 abstract class _AddState implements AddState {
-  factory _AddState({String errorMessage, bool? saved}) = _$_AddState;
+  factory _AddState({final String errorMessage, final bool? saved}) =
+      _$_AddState;
 
   @override
   String get errorMessage;
@@ -154,6 +142,6 @@ abstract class _AddState implements AddState {
   bool? get saved;
   @override
   @JsonKey(ignore: true)
-  _$AddStateCopyWith<_AddState> get copyWith =>
+  _$$_AddStateCopyWith<_$_AddState> get copyWith =>
       throw _privateConstructorUsedError;
 }

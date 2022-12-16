@@ -1,11 +1,14 @@
 import 'package:injectable/injectable.dart';
 import 'package:wydatki/data/remote_data_sourse/spending_remote_data_source.dart';
-import 'package:wydatki/domain/models/spendings_model.dart';
-@injectable 
+import 'package:wydatki/domain/models/category_cofing.dart';
+
+@injectable
 class SpendingsRepository {
   SpendingsRepository({required this.spendingRemoteDataSource});
 
   final SpendingRemoteDataSource spendingRemoteDataSource;
+  
+  
 
   Stream<List<SpendingModel>> getSpendingForCategoryId(String categoryId) {
     return spendingRemoteDataSource.getAllDocsStream().map((querySnapshot) {
@@ -17,6 +20,8 @@ class SpendingsRepository {
           .toList();
     });
   }
+
+
 
   Future<void> addSpending(
     String title,
