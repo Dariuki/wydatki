@@ -11,9 +11,8 @@ part of 'weather_remote_data_source.dart';
 class _WeatherRemoteRetroFitDataSource
     implements WeatherRemoteRetroFitDataSource {
   _WeatherRemoteRetroFitDataSource(
-    this._dio, {
-    this.baseUrl,
-  });
+    this._dio,
+  );
 
   final Dio _dio;
 

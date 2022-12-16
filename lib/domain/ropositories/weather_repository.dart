@@ -4,13 +4,13 @@ import 'package:wydatki/domain/models/weather_model.dart';
 
 @injectable
 class WeatherRepository {
-  WeatherRepository(this._weatherRemoteDataSource);
+  WeatherRepository({required this.weatherRemoteDataSource});
 
-  final WeatherRemoteRetroFitDataSource _weatherRemoteDataSource;
+  final WeatherRemoteRetroFitDataSource weatherRemoteDataSource;
 
   Future<WeatherModel?> getWeatherModel({
     required String city,
   }) {
-    return _weatherRemoteDataSource.getWeatherData(city);
+    return weatherRemoteDataSource.getWeatherData(city,);
   }
 }
