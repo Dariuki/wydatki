@@ -57,8 +57,8 @@ extension GetItInjectableX on _i1.GetIt {
         _i9.SpendingsCubit(spendingsRepository: gh<_i5.SpendingsRepository>()));
     gh.factory<_i10.WeatherRemoteRetroFitDataSource>(
         () => _i10.WeatherRemoteRetroFitDataSource(gh<_i7.Dio>()));
-    gh.factory<_i11.WeatherRepository>(() =>
-        _i11.WeatherRepository(gh<_i10.WeatherRemoteRetroFitDataSource>()));
+    gh.factory<_i11.WeatherRepository>(() => _i11.WeatherRepository(
+        weatherRemoteDataSource: gh<_i10.WeatherRemoteRetroFitDataSource>()));
     gh.factory<_i12.AddCubit>(() => _i12.AddCubit(
           categoriesRepository: gh<_i6.CategoriesRepository>(),
           spendingsRepository: gh<_i5.SpendingsRepository>(),

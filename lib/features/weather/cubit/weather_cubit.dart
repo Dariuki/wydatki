@@ -14,7 +14,7 @@ class WeatherCubit extends Cubit<WeatherState> {
 
   final WeatherRepository _weatherRepository;
 
-  Future<void> getWeatherModel({
+  Future<void> getWeather({
     required String city,
   }) async {
     emit( WeatherState(status: Status.loading));

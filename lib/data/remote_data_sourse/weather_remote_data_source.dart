@@ -13,5 +13,5 @@ abstract class WeatherRemoteRetroFitDataSource {
       _WeatherRemoteRetroFitDataSource;
 
   @GET("/current.json?key=9ddda9c4aa1f4f31967115041221706&q={city}&aqi=no")
-  Future<WeatherModel> getWeatherData(@Path("city") String city);
+  Future<WeatherModel> getWeatherData(@Path("city") String city,);
 }

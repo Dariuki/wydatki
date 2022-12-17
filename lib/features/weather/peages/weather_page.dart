@@ -117,7 +117,7 @@ class _SearchWidget extends StatelessWidget {
             onPressed: () {
               context
                   .read<WeatherCubit>()
-                  .getWeatherModel(city: _controller.text);
+                  .getWeather(city: _controller.text);
             },
             child: const Text('Get'),
           ),
