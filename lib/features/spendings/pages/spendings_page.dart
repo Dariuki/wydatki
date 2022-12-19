@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wydatki/app/injection/injection_container.dart';
-import 'package:wydatki/domain/models/category_cofing.dart';
+import 'package:wydatki/domain/models/category_coffing.dart';
 import 'package:wydatki/features/add/pages/add_spendings_page.dart';
 import 'package:wydatki/features/spendings/cubit/spendings_cubit.dart';
 

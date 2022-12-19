@@ -2,23 +2,11 @@
 
 // ignore_for_file: non_constant_identifier_names
 
-part of 'category_cofing.dart';
+part of 'category_coffing.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
-
-_$_CategoryCofing _$$_CategoryCofingFromJson(Map<String, dynamic> json) =>
-    _$_CategoryCofing(
-      CategoryModel.fromJson(json['categories'] as Map<String, dynamic>),
-      SpendingModel.fromJson(json['spendings'] as Map<String, dynamic>),
-    );
-
-Map<String, dynamic> _$$_CategoryCofingToJson(_$_CategoryCofing instance) =>
-    <String, dynamic>{
-      'categories': instance.categories,
-      'spendings': instance.spendings,
-    };
 
 _$_CategoryModel _$$_CategoryModelFromJson(Map<String, dynamic> json) =>
     _$_CategoryModel(

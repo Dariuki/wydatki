@@ -1,18 +1,9 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'category_cofing.freezed.dart';
-part 'category_cofing.g.dart';
+part 'category_coffing.freezed.dart';
+part 'category_coffing.g.dart';
 
-@freezed
-class CategoryCofing with _$CategoryCofing {
-  factory CategoryCofing(
-    CategoryModel categories,
-    SpendingModel spendings,
-  ) = _CategoryCofing;
 
-  factory CategoryCofing.fromJson(Map<String, dynamic> json) =>
-      _$$_CategoryCofingFromJson(json);
-}
 
 @freezed
 class CategoryModel with _$CategoryModel {

@@ -1,6 +1,6 @@
 import 'package:injectable/injectable.dart';
 import 'package:wydatki/data/remote_data_sourse/category_remote_data_source.dart';
-import 'package:wydatki/domain/models/category_cofing.dart';
+import 'package:wydatki/domain/models/category_coffing.dart';
 
 @injectable
 class CategoriesRepository {
@@ -26,4 +26,6 @@ class CategoriesRepository {
   Future<void> delete({required String id}) {
     return categoryRemoteDataSource.delete(id: id);
   }
+
+  
 }
