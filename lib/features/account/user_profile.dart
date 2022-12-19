@@ -15,7 +15,10 @@ class UserProfile extends StatelessWidget {
           Navigator.of(context).pop();
         }),
       ],
-      avatarSize: 24,
+      avatarSize: 50,
+      appBar: AppBar(
+        title: const Center(child: Text('Użytkownik')),
+      ),
     );
   }
 }

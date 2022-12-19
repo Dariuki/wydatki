@@ -11,6 +11,7 @@ class AddSpendingsPage extends StatefulWidget {
     Key? key,
   }) : super(key: key);
 
+
   final CategoryModel model;
 
   @override

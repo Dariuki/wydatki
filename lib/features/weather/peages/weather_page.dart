@@ -32,7 +32,7 @@ class WeatherPage extends StatelessWidget {
           final weatherModel = state.results;
           return Scaffold(
             appBar: AppBar(
-              title: const Text('Pogoda'),
+              title: const Center(child: Text('Pogoda')),
             ),
             body: Center(
               child: Builder(builder: (context) {
