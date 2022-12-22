@@ -1,6 +1,6 @@
 import 'package:injectable/injectable.dart';
 import 'package:wydatki/data/remote_data_sourse/spending_remote_data_source.dart';
-import 'package:wydatki/domain/models/category_coffing.dart';
+import 'package:wydatki/domain/models/spending_model.dart';
 
 @injectable
 class SpendingsRepository {
@@ -36,7 +36,7 @@ class SpendingsRepository {
     await docSpending.set(json);
   }
 
-  Future<void> delete({required String id}) {
+  Future<void> remove({required String id}) {
     return spendingRemoteDataSource.delete(id: id);
   }
 }

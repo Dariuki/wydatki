@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wydatki/app/injection/injection_container.dart';
-import 'package:wydatki/domain/models/category_coffing.dart';
+import 'package:wydatki/domain/models/category_model.dart';
+
 import 'package:wydatki/features/add/cubit/add_cubit.dart';
 
 class AddSpendingsPage extends StatefulWidget {

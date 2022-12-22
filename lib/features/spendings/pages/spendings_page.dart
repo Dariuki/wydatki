@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wydatki/app/injection/injection_container.dart';
-import 'package:wydatki/domain/models/category_coffing.dart';
+import 'package:wydatki/domain/models/category_model.dart';
+import 'package:wydatki/domain/models/spending_model.dart';
 import 'package:wydatki/features/add/pages/add_spendings_page.dart';
 import 'package:wydatki/features/spendings/cubit/spendings_cubit.dart';
 
@@ -22,8 +23,7 @@ class SpendingsPage extends StatelessWidget {
       ),
       body: BlocProvider<SpendingsCubit>(
         create: (context) {
-          return getIt()
-              ..fetchData(categoryID: model.id);
+          return getIt()..fetchData(categoryID: model.id);
         },
         child: BlocBuilder<SpendingsCubit, SpendingsState>(
           builder: (context, state) {
@@ -68,7 +68,9 @@ class SpendingsPage extends StatelessWidget {
                       color: Colors.black26,
                     ),
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 20),
+                      horizontal: 20,
+                      vertical: 20,
+                    ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [

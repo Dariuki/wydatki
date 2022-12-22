@@ -17,8 +17,10 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$HomeState {
   List<CategoryModel> get items => throw _privateConstructorUsedError;
+  List<SpendingModel> get allitems => throw _privateConstructorUsedError;
   bool? get loadingError => throw _privateConstructorUsedError;
   bool? get removingError => throw _privateConstructorUsedError;
+  double? get sum => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $HomeStateCopyWith<HomeState> get copyWith =>
@@ -30,7 +32,11 @@ abstract class $HomeStateCopyWith<$Res> {
   factory $HomeStateCopyWith(HomeState value, $Res Function(HomeState) then) =
       _$HomeStateCopyWithImpl<$Res>;
   $Res call(
-      {List<CategoryModel> items, bool? loadingError, bool? removingError});
+      {List<CategoryModel> items,
+      List<SpendingModel> allitems,
+      bool? loadingError,
+      bool? removingError,
+      double? sum});
 }
 
 /// @nodoc
@@ -44,14 +50,20 @@ class _$HomeStateCopyWithImpl<$Res> implements $HomeStateCopyWith<$Res> {
   @override
   $Res call({
     Object? items = freezed,
+    Object? allitems = freezed,
     Object? loadingError = freezed,
     Object? removingError = freezed,
+    Object? sum = freezed,
   }) {
     return _then(_value.copyWith(
       items: items == freezed
           ? _value.items
           : items // ignore: cast_nullable_to_non_nullable
               as List<CategoryModel>,
+      allitems: allitems == freezed
+          ? _value.allitems
+          : allitems // ignore: cast_nullable_to_non_nullable
+              as List<SpendingModel>,
       loadingError: loadingError == freezed
           ? _value.loadingError
           : loadingError // ignore: cast_nullable_to_non_nullable
@@ -60,6 +72,10 @@ class _$HomeStateCopyWithImpl<$Res> implements $HomeStateCopyWith<$Res> {
           ? _value.removingError
           : removingError // ignore: cast_nullable_to_non_nullable
               as bool?,
+      sum: sum == freezed
+          ? _value.sum
+          : sum // ignore: cast_nullable_to_non_nullable
+              as double?,
     ));
   }
 }
@@ -71,7 +87,11 @@ abstract class _$$_HomeStateCopyWith<$Res> implements $HomeStateCopyWith<$Res> {
       __$$_HomeStateCopyWithImpl<$Res>;
   @override
   $Res call(
-      {List<CategoryModel> items, bool? loadingError, bool? removingError});
+      {List<CategoryModel> items,
+      List<SpendingModel> allitems,
+      bool? loadingError,
+      bool? removingError,
+      double? sum});
 }
 
 /// @nodoc
@@ -87,14 +107,20 @@ class __$$_HomeStateCopyWithImpl<$Res> extends _$HomeStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? items = freezed,
+    Object? allitems = freezed,
     Object? loadingError = freezed,
     Object? removingError = freezed,
+    Object? sum = freezed,
   }) {
     return _then(_$_HomeState(
       items: items == freezed
           ? _value._items
           : items // ignore: cast_nullable_to_non_nullable
               as List<CategoryModel>,
+      allitems: allitems == freezed
+          ? _value._allitems
+          : allitems // ignore: cast_nullable_to_non_nullable
+              as List<SpendingModel>,
       loadingError: loadingError == freezed
           ? _value.loadingError
           : loadingError // ignore: cast_nullable_to_non_nullable
@@ -103,6 +129,10 @@ class __$$_HomeStateCopyWithImpl<$Res> extends _$HomeStateCopyWithImpl<$Res>
           ? _value.removingError
           : removingError // ignore: cast_nullable_to_non_nullable
               as bool?,
+      sum: sum == freezed
+          ? _value.sum
+          : sum // ignore: cast_nullable_to_non_nullable
+              as double?,
     ));
   }
 }
@@ -112,9 +142,12 @@ class __$$_HomeStateCopyWithImpl<$Res> extends _$HomeStateCopyWithImpl<$Res>
 class _$_HomeState implements _HomeState {
   _$_HomeState(
       {final List<CategoryModel> items = const [],
+      final List<SpendingModel> allitems = const [],
       this.loadingError,
-      this.removingError})
-      : _items = items;
+      this.removingError,
+      this.sum})
+      : _items = items,
+        _allitems = allitems;
 
   final List<CategoryModel> _items;
   @override
@@ -124,14 +157,24 @@ class _$_HomeState implements _HomeState {
     return EqualUnmodifiableListView(_items);
   }
 
+  final List<SpendingModel> _allitems;
+  @override
+  @JsonKey()
+  List<SpendingModel> get allitems {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_allitems);
+  }
+
   @override
   final bool? loadingError;
   @override
   final bool? removingError;
+  @override
+  final double? sum;
 
   @override
   String toString() {
-    return 'HomeState(items: $items, loadingError: $loadingError, removingError: $removingError)';
+    return 'HomeState(items: $items, allitems: $allitems, loadingError: $loadingError, removingError: $removingError, sum: $sum)';
   }
 
   @override
@@ -140,18 +183,22 @@ class _$_HomeState implements _HomeState {
         (other.runtimeType == runtimeType &&
             other is _$_HomeState &&
             const DeepCollectionEquality().equals(other._items, _items) &&
+            const DeepCollectionEquality().equals(other._allitems, _allitems) &&
             const DeepCollectionEquality()
                 .equals(other.loadingError, loadingError) &&
             const DeepCollectionEquality()
-                .equals(other.removingError, removingError));
+                .equals(other.removingError, removingError) &&
+            const DeepCollectionEquality().equals(other.sum, sum));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(_items),
+      const DeepCollectionEquality().hash(_allitems),
       const DeepCollectionEquality().hash(loadingError),
-      const DeepCollectionEquality().hash(removingError));
+      const DeepCollectionEquality().hash(removingError),
+      const DeepCollectionEquality().hash(sum));
 
   @JsonKey(ignore: true)
   @override
@@ -162,15 +209,21 @@ class _$_HomeState implements _HomeState {
 abstract class _HomeState implements HomeState {
   factory _HomeState(
       {final List<CategoryModel> items,
+      final List<SpendingModel> allitems,
       final bool? loadingError,
-      final bool? removingError}) = _$_HomeState;
+      final bool? removingError,
+      final double? sum}) = _$_HomeState;
 
   @override
   List<CategoryModel> get items;
   @override
+  List<SpendingModel> get allitems;
+  @override
   bool? get loadingError;
   @override
   bool? get removingError;
+  @override
+  double? get sum;
   @override
   @JsonKey(ignore: true)
   _$$_HomeStateCopyWith<_$_HomeState> get copyWith =>

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wydatki/app/injection/injection_container.dart';
-import 'package:wydatki/domain/models/category_coffing.dart';
+import 'package:wydatki/domain/models/category_model.dart';
 import 'package:wydatki/features/add/pages/add_category_page.dart';
 import 'package:wydatki/features/home/cubit/home_cubit.dart';
 import 'package:wydatki/features/home/pages/navigation_panel.dart';
@@ -135,30 +135,58 @@ class _ListItemView extends StatelessWidget {
                       ),
                     ),
                   ),
-                  // Container(
-                  //   decoration: const BoxDecoration(
-                  //     color: Colors.white70,
-                  //   ),
-                  //   margin: const EdgeInsets.all(10),
-                  //   padding: const EdgeInsets.all(10),
-                  //   child: Column(
-                  //     children: const [
-                  //       Text(
-                  //         '0',
-                  //         style: TextStyle(
-                  //           fontSize: 20.0,
-                  //           fontWeight: FontWeight.bold,
-                  //         ),
-                  //       ),
-                  //       Text('PLN'),
-                  //     ],
-                  //   ),
-                  // ),
+                  Container(
+                    decoration: const BoxDecoration(
+                      color: Colors.white70,
+                    ),
+                    margin: const EdgeInsets.all(10),
+                    padding: const EdgeInsets.all(10),
+                    child: Column(
+                      children: [
+                        Sum(model: itemModel),
+                        const Text('PLN'),
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class Sum extends StatelessWidget {
+  const Sum({
+    Key? key,
+    required this.model,
+  }) : super(key: key);
+
+  final CategoryModel model;
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider<HomeCubit>(
+      create: (context) {
+        return getIt()..fetchData(categoryID: model.id);
+      },
+      child: BlocBuilder<HomeCubit, HomeState>(
+        builder: (context, state) {
+          final itemModels = state.allitems;
+          if (itemModels.isEmpty) {
+            return const SizedBox.shrink();
+          }
+
+          return Text(
+            state.sum!.toStringAsFixed(2),
+            style: const TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
+          );
+        },
       ),
     );
   }
