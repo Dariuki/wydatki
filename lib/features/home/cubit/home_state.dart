@@ -7,9 +7,9 @@ class HomeState with _$HomeState {
   factory HomeState({
   @Default([])List<CategoryModel> items,
   @Default([]) List<SpendingModel> allitems,
-    bool? loadingError,
-    bool? removingError,
-    double? sum,
+  @Default(Status.initial) Status status,
+  String? errorMessage,
+  double? sum,
   }) = _HomeState;
 }
 

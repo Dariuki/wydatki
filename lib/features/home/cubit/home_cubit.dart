@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+import 'package:wydatki/app/enum/enums.dart';
 import 'package:wydatki/domain/models/category_model.dart';
 import 'package:wydatki/domain/models/spending_model.dart';
 
@@ -22,49 +23,74 @@ class HomeCubit extends Cubit<HomeState> {
   StreamSubscription? _streamSubscription;
 
   Future<void> start() async {
-    _streamSubscription = categoriesRepository.getCategory().listen(
-      (items) {
-        emit(HomeState(
-          items: items,
-        ));
-      },
-    )..onError(
-        (error) {
-          emit(HomeState(loadingError: true));
+    emit(HomeState(status: Status.loading));
+    try {
+      _streamSubscription = categoriesRepository.getCategory().listen(
+        (items) {
+          emit(HomeState(
+            items: items,
+          ));
         },
       );
+    } catch (error) {
+      emit(HomeState(
+        status: Status.error,
+        errorMessage: error.toString(),
+      ));
+    }
   }
 
   Future<void> fetchData({required String categoryID}) async {
-    _streamSubscription =
-        spendingsRepository.getSpendingForCategoryId(categoryID).listen(
-      (items) {
-        double totalAmount = 0.0;
-        for (SpendingModel item in items) {
-          totalAmount += item.amount;
-        }
-        totalAmount;
+    emit(HomeState(status: Status.loading));
+    try {
+      _streamSubscription =
+          spendingsRepository.getSpendingForCategoryId(categoryID).listen(
+        (items) {
+          double totalAmount = 0.0;
+          for (SpendingModel item in items) {
+            totalAmount += item.amount;
+          }
+          totalAmount;
 
-        emit(HomeState(
-          allitems: items,
-          sum: totalAmount,
-        ));
-      },
-    )..onError(
-            (error) {
-              emit(HomeState(loadingError: true));
-            },
-          );
+          emit(HomeState(
+            allitems: items,
+            sum: totalAmount,
+          ));
+        },
+      );
+    } catch (error) {
+      emit(HomeState(
+        status: Status.error,
+        errorMessage: error.toString(),
+      ));
+    }
   }
 
-  Future<void> remove({required String documentID}) async {
+  Future<void> delite({required String documentID}) async {
     try {
       await categoriesRepository.delete(id: documentID);
     } catch (error) {
       emit(
-        HomeState(removingError: true),
+        HomeState(
+          status: Status.error,
+          errorMessage: error.toString(),
+        ),
       );
       start();
+    }
+  }
+
+  Future<void> remove({required String documentID}) async {
+    try {
+      await spendingsRepository.remove(id: documentID);
+    } catch (error) {
+      emit(
+        HomeState(
+          status: Status.error,
+          errorMessage: error.toString(),
+        ),
+      );
+      fetchData(categoryID: '');
     }
   }
 

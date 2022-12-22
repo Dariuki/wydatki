@@ -4,7 +4,7 @@ import 'package:wydatki/app/injection/injection_container.dart';
 import 'package:wydatki/domain/models/category_model.dart';
 import 'package:wydatki/domain/models/spending_model.dart';
 import 'package:wydatki/features/add/pages/add_spendings_page.dart';
-import 'package:wydatki/features/spendings/cubit/spendings_cubit.dart';
+import 'package:wydatki/features/home/cubit/home_cubit.dart';
 
 class SpendingsPage extends StatelessWidget {
   const SpendingsPage({
@@ -21,13 +21,13 @@ class SpendingsPage extends StatelessWidget {
           child: Text('Lista wydatków - ${model.type}'),
         ),
       ),
-      body: BlocProvider<SpendingsCubit>(
+      body: BlocProvider<HomeCubit>(
         create: (context) {
           return getIt()..fetchData(categoryID: model.id);
         },
-        child: BlocBuilder<SpendingsCubit, SpendingsState>(
+        child: BlocBuilder<HomeCubit, HomeState>(
           builder: (context, state) {
-            final itemsModels = state.items;
+            final itemsModels = state.allitems;
 
             if (itemsModels.isEmpty) {
               return const SizedBox.shrink();
@@ -56,7 +56,7 @@ class SpendingsPage extends StatelessWidget {
                     },
                     onDismissed: (direction) {
                       context
-                          .read<SpendingsCubit>()
+                          .read<HomeCubit>()
                           .remove(documentID: itemModel.id);
                     },
                     child: _ListItemView(itemModel: itemModel),

@@ -12,7 +12,6 @@ class AddSpendingsPage extends StatefulWidget {
     Key? key,
   }) : super(key: key);
 
-
   final CategoryModel model;
 
   @override
@@ -35,10 +34,10 @@ class _AddSpendingsPageState extends State<AddSpendingsPage> {
           if (state.saved!) {
             Navigator.of(context).pop();
           }
-          if (state.errorMessage.isNotEmpty) {
+          if (state.errorMessage!.isNotEmpty) {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
-                content: Text(state.errorMessage),
+                content: Text(state.errorMessage!),
                 backgroundColor: Colors.red,
               ),
             );

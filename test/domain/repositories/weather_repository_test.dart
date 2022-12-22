@@ -1,6 +1,9 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:wydatki/data/remote_data_sourse/weather_remote_data_source.dart';
 import 'package:mocktail/mocktail.dart';
+import 'package:wydatki/domain/models/condition_model.dart';
+import 'package:wydatki/domain/models/current_model.dart';
+import 'package:wydatki/domain/models/location_model.dart';
 import 'package:wydatki/domain/models/weather_model.dart';
 import 'package:wydatki/domain/ropositories/weather_repository.dart';
 

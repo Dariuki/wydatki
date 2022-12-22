@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$AddState {
-  String get errorMessage => throw _privateConstructorUsedError;
+  String? get errorMessage => throw _privateConstructorUsedError;
   bool? get saved => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -28,7 +28,7 @@ mixin _$AddState {
 abstract class $AddStateCopyWith<$Res> {
   factory $AddStateCopyWith(AddState value, $Res Function(AddState) then) =
       _$AddStateCopyWithImpl<$Res>;
-  $Res call({String errorMessage, bool? saved});
+  $Res call({String? errorMessage, bool? saved});
 }
 
 /// @nodoc
@@ -48,7 +48,7 @@ class _$AddStateCopyWithImpl<$Res> implements $AddStateCopyWith<$Res> {
       errorMessage: errorMessage == freezed
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       saved: saved == freezed
           ? _value.saved
           : saved // ignore: cast_nullable_to_non_nullable
@@ -63,7 +63,7 @@ abstract class _$$_AddStateCopyWith<$Res> implements $AddStateCopyWith<$Res> {
           _$_AddState value, $Res Function(_$_AddState) then) =
       __$$_AddStateCopyWithImpl<$Res>;
   @override
-  $Res call({String errorMessage, bool? saved});
+  $Res call({String? errorMessage, bool? saved});
 }
 
 /// @nodoc
@@ -85,7 +85,7 @@ class __$$_AddStateCopyWithImpl<$Res> extends _$AddStateCopyWithImpl<$Res>
       errorMessage: errorMessage == freezed
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       saved: saved == freezed
           ? _value.saved
           : saved // ignore: cast_nullable_to_non_nullable
@@ -97,11 +97,10 @@ class __$$_AddStateCopyWithImpl<$Res> extends _$AddStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_AddState implements _AddState {
-  _$_AddState({this.errorMessage = '', this.saved});
+  _$_AddState({this.errorMessage, this.saved});
 
   @override
-  @JsonKey()
-  final String errorMessage;
+  final String? errorMessage;
   @override
   final bool? saved;
 
@@ -133,11 +132,11 @@ class _$_AddState implements _AddState {
 }
 
 abstract class _AddState implements AddState {
-  factory _AddState({final String errorMessage, final bool? saved}) =
+  factory _AddState({final String? errorMessage, final bool? saved}) =
       _$_AddState;
 
   @override
-  String get errorMessage;
+  String? get errorMessage;
   @override
   bool? get saved;
   @override

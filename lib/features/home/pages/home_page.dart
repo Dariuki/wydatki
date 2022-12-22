@@ -5,7 +5,7 @@ import 'package:wydatki/domain/models/category_model.dart';
 import 'package:wydatki/features/add/pages/add_category_page.dart';
 import 'package:wydatki/features/home/cubit/home_cubit.dart';
 import 'package:wydatki/features/home/pages/navigation_panel.dart';
-import 'package:wydatki/features/spendings/pages/spendings_page.dart';
+import 'package:wydatki/features/home/pages/spendings_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({
@@ -143,7 +143,7 @@ class _ListItemView extends StatelessWidget {
                     padding: const EdgeInsets.all(10),
                     child: Column(
                       children: [
-                        Sum(model: itemModel),
+                        _Sum(model: itemModel),
                         const Text('PLN'),
                       ],
                     ),
@@ -158,8 +158,8 @@ class _ListItemView extends StatelessWidget {
   }
 }
 
-class Sum extends StatelessWidget {
-  const Sum({
+class _Sum extends StatelessWidget {
+  const _Sum({
     Key? key,
     required this.model,
   }) : super(key: key);
