@@ -1,6 +1,6 @@
 import 'package:injectable/injectable.dart';
 import 'package:wydatki/data/remote_data_sourse/category_remote_data_source.dart';
-import 'package:wydatki/domain/models/category_model.dart';
+import 'package:wydatki/domain/models/coffing/category_model.dart';
 
 @injectable
 class CategoriesRepository {

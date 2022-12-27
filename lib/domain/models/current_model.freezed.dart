@@ -27,6 +27,9 @@ mixin _$CurrentModel {
   ConditionModel get condition => throw _privateConstructorUsedError;
   @JsonKey(name: 'wind_kph')
   double get wind => throw _privateConstructorUsedError;
+  @JsonKey(name: 'wind_dir')
+  String get windDirection => throw _privateConstructorUsedError;
+  double get humidity => throw _privateConstructorUsedError;
   @JsonKey(name: 'feelslike_c')
   double get tempFeels => throw _privateConstructorUsedError;
 
@@ -46,6 +49,8 @@ abstract class $CurrentModelCopyWith<$Res> {
       @JsonKey(name: 'pressure_mb') double pressure,
       ConditionModel condition,
       @JsonKey(name: 'wind_kph') double wind,
+      @JsonKey(name: 'wind_dir') String windDirection,
+      double humidity,
       @JsonKey(name: 'feelslike_c') double tempFeels});
 
   $ConditionModelCopyWith<$Res> get condition;
@@ -65,6 +70,8 @@ class _$CurrentModelCopyWithImpl<$Res> implements $CurrentModelCopyWith<$Res> {
     Object? pressure = freezed,
     Object? condition = freezed,
     Object? wind = freezed,
+    Object? windDirection = freezed,
+    Object? humidity = freezed,
     Object? tempFeels = freezed,
   }) {
     return _then(_value.copyWith(
@@ -83,6 +90,14 @@ class _$CurrentModelCopyWithImpl<$Res> implements $CurrentModelCopyWith<$Res> {
       wind: wind == freezed
           ? _value.wind
           : wind // ignore: cast_nullable_to_non_nullable
+              as double,
+      windDirection: windDirection == freezed
+          ? _value.windDirection
+          : windDirection // ignore: cast_nullable_to_non_nullable
+              as String,
+      humidity: humidity == freezed
+          ? _value.humidity
+          : humidity // ignore: cast_nullable_to_non_nullable
               as double,
       tempFeels: tempFeels == freezed
           ? _value.tempFeels
@@ -111,6 +126,8 @@ abstract class _$$_CurrentModelCopyWith<$Res>
       @JsonKey(name: 'pressure_mb') double pressure,
       ConditionModel condition,
       @JsonKey(name: 'wind_kph') double wind,
+      @JsonKey(name: 'wind_dir') String windDirection,
+      double humidity,
       @JsonKey(name: 'feelslike_c') double tempFeels});
 
   @override
@@ -134,6 +151,8 @@ class __$$_CurrentModelCopyWithImpl<$Res>
     Object? pressure = freezed,
     Object? condition = freezed,
     Object? wind = freezed,
+    Object? windDirection = freezed,
+    Object? humidity = freezed,
     Object? tempFeels = freezed,
   }) {
     return _then(_$_CurrentModel(
@@ -153,6 +172,14 @@ class __$$_CurrentModelCopyWithImpl<$Res>
           ? _value.wind
           : wind // ignore: cast_nullable_to_non_nullable
               as double,
+      windDirection == freezed
+          ? _value.windDirection
+          : windDirection // ignore: cast_nullable_to_non_nullable
+              as String,
+      humidity == freezed
+          ? _value.humidity
+          : humidity // ignore: cast_nullable_to_non_nullable
+              as double,
       tempFeels == freezed
           ? _value.tempFeels
           : tempFeels // ignore: cast_nullable_to_non_nullable
@@ -169,6 +196,8 @@ class _$_CurrentModel implements _CurrentModel {
       @JsonKey(name: 'pressure_mb') this.pressure,
       this.condition,
       @JsonKey(name: 'wind_kph') this.wind,
+      @JsonKey(name: 'wind_dir') this.windDirection,
+      this.humidity,
       @JsonKey(name: 'feelslike_c') this.tempFeels);
 
   factory _$_CurrentModel.fromJson(Map<String, dynamic> json) =>
@@ -186,12 +215,17 @@ class _$_CurrentModel implements _CurrentModel {
   @JsonKey(name: 'wind_kph')
   final double wind;
   @override
+  @JsonKey(name: 'wind_dir')
+  final String windDirection;
+  @override
+  final double humidity;
+  @override
   @JsonKey(name: 'feelslike_c')
   final double tempFeels;
 
   @override
   String toString() {
-    return 'CurrentModel(temperatureC: $temperatureC, pressure: $pressure, condition: $condition, wind: $wind, tempFeels: $tempFeels)';
+    return 'CurrentModel(temperatureC: $temperatureC, pressure: $pressure, condition: $condition, wind: $wind, windDirection: $windDirection, humidity: $humidity, tempFeels: $tempFeels)';
   }
 
   @override
@@ -204,6 +238,9 @@ class _$_CurrentModel implements _CurrentModel {
             const DeepCollectionEquality().equals(other.pressure, pressure) &&
             const DeepCollectionEquality().equals(other.condition, condition) &&
             const DeepCollectionEquality().equals(other.wind, wind) &&
+            const DeepCollectionEquality()
+                .equals(other.windDirection, windDirection) &&
+            const DeepCollectionEquality().equals(other.humidity, humidity) &&
             const DeepCollectionEquality().equals(other.tempFeels, tempFeels));
   }
 
@@ -215,6 +252,8 @@ class _$_CurrentModel implements _CurrentModel {
       const DeepCollectionEquality().hash(pressure),
       const DeepCollectionEquality().hash(condition),
       const DeepCollectionEquality().hash(wind),
+      const DeepCollectionEquality().hash(windDirection),
+      const DeepCollectionEquality().hash(humidity),
       const DeepCollectionEquality().hash(tempFeels));
 
   @JsonKey(ignore: true)
@@ -236,6 +275,8 @@ abstract class _CurrentModel implements CurrentModel {
       @JsonKey(name: 'pressure_mb') final double pressure,
       final ConditionModel condition,
       @JsonKey(name: 'wind_kph') final double wind,
+      @JsonKey(name: 'wind_dir') final String windDirection,
+      final double humidity,
       @JsonKey(name: 'feelslike_c') final double tempFeels) = _$_CurrentModel;
 
   factory _CurrentModel.fromJson(Map<String, dynamic> json) =
@@ -252,6 +293,11 @@ abstract class _CurrentModel implements CurrentModel {
   @override
   @JsonKey(name: 'wind_kph')
   double get wind;
+  @override
+  @JsonKey(name: 'wind_dir')
+  String get windDirection;
+  @override
+  double get humidity;
   @override
   @JsonKey(name: 'feelslike_c')
   double get tempFeels;

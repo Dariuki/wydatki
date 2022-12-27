@@ -20,8 +20,6 @@ ConditionModel _$ConditionModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ConditionModel {
-  @JsonKey(name: 'icon')
-  String get imageUrl => throw _privateConstructorUsedError;
   @JsonKey(name: 'text')
   String get weatherCondition => throw _privateConstructorUsedError;
 
@@ -36,9 +34,7 @@ abstract class $ConditionModelCopyWith<$Res> {
   factory $ConditionModelCopyWith(
           ConditionModel value, $Res Function(ConditionModel) then) =
       _$ConditionModelCopyWithImpl<$Res>;
-  $Res call(
-      {@JsonKey(name: 'icon') String imageUrl,
-      @JsonKey(name: 'text') String weatherCondition});
+  $Res call({@JsonKey(name: 'text') String weatherCondition});
 }
 
 /// @nodoc
@@ -52,14 +48,9 @@ class _$ConditionModelCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? imageUrl = freezed,
     Object? weatherCondition = freezed,
   }) {
     return _then(_value.copyWith(
-      imageUrl: imageUrl == freezed
-          ? _value.imageUrl
-          : imageUrl // ignore: cast_nullable_to_non_nullable
-              as String,
       weatherCondition: weatherCondition == freezed
           ? _value.weatherCondition
           : weatherCondition // ignore: cast_nullable_to_non_nullable
@@ -75,9 +66,7 @@ abstract class _$$_ConditionModelCopyWith<$Res>
           _$_ConditionModel value, $Res Function(_$_ConditionModel) then) =
       __$$_ConditionModelCopyWithImpl<$Res>;
   @override
-  $Res call(
-      {@JsonKey(name: 'icon') String imageUrl,
-      @JsonKey(name: 'text') String weatherCondition});
+  $Res call({@JsonKey(name: 'text') String weatherCondition});
 }
 
 /// @nodoc
@@ -93,14 +82,9 @@ class __$$_ConditionModelCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? imageUrl = freezed,
     Object? weatherCondition = freezed,
   }) {
     return _then(_$_ConditionModel(
-      imageUrl == freezed
-          ? _value.imageUrl
-          : imageUrl // ignore: cast_nullable_to_non_nullable
-              as String,
       weatherCondition == freezed
           ? _value.weatherCondition
           : weatherCondition // ignore: cast_nullable_to_non_nullable
@@ -112,22 +96,18 @@ class __$$_ConditionModelCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_ConditionModel implements _ConditionModel {
-  _$_ConditionModel(@JsonKey(name: 'icon') this.imageUrl,
-      @JsonKey(name: 'text') this.weatherCondition);
+  _$_ConditionModel(@JsonKey(name: 'text') this.weatherCondition);
 
   factory _$_ConditionModel.fromJson(Map<String, dynamic> json) =>
       _$$_ConditionModelFromJson(json);
 
-  @override
-  @JsonKey(name: 'icon')
-  final String imageUrl;
   @override
   @JsonKey(name: 'text')
   final String weatherCondition;
 
   @override
   String toString() {
-    return 'ConditionModel(imageUrl: $imageUrl, weatherCondition: $weatherCondition)';
+    return 'ConditionModel(weatherCondition: $weatherCondition)';
   }
 
   @override
@@ -135,7 +115,6 @@ class _$_ConditionModel implements _ConditionModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ConditionModel &&
-            const DeepCollectionEquality().equals(other.imageUrl, imageUrl) &&
             const DeepCollectionEquality()
                 .equals(other.weatherCondition, weatherCondition));
   }
@@ -143,9 +122,7 @@ class _$_ConditionModel implements _ConditionModel {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(imageUrl),
-      const DeepCollectionEquality().hash(weatherCondition));
+      runtimeType, const DeepCollectionEquality().hash(weatherCondition));
 
   @JsonKey(ignore: true)
   @override
@@ -161,15 +138,12 @@ class _$_ConditionModel implements _ConditionModel {
 }
 
 abstract class _ConditionModel implements ConditionModel {
-  factory _ConditionModel(@JsonKey(name: 'icon') final String imageUrl,
+  factory _ConditionModel(
       @JsonKey(name: 'text') final String weatherCondition) = _$_ConditionModel;
 
   factory _ConditionModel.fromJson(Map<String, dynamic> json) =
       _$_ConditionModel.fromJson;
 
-  @override
-  @JsonKey(name: 'icon')
-  String get imageUrl;
   @override
   @JsonKey(name: 'text')
   String get weatherCondition;

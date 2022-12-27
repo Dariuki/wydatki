@@ -7,8 +7,12 @@ part 'location_model.g.dart';
 class LocationModel with _$LocationModel {
   factory LocationModel(
     @JsonKey(name: 'name') String city,
+    @JsonKey(name: 'localtime') String date,
   ) = _LocationModel;
 
   factory LocationModel.fromJson(Map<String, dynamic> json) =>
       _$$_LocationModelFromJson(json);
+
+
+
 }

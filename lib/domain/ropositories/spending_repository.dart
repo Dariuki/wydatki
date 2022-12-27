@@ -1,6 +1,7 @@
 import 'package:injectable/injectable.dart';
 import 'package:wydatki/data/remote_data_sourse/spending_remote_data_source.dart';
-import 'package:wydatki/domain/models/spending_model.dart';
+import 'package:wydatki/domain/models/coffing/spending_model.dart';
+
 
 @injectable
 class SpendingsRepository {

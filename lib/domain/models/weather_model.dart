@@ -2,6 +2,8 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:wydatki/domain/models/current_model.dart';
 import 'package:wydatki/domain/models/location_model.dart';
 
+
+
 part 'weather_model.freezed.dart';
 part 'weather_model.g.dart';
 

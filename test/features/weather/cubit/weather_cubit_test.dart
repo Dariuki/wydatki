@@ -24,16 +24,17 @@ void main() {
     setUp(() {
       when(() => repository.getWeatherModel(city: 'Lublin')).thenAnswer(
         (_) async => WeatherModel(
-          LocationModel('Lublin'),
+          LocationModel('Lublin', ''),
           CurrentModel(
             12.0,
             1000,
             ConditionModel(
-              '',
               'sunny',
             ),
             34.0,
-            10.2,
+            '',
+            20,
+            20,
           ),
         ),
       );
@@ -47,16 +48,17 @@ void main() {
         WeatherState(
           status: Status.success,
           results: WeatherModel(
-            LocationModel('Lublin'),
+            LocationModel('Lublin', ''),
             CurrentModel(
               12.0,
               1000,
               ConditionModel(
-                '',
                 'sunny',
               ),
               34.0,
-              10.2,
+              '',
+              20,
+              20,
             ),
           ),
         ),

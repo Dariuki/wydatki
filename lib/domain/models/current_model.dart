@@ -11,6 +11,8 @@ class CurrentModel with _$CurrentModel {
     @JsonKey(name: 'pressure_mb') double pressure,
     ConditionModel condition,
     @JsonKey(name: 'wind_kph') double wind,
+    @JsonKey(name: 'wind_dir') String windDirection,
+    double humidity,
     @JsonKey(name: 'feelslike_c') double tempFeels,
   ) = _CurrentModel;
 

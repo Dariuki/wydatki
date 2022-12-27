@@ -19,26 +19,29 @@ void main() {
     sut = WeatherRepository(weatherRemoteDataSource: dataSource);
   });
   group('getWeatherModel', () {
-    test('should call weatherRemoteRetroFitDataSource.getWeatherData(city) metod', () async {
+    test(
+        'should call weatherRemoteRetroFitDataSource.getWeatherData(city) metod',
+        () async {
       //1
 
       when(() => dataSource.getWeatherData('Lublin')).thenAnswer(
         (_) async => WeatherModel(
-          LocationModel('Lublin'),
+          LocationModel('Lublin', ''),
           CurrentModel(
             12.0,
             1000,
             ConditionModel(
-              '',
               'sunny',
             ),
             34.0,
-            10.2,
+            '',
+            20,
+            20,
           ),
         ),
       );
       //2
-       await sut.getWeatherModel(city: 'Lublin');
+      await sut.getWeatherModel(city: 'Lublin');
       //3
       verify(() => dataSource.getWeatherData('Lublin')).called(1);
     });

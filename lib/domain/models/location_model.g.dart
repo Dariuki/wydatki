@@ -11,9 +11,11 @@ part of 'location_model.dart';
 _$_LocationModel _$$_LocationModelFromJson(Map<String, dynamic> json) =>
     _$_LocationModel(
       json['name'] as String,
+      json['localtime'] as String,
     );
 
 Map<String, dynamic> _$$_LocationModelToJson(_$_LocationModel instance) =>
     <String, dynamic>{
       'name': instance.city,
+      'localtime': instance.date,
     };

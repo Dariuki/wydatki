@@ -22,6 +22,8 @@ LocationModel _$LocationModelFromJson(Map<String, dynamic> json) {
 mixin _$LocationModel {
   @JsonKey(name: 'name')
   String get city => throw _privateConstructorUsedError;
+  @JsonKey(name: 'localtime')
+  String get date => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,7 +36,9 @@ abstract class $LocationModelCopyWith<$Res> {
   factory $LocationModelCopyWith(
           LocationModel value, $Res Function(LocationModel) then) =
       _$LocationModelCopyWithImpl<$Res>;
-  $Res call({@JsonKey(name: 'name') String city});
+  $Res call(
+      {@JsonKey(name: 'name') String city,
+      @JsonKey(name: 'localtime') String date});
 }
 
 /// @nodoc
@@ -49,11 +53,16 @@ class _$LocationModelCopyWithImpl<$Res>
   @override
   $Res call({
     Object? city = freezed,
+    Object? date = freezed,
   }) {
     return _then(_value.copyWith(
       city: city == freezed
           ? _value.city
           : city // ignore: cast_nullable_to_non_nullable
+              as String,
+      date: date == freezed
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -66,7 +75,9 @@ abstract class _$$_LocationModelCopyWith<$Res>
           _$_LocationModel value, $Res Function(_$_LocationModel) then) =
       __$$_LocationModelCopyWithImpl<$Res>;
   @override
-  $Res call({@JsonKey(name: 'name') String city});
+  $Res call(
+      {@JsonKey(name: 'name') String city,
+      @JsonKey(name: 'localtime') String date});
 }
 
 /// @nodoc
@@ -83,11 +94,16 @@ class __$$_LocationModelCopyWithImpl<$Res>
   @override
   $Res call({
     Object? city = freezed,
+    Object? date = freezed,
   }) {
     return _then(_$_LocationModel(
       city == freezed
           ? _value.city
           : city // ignore: cast_nullable_to_non_nullable
+              as String,
+      date == freezed
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -96,7 +112,8 @@ class __$$_LocationModelCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_LocationModel implements _LocationModel {
-  _$_LocationModel(@JsonKey(name: 'name') this.city);
+  _$_LocationModel(
+      @JsonKey(name: 'name') this.city, @JsonKey(name: 'localtime') this.date);
 
   factory _$_LocationModel.fromJson(Map<String, dynamic> json) =>
       _$$_LocationModelFromJson(json);
@@ -104,10 +121,13 @@ class _$_LocationModel implements _LocationModel {
   @override
   @JsonKey(name: 'name')
   final String city;
+  @override
+  @JsonKey(name: 'localtime')
+  final String date;
 
   @override
   String toString() {
-    return 'LocationModel(city: $city)';
+    return 'LocationModel(city: $city, date: $date)';
   }
 
   @override
@@ -115,13 +135,16 @@ class _$_LocationModel implements _LocationModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_LocationModel &&
-            const DeepCollectionEquality().equals(other.city, city));
+            const DeepCollectionEquality().equals(other.city, city) &&
+            const DeepCollectionEquality().equals(other.date, date));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(city));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(city),
+      const DeepCollectionEquality().hash(date));
 
   @JsonKey(ignore: true)
   @override
@@ -137,8 +160,8 @@ class _$_LocationModel implements _LocationModel {
 }
 
 abstract class _LocationModel implements LocationModel {
-  factory _LocationModel(@JsonKey(name: 'name') final String city) =
-      _$_LocationModel;
+  factory _LocationModel(@JsonKey(name: 'name') final String city,
+      @JsonKey(name: 'localtime') final String date) = _$_LocationModel;
 
   factory _LocationModel.fromJson(Map<String, dynamic> json) =
       _$_LocationModel.fromJson;
@@ -146,6 +169,9 @@ abstract class _LocationModel implements LocationModel {
   @override
   @JsonKey(name: 'name')
   String get city;
+  @override
+  @JsonKey(name: 'localtime')
+  String get date;
   @override
   @JsonKey(ignore: true)
   _$$_LocationModelCopyWith<_$_LocationModel> get copyWith =>
