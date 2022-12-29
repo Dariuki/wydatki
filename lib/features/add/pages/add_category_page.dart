@@ -26,10 +26,10 @@ class _AddCategoryPageState extends State<AddCategoryPage> {
           if (state.saved!) {
             Navigator.of(context).pop();
           }
-          if (state.errorMessage!.isNotEmpty) {
+          if (state.errorMessage.isNotEmpty) {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
-                content: Text(state.errorMessage!),
+                content: Text(state.errorMessage),
                 backgroundColor: Colors.red,
               ),
             );
@@ -53,24 +53,39 @@ class _AddCategoryPageState extends State<AddCategoryPage> {
                   ),
                 ],
               ),
-              body: ListView(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 20,
-                  vertical: 20,
-                ),
-                children: [
-                  TextField(
-                    onChanged: (newValue) {
-                      setState(() {
-                        categoriesName = newValue;
-                      });
-                    },
-                    decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      label: Text('Tytuł Kategorii'),
-                    ),
+              body: Container(
+                width: double.infinity,
+                height: double.infinity,
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.centerLeft,
+                    end: Alignment.bottomRight,
+                    colors: <Color>[
+                      Color.fromARGB(255, 177, 214, 248),
+                      Color.fromARGB(255, 79, 136, 185),
+                    ],
+                    tileMode: TileMode.mirror,
                   ),
-                ],
+                ),
+                child: ListView(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 20,
+                  ),
+                  children: [
+                    TextField(
+                      onChanged: (newValue) {
+                        setState(() {
+                          categoriesName = newValue;
+                        });
+                      },
+                      decoration: const InputDecoration(
+                        border: OutlineInputBorder(),
+                        label: Text('Tytuł Kategorii'),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             );
           },

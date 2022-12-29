@@ -34,10 +34,10 @@ class _AddSpendingsPageState extends State<AddSpendingsPage> {
           if (state.saved!) {
             Navigator.of(context).pop();
           }
-          if (state.errorMessage!.isNotEmpty) {
+          if (state.errorMessage.isNotEmpty) {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
-                content: Text(state.errorMessage!),
+                content: Text(state.errorMessage),
                 backgroundColor: Colors.red,
               ),
             );
@@ -67,22 +67,37 @@ class _AddSpendingsPageState extends State<AddSpendingsPage> {
                   ),
                 ],
               ),
-              body: _AddSpendingsPageBody(
-                onShopChanged: (newValue) {
-                  setState(() {
-                    _shop = newValue;
-                  });
-                },
-                onTitleChanged: (newValue) {
-                  setState(() {
-                    _title = newValue;
-                  });
-                },
-                onAmountChanged: (newValue) {
-                  setState(() {
-                    _amount = double.tryParse(newValue);
-                  });
-                },
+              body: Container(
+                width: double.infinity,
+                height: double.infinity,
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.centerLeft,
+                    end: Alignment.bottomRight,
+                    colors: <Color>[
+                      Color.fromARGB(255, 177, 214, 248),
+                      Color.fromARGB(255, 79, 136, 185),
+                    ],
+                    tileMode: TileMode.mirror,
+                  ),
+                ),
+                child: _AddSpendingsPageBody(
+                  onShopChanged: (newValue) {
+                    setState(() {
+                      _shop = newValue;
+                    });
+                  },
+                  onTitleChanged: (newValue) {
+                    setState(() {
+                      _title = newValue;
+                    });
+                  },
+                  onAmountChanged: (newValue) {
+                    setState(() {
+                      _amount = double.tryParse(newValue);
+                    });
+                  },
+                ),
               ),
             );
           },
