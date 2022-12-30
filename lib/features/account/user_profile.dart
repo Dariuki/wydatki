@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterfire_ui/auth.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class UserProfile extends StatelessWidget {
   const UserProfile({Key? key}) : super(key: key);
@@ -15,10 +16,12 @@ class UserProfile extends StatelessWidget {
           Navigator.of(context).pop();
         }),
       ],
-      avatarSize: 50,
       appBar: AppBar(
-        title: const Center(child: Text('Użytkownik')),
+        title: Center(
+          child: Text(AppLocalizations.of(context)!.user),
+        ),
       ),
+      children: const [],
     );
   }
 }

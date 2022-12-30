@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wydatki/app/injection/injection_container.dart';
 import 'package:wydatki/domain/models/coffing/category_model.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:wydatki/features/add/cubit/add_cubit.dart';
 
 class AddSpendingsPage extends StatefulWidget {
@@ -19,7 +19,6 @@ class AddSpendingsPage extends StatefulWidget {
 }
 
 class _AddSpendingsPageState extends State<AddSpendingsPage> {
-  String? _title;
   String? _shop;
   double? _amount;
 
@@ -48,21 +47,20 @@ class _AddSpendingsPageState extends State<AddSpendingsPage> {
             return Scaffold(
               appBar: AppBar(
                 title: Center(
-                  child: Text('Dodaj wydatek - ${widget.model.type}'),
+                  child: Text(AppLocalizations.of(context)!.addExpense,
+                      semanticsLabel: widget.model.type),
                 ),
                 actions: [
                   IconButton(
-                    onPressed:
-                        _title == null || _shop == null || _amount == null
-                            ? null
-                            : () {
-                                context.read<AddCubit>().addSpendings(
-                                      _title!,
-                                      _shop!,
-                                      _amount!,
-                                      widget.model.id,
-                                    );
-                              },
+                    onPressed: _shop == null || _amount == null
+                        ? null
+                        : () {
+                            context.read<AddCubit>().addSpendings(
+                                  _shop!,
+                                  _amount!,
+                                  widget.model.id,
+                                );
+                          },
                     icon: const Icon(Icons.check_box),
                   ),
                 ],
@@ -87,11 +85,6 @@ class _AddSpendingsPageState extends State<AddSpendingsPage> {
                       _shop = newValue;
                     });
                   },
-                  onTitleChanged: (newValue) {
-                    setState(() {
-                      _title = newValue;
-                    });
-                  },
                   onAmountChanged: (newValue) {
                     setState(() {
                       _amount = double.tryParse(newValue);
@@ -110,12 +103,10 @@ class _AddSpendingsPageState extends State<AddSpendingsPage> {
 class _AddSpendingsPageBody extends StatelessWidget {
   const _AddSpendingsPageBody({
     Key? key,
-    required this.onTitleChanged,
     required this.onAmountChanged,
     required this.onShopChanged,
   }) : super(key: key);
 
-  final Function(String) onTitleChanged;
   final Function(String) onShopChanged;
   final Function(String) onAmountChanged;
 
@@ -131,19 +122,9 @@ class _AddSpendingsPageBody extends StatelessWidget {
         children: [
           TextField(
             onChanged: onShopChanged,
-            decoration: const InputDecoration(
-              border: OutlineInputBorder(),
-              label: Text('Nazwa Sklepu'),
-            ),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          TextField(
-            onChanged: onTitleChanged,
-            decoration: const InputDecoration(
-              border: OutlineInputBorder(),
-              label: Text('Typ wydatku'),
+            decoration: InputDecoration(
+              border: const OutlineInputBorder(),
+              label: Text(AppLocalizations.of(context)!.shopName),
             ),
           ),
           const SizedBox(
@@ -151,9 +132,9 @@ class _AddSpendingsPageBody extends StatelessWidget {
           ),
           TextField(
               onChanged: onAmountChanged,
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-                label: Text('Kwota Wydatku'),
+              decoration:InputDecoration(
+                border: const OutlineInputBorder(),
+                label: Text(AppLocalizations.of(context)!.expenseAmount),
               ),
               keyboardType: TextInputType.number,
               inputFormatters: <TextInputFormatter>[

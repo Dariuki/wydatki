@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wydatki/app/injection/injection_container.dart';
 import 'package:wydatki/features/add/cubit/add_cubit.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AddCategoryPage extends StatefulWidget {
   const AddCategoryPage({
@@ -39,7 +40,7 @@ class _AddCategoryPageState extends State<AddCategoryPage> {
           builder: (context, state) {
             return Scaffold(
               appBar: AppBar(
-                title: const Text('Dodaj Kategorie'),
+                title:  Text(AppLocalizations.of(context)!.addCategory),
                 actions: [
                   IconButton(
                     onPressed: categoriesName.isEmpty
@@ -79,9 +80,9 @@ class _AddCategoryPageState extends State<AddCategoryPage> {
                           categoriesName = newValue;
                         });
                       },
-                      decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
-                        label: Text('Tytuł Kategorii'),
+                      decoration: InputDecoration(
+                        border: const OutlineInputBorder(),
+                        label: Text(AppLocalizations.of(context)!.addCategory),
                       ),
                     ),
                   ],

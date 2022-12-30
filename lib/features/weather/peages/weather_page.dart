@@ -6,6 +6,7 @@ import 'package:wydatki/features/weather/cubit/weather_cubit.dart';
 import 'package:wydatki/features/weather/widgets/middle_widget.dart';
 import 'package:wydatki/features/weather/widgets/search_widget.dart';
 import 'package:wydatki/features/weather/widgets/top_widget.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class WeatherPage extends StatelessWidget {
   const WeatherPage({
@@ -21,7 +22,7 @@ class WeatherPage extends StatelessWidget {
       child: BlocConsumer<WeatherCubit, WeatherState>(
         listener: (context, state) {
           if (state.status == Status.error) {
-            final errorMessage = state.errorMessage ?? 'Unkown error';
+            final errorMessage = state.errorMessage ?? AppLocalizations.of(context)!.error;
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
                 content: Text(errorMessage),
@@ -34,7 +35,11 @@ class WeatherPage extends StatelessWidget {
           final weatherModel = state.results;
           return Scaffold(
             appBar: AppBar(
-              title: const Center(child: Text('Pogoda')),
+              title: Center(
+                child: Text(
+                  AppLocalizations.of(context)!.weather,
+                ),
+              ),
             ),
             body: Container(
               width: double.infinity,

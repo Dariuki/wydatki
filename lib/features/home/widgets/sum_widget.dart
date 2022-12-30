@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wydatki/app/injection/injection_container.dart';
 import 'package:wydatki/domain/models/coffing/category_model.dart';
 import 'package:wydatki/features/home/cubit/home_cubit.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SumWidget extends StatelessWidget {
   const SumWidget({
@@ -54,11 +55,11 @@ class SumWidget extends StatelessWidget {
               ),
               child: Row(
                 children: [
-                  const Expanded(
+                  Expanded(
                     child: Center(
                       child: Text(
-                        'Suma:',
-                        style: TextStyle(
+                        AppLocalizations.of(context)!.sum,
+                        style: const TextStyle(
                           fontSize: 30.0,
                           fontWeight: FontWeight.bold,
                         ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wydatki/features/weather/cubit/weather_cubit.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SearchWidget extends StatelessWidget {
   SearchWidget({
@@ -18,10 +19,10 @@ class SearchWidget extends StatelessWidget {
           Expanded(
             child: TextField(
               controller: _controller,
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-                label: Text('City'),
-                hintText: 'London',
+              decoration: InputDecoration(
+                border: const OutlineInputBorder(),
+                label: Text(AppLocalizations.of(context)!.city),
+                hintText: AppLocalizations.of(context)!.hintText,
               ),
             ),
           ),
@@ -30,7 +31,7 @@ class SearchWidget extends StatelessWidget {
             onPressed: () {
               context.read<WeatherCubit>().getWeather(city: _controller.text);
             },
-            child: const Text('Get'),
+            child: Text(AppLocalizations.of(context)!.get),
           ),
         ],
       ),

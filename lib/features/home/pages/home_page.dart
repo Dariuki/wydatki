@@ -5,6 +5,7 @@ import 'package:wydatki/features/add/pages/add_category_page.dart';
 import 'package:wydatki/features/home/cubit/home_cubit.dart';
 import 'package:wydatki/features/home/widgets/navigation_panel.dart';
 import 'package:wydatki/features/home/widgets/category_item_view.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({
@@ -15,7 +16,11 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Center(child: Text('Wydatki')),
+        title: Center(
+          child: Text(
+            AppLocalizations.of(context)!.categoryList,
+          ),
+        ),
       ),
       drawer: const Drawer(child: NavigationPanel()),
       body: Container(

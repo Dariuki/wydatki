@@ -55,13 +55,6 @@ class SpendingItemView extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    itemModel.title,
-                    style: const TextStyle(
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  Text(
                     itemModel.amount.toString(),
                     style: const TextStyle(
                       fontSize: 20.0,

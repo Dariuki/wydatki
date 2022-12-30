@@ -1,0 +1,25 @@
+{
+    "user": "Użytkownik",
+    "addCategory": "Dodaj Kategorie",
+    "categoryTitle": "Tytuł Kategorii",
+    "addExpense": "Dodaj Wydatek",
+    "shopName": "Nazwa Sklepu",
+    "expenseAmount": "Kwota",
+    "categoryList": "Lista Kategorii",
+    "spendingsList": "Lista Wydatków",
+    "currency": "PLN",
+    "sum": "Suma",
+    "weather": "Pogoda",
+    "weatherDetails": "Szczegóły", 
+    "pressure": "Ciśnienie",
+    "wind": "Wiatr",
+    "sensedTemp": "Temp. Odczuwalna",
+    "humidity": "Wilgotność",
+    "windDirection": "Kierunek Wiatru",
+    "error":"Nieznany błąd",
+    "settings": "Ustawienia",
+    "city": "Miasto",
+    "get": "Pobierz",
+    "hintText": "Warszawa"
+
+}

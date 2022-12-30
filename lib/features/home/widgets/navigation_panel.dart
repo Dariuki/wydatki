@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wydatki/features/account/user_profile.dart';
 import 'package:wydatki/features/weather/peages/weather_page.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class NavigationPanel extends StatelessWidget {
   const NavigationPanel({Key? key}) : super(key: key);
@@ -59,7 +60,7 @@ class NavigationPanel extends StatelessWidget {
               ),
               child: ListTile(
                 leading: const Icon(Icons.account_circle),
-                title: const Text('Urzytkownik'),
+                title: Text(AppLocalizations.of(context)!.user),
                 onTap: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(
@@ -98,7 +99,7 @@ class NavigationPanel extends StatelessWidget {
               ),
               child: ListTile(
                 leading: const Icon(Icons.cloud_circle),
-                title: const Text('Pogoda'),
+                title: Text(AppLocalizations.of(context)!.weather),
                 onTap: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(

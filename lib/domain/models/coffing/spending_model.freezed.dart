@@ -20,7 +20,6 @@ SpendingModel _$SpendingModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$SpendingModel {
-  String get title => throw _privateConstructorUsedError;
   String get shop => throw _privateConstructorUsedError;
   double get amount => throw _privateConstructorUsedError;
   String get id => throw _privateConstructorUsedError;
@@ -37,8 +36,7 @@ abstract class $SpendingModelCopyWith<$Res> {
   factory $SpendingModelCopyWith(
           SpendingModel value, $Res Function(SpendingModel) then) =
       _$SpendingModelCopyWithImpl<$Res>;
-  $Res call(
-      {String title, String shop, double amount, String id, String categoryID});
+  $Res call({String shop, double amount, String id, String categoryID});
 }
 
 /// @nodoc
@@ -52,17 +50,12 @@ class _$SpendingModelCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? title = freezed,
     Object? shop = freezed,
     Object? amount = freezed,
     Object? id = freezed,
     Object? categoryID = freezed,
   }) {
     return _then(_value.copyWith(
-      title: title == freezed
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String,
       shop: shop == freezed
           ? _value.shop
           : shop // ignore: cast_nullable_to_non_nullable
@@ -90,8 +83,7 @@ abstract class _$$_SpendingModelCopyWith<$Res>
           _$_SpendingModel value, $Res Function(_$_SpendingModel) then) =
       __$$_SpendingModelCopyWithImpl<$Res>;
   @override
-  $Res call(
-      {String title, String shop, double amount, String id, String categoryID});
+  $Res call({String shop, double amount, String id, String categoryID});
 }
 
 /// @nodoc
@@ -107,17 +99,12 @@ class __$$_SpendingModelCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? title = freezed,
     Object? shop = freezed,
     Object? amount = freezed,
     Object? id = freezed,
     Object? categoryID = freezed,
   }) {
     return _then(_$_SpendingModel(
-      title == freezed
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String,
       shop == freezed
           ? _value.shop
           : shop // ignore: cast_nullable_to_non_nullable
@@ -141,14 +128,11 @@ class __$$_SpendingModelCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_SpendingModel implements _SpendingModel {
-  _$_SpendingModel(
-      this.title, this.shop, this.amount, this.id, this.categoryID);
+  _$_SpendingModel(this.shop, this.amount, this.id, this.categoryID);
 
   factory _$_SpendingModel.fromJson(Map<String, dynamic> json) =>
       _$$_SpendingModelFromJson(json);
 
-  @override
-  final String title;
   @override
   final String shop;
   @override
@@ -160,7 +144,7 @@ class _$_SpendingModel implements _SpendingModel {
 
   @override
   String toString() {
-    return 'SpendingModel(title: $title, shop: $shop, amount: $amount, id: $id, categoryID: $categoryID)';
+    return 'SpendingModel(shop: $shop, amount: $amount, id: $id, categoryID: $categoryID)';
   }
 
   @override
@@ -168,7 +152,6 @@ class _$_SpendingModel implements _SpendingModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_SpendingModel &&
-            const DeepCollectionEquality().equals(other.title, title) &&
             const DeepCollectionEquality().equals(other.shop, shop) &&
             const DeepCollectionEquality().equals(other.amount, amount) &&
             const DeepCollectionEquality().equals(other.id, id) &&
@@ -180,7 +163,6 @@ class _$_SpendingModel implements _SpendingModel {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(title),
       const DeepCollectionEquality().hash(shop),
       const DeepCollectionEquality().hash(amount),
       const DeepCollectionEquality().hash(id),
@@ -200,18 +182,12 @@ class _$_SpendingModel implements _SpendingModel {
 }
 
 abstract class _SpendingModel implements SpendingModel {
-  factory _SpendingModel(
-      final String title,
-      final String shop,
-      final double amount,
-      final String id,
-      final String categoryID) = _$_SpendingModel;
+  factory _SpendingModel(final String shop, final double amount,
+      final String id, final String categoryID) = _$_SpendingModel;
 
   factory _SpendingModel.fromJson(Map<String, dynamic> json) =
       _$_SpendingModel.fromJson;
 
-  @override
-  String get title;
   @override
   String get shop;
   @override

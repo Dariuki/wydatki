@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather_icons/weather_icons.dart';
 import 'package:wydatki/domain/models/weather_model.dart';
 import 'package:wydatki/features/weather/cubit/weather_cubit.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class MiddleWidget extends StatelessWidget {
   const MiddleWidget({
@@ -38,7 +39,7 @@ class MiddleWidget extends StatelessWidget {
                 color: Colors.black.withOpacity(0.25),
                 spreadRadius: 5,
                 blurRadius: 7,
-                offset: const Offset(4, 8), // changes position of shadow
+                offset: const Offset(4, 8),
               ),
             ],
           ),
@@ -66,11 +67,12 @@ class _ViewWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Weather details'.toUpperCase(),
+              AppLocalizations.of(context)!.weatherDetails.toUpperCase(),
               style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
-                  color: Colors.white),
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+                color: Colors.white,
+              ),
             ),
           ],
         ),
@@ -85,7 +87,7 @@ class _ViewWidget extends StatelessWidget {
                   color: Colors.amber,
                   size: 35,
                 ),
-                const Text('Pressure'),
+                Text(AppLocalizations.of(context)!.pressure),
                 Text(
                   '${weatherModel.current.pressure.toString()} hPa',
                   style: const TextStyle(
@@ -102,7 +104,7 @@ class _ViewWidget extends StatelessWidget {
                   color: Colors.amber,
                   size: 51,
                 ),
-                const Text('Wind'),
+                Text(AppLocalizations.of(context)!.wind),
                 Text(
                   '${weatherModel.current.wind.toString()} kpH',
                   style: const TextStyle(
@@ -115,13 +117,13 @@ class _ViewWidget extends StatelessWidget {
             Column(
               children: [
                 const BoxedIcon(
-                  WeatherIcons.thermometer,
+                  WeatherIcons.humidity,
                   color: Colors.amber,
                   size: 35,
                 ),
-                const Text('Sensed temp.'),
+                Text(AppLocalizations.of(context)!.humidity),
                 Text(
-                  '${weatherModel.current.tempFeels.toString()} ℃',
+                  weatherModel.current.humidity.toString(),
                   style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 16,
@@ -139,13 +141,13 @@ class _ViewWidget extends StatelessWidget {
             Column(
               children: [
                 const BoxedIcon(
-                  WeatherIcons.humidity,
+                  WeatherIcons.thermometer,
                   color: Colors.amber,
                   size: 35,
                 ),
-                const Text('Humidity'),
+                Text(AppLocalizations.of(context)!.sensedTemp),
                 Text(
-                  weatherModel.current.humidity.toString(),
+                  '${weatherModel.current.tempFeels.toString()} ℃',
                   style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 16,
@@ -155,21 +157,21 @@ class _ViewWidget extends StatelessWidget {
             ),
             Column(
               children: [
-                Row(
+                Column(
                   children: const [
-                    Icon(
-                      Icons.arrow_forward,
-                      color: Colors.amber,
-                      size: 51,
-                    ),
                     Icon(
                       Icons.air,
                       color: Colors.amber,
                       size: 30,
                     ),
+                    Icon(
+                      Icons.arrow_forward,
+                      color: Colors.amber,
+                      size: 30,
+                    ),
                   ],
                 ),
-                const Text('Wind Direction'),
+                Text(AppLocalizations.of(context)!.windDirection),
                 Text(
                   weatherModel.current.windDirection,
                   style: const TextStyle(

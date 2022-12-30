@@ -2,11 +2,13 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
 import 'package:wydatki/app/enum/enums.dart';
 
 part 'auth_gate_cubit.freezed.dart';
 part 'auth_gate_state.dart';
 
+@injectable
 class AuthGateCubit extends Cubit<AuthGateState> {
   AuthGateCubit()
       : super(
@@ -21,7 +23,10 @@ class AuthGateCubit extends Cubit<AuthGateState> {
       _streamSubscription = FirebaseAuth.instance.authStateChanges().listen(
         (user) {
           emit(
-            AuthGateState(user: user, status: Status.success),
+            AuthGateState(
+              user: user,
+              status: Status.success,
+            ),
           );
         },
       );

@@ -28,6 +28,8 @@ dependencies:
   dio: ^4.0.4
   retrofit: ^3.0.1
   weather_icons: ^3.0.0
+  flutter_localizations:
+    sdk: flutter
 
 
 dev_dependencies:
@@ -46,4 +48,5 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  generate: true
 

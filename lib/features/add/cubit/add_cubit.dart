@@ -33,14 +33,12 @@ class AddCubit extends Cubit<AddState> {
   }
 
   Future<void> addSpendings(
-    String title,
     String shop,
     double amount,
     String id,
   ) async {
     try {
       await spendingsRepository.addSpending(
-        title,
         shop,
         amount,
         id,

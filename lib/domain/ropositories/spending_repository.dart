@@ -2,14 +2,11 @@ import 'package:injectable/injectable.dart';
 import 'package:wydatki/data/remote_data_sourse/spending_remote_data_source.dart';
 import 'package:wydatki/domain/models/coffing/spending_model.dart';
 
-
 @injectable
 class SpendingsRepository {
   SpendingsRepository({required this.spendingRemoteDataSource});
 
   final SpendingRemoteDataSource spendingRemoteDataSource;
-  
-  
 
   Stream<List<SpendingModel>> getSpendingForCategoryId(String categoryId) {
     return spendingRemoteDataSource.getAllDocsStream().map((querySnapshot) {
@@ -22,17 +19,15 @@ class SpendingsRepository {
     });
   }
 
-
-
   Future<void> addSpending(
-    String title,
     String shop,
     double amount,
     String categoryId,
+    
   ) async {
     final docSpending = spendingRemoteDataSource.addSpending();
     final spending =
-        SpendingModel(title, shop, amount, docSpending.id, categoryId);
+        SpendingModel(shop, amount, docSpending.id, categoryId,);
     final json = spending.toJson();
     await docSpending.set(json);
   }

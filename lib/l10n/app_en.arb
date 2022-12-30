@@ -1,0 +1,27 @@
+{
+    "user": "User",
+    "addCategory": "Add Category",
+    "categoryTitle": "Category Title",
+    "addExpense": "Add Expense",
+    "shopName": "Shop Name",
+    "expenseAmount": "Expense Amount",
+    "categoryList": "Category List",
+    "spendingsList": "Spendings List",
+    "currency": "USD",
+    "sum": "Sum",
+    "weather": "Weather",
+    "weatherDetails": "Weather details", 
+    "pressure": "Pressure",
+    "wind": "Wind",
+    "sensedTemp": "Sensed temp.",
+    "humidity": "Humidity",
+    "windDirection": "Wind Direction",
+    "error":"Unnown error",
+    "settings": "Settings",
+    "city": "City",
+    "get": "Get",
+    "hintText": "London"
+
+
+
+}

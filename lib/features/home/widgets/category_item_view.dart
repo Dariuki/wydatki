@@ -4,6 +4,7 @@ import 'package:wydatki/app/injection/injection_container.dart';
 import 'package:wydatki/domain/models/coffing/category_model.dart';
 import 'package:wydatki/features/home/cubit/home_cubit.dart';
 import 'package:wydatki/features/home/pages/spendings_page.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CategoryItemView extends StatelessWidget {
   const CategoryItemView({
@@ -82,7 +83,7 @@ class CategoryItemView extends StatelessWidget {
                     child: Column(
                       children: [
                         _Sum(model: itemModel),
-                        const Text('PLN'),
+                        Text(AppLocalizations.of(context)!.currency),
                       ],
                     ),
                   ),

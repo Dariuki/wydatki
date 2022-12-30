@@ -6,6 +6,7 @@ import 'package:wydatki/features/add/pages/add_spendings_page.dart';
 import 'package:wydatki/features/home/cubit/home_cubit.dart';
 import 'package:wydatki/features/home/widgets/spending_item_view.dart';
 import 'package:wydatki/features/home/widgets/sum_widget.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SpendingsPage extends StatelessWidget {
   const SpendingsPage({
@@ -19,7 +20,10 @@ class SpendingsPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Center(
-          child: Text('Lista wydatków - ${model.type}'),
+          child: Text(
+            AppLocalizations.of(context)!.spendingsList,
+            semanticsLabel: model.type,
+          ),
         ),
       ),
       body: Container(
