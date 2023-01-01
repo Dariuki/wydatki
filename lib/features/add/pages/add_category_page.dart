@@ -40,7 +40,8 @@ class _AddCategoryPageState extends State<AddCategoryPage> {
           builder: (context, state) {
             return Scaffold(
               appBar: AppBar(
-                title:  Text(AppLocalizations.of(context)!.addCategory),
+                title: Center(
+                    child: Text(AppLocalizations.of(context)!.addCategory)),
                 actions: [
                   IconButton(
                     onPressed: categoriesName.isEmpty

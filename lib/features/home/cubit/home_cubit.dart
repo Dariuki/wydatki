@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:wydatki/app/enum/enums.dart';
+import 'package:wydatki/app/core/enum/enums.dart';
 import 'package:wydatki/domain/models/coffing/category_model.dart';
 import 'package:wydatki/domain/models/coffing/spending_model.dart';
 import 'package:wydatki/domain/ropositories/category_repository.dart';

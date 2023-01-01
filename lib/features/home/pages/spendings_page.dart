@@ -20,9 +20,19 @@ class SpendingsPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Center(
-          child: Text(
-            AppLocalizations.of(context)!.spendingsList,
-            semanticsLabel: model.type,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                AppLocalizations.of(context)!.spendingsList,
+              ),
+              const SizedBox(
+                width: 20,
+              ),
+              Text(
+                model.type,
+              )
+            ],
           ),
         ),
       ),

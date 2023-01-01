@@ -47,8 +47,20 @@ class _AddSpendingsPageState extends State<AddSpendingsPage> {
             return Scaffold(
               appBar: AppBar(
                 title: Center(
-                  child: Text(AppLocalizations.of(context)!.addExpense,
-                      semanticsLabel: widget.model.type),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        AppLocalizations.of(context)!.addExpense,
+                      ),
+                      const SizedBox(
+                        width: 20,
+                      ),
+                      Text(
+                        widget.model.type,
+                      )
+                    ],
+                  ),
                 ),
                 actions: [
                   IconButton(
@@ -132,7 +144,7 @@ class _AddSpendingsPageBody extends StatelessWidget {
           ),
           TextField(
               onChanged: onAmountChanged,
-              decoration:InputDecoration(
+              decoration: InputDecoration(
                 border: const OutlineInputBorder(),
                 label: Text(AppLocalizations.of(context)!.expenseAmount),
               ),

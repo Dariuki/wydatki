@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:wydatki/app/enum/enums.dart';
+import 'package:wydatki/app/core/enum/enums.dart';
 import 'package:wydatki/app/injection/injection_container.dart';
 import 'package:wydatki/features/weather/cubit/weather_cubit.dart';
 import 'package:wydatki/features/weather/widgets/middle_widget.dart';
