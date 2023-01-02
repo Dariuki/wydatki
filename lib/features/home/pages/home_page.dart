@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wydatki/app/injection/injection_container.dart';
-import 'package:wydatki/domain/models/category_cofing.dart';
 import 'package:wydatki/features/add/pages/add_category_page.dart';
 import 'package:wydatki/features/home/cubit/home_cubit.dart';
-import 'package:wydatki/features/home/pages/navigation_panel.dart';
-import 'package:wydatki/features/spendings/pages/spendings_page.dart';
+import 'package:wydatki/features/home/widgets/navigation_panel.dart';
+import 'package:wydatki/features/home/widgets/category_item_view.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({
@@ -16,10 +16,29 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Center(child: Text('Wydatki')),
+        title: Center(
+          child: Text(
+            AppLocalizations.of(context)!.categoryList,
+          ),
+        ),
       ),
       drawer: const Drawer(child: NavigationPanel()),
-      body: const _HomePageBody(),
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.centerLeft,
+            end: Alignment.bottomRight,
+            colors: <Color>[
+              Color.fromARGB(255, 177, 214, 248),
+              Color.fromARGB(255, 79, 136, 185),
+            ],
+            tileMode: TileMode.mirror,
+          ),
+        ),
+        child: const _HomePageBody(),
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.of(context).push(
@@ -75,90 +94,13 @@ class _HomePageBody extends StatelessWidget {
                     return direction == DismissDirection.endToStart;
                   },
                   onDismissed: (direction) {
-                    context.read<HomeCubit>().remove(documentID: itemModel.id);
+                    context.read<HomeCubit>().delite(documentID: itemModel.id);
                   },
-                  child: _ListItemView(itemModel: itemModel),
+                  child: CategoryItemView(itemModel: itemModel),
                 ),
             ],
           );
         },
-      ),
-    );
-  }
-}
-
-class _ListItemView extends StatelessWidget {
-  const _ListItemView({
-    Key? key,
-    required this.itemModel,
-  }) : super(key: key);
-
-  final CategoryModel itemModel;
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {
-        Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => SpendingsPage(
-            model: itemModel,
-          ),
-        ));
-      },
-      child: Padding(
-        padding: const EdgeInsets.symmetric(
-          vertical: 10,
-          horizontal: 30,
-        ),
-        child: Container(
-          decoration: const BoxDecoration(
-            color: Colors.black12,
-          ),
-          child: Column(
-            children: [
-              Row(
-                children: [
-                  Expanded(
-                    child: Container(
-                      margin: const EdgeInsets.all(10),
-                      padding: const EdgeInsets.all(10),
-                      child: Column(
-                        children: [
-                          Text(
-                            itemModel.type,
-                            style: const TextStyle(
-                              fontSize: 20.0,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  // Container(
-                  //   decoration: const BoxDecoration(
-                  //     color: Colors.white70,
-                  //   ),
-                  //   margin: const EdgeInsets.all(10),
-                  //   padding: const EdgeInsets.all(10),
-                  //   child: Column(
-                  //     children: const [
-                  //       Text(
-                  //         '0',
-                  //         style: TextStyle(
-                  //           fontSize: 20.0,
-                  //           fontWeight: FontWeight.bold,
-                  //         ),
-                  //       ),
-                  //       Text('PLN'),
-                  //     ],
-                  //   ),
-                  // ),
-                ],
-              ),
-            ],
-          ),
-        ),
       ),
     );
   }

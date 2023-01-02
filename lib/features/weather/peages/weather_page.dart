@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:wydatki/app/enum/enums.dart';
+import 'package:wydatki/app/core/enum/enums.dart';
 import 'package:wydatki/app/injection/injection_container.dart';
-import 'package:wydatki/domain/models/weather_model.dart';
 import 'package:wydatki/features/weather/cubit/weather_cubit.dart';
+import 'package:wydatki/features/weather/widgets/middle_widget.dart';
+import 'package:wydatki/features/weather/widgets/search_widget.dart';
+import 'package:wydatki/features/weather/widgets/top_widget.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class WeatherPage extends StatelessWidget {
   const WeatherPage({
@@ -19,7 +22,7 @@ class WeatherPage extends StatelessWidget {
       child: BlocConsumer<WeatherCubit, WeatherState>(
         listener: (context, state) {
           if (state.status == Status.error) {
-            final errorMessage = state.errorMessage ?? 'Unkown error';
+            final errorMessage = state.errorMessage ?? AppLocalizations.of(context)!.error;
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
                 content: Text(errorMessage),
@@ -32,96 +35,52 @@ class WeatherPage extends StatelessWidget {
           final weatherModel = state.results;
           return Scaffold(
             appBar: AppBar(
-              title: const Center(child: Text('Pogoda')),
+              title: Center(
+                child: Text(
+                  AppLocalizations.of(context)!.weather,
+                ),
+              ),
             ),
-            body: Center(
-              child: Builder(builder: (context) {
-                if (state.status == Status.loading) {
-                  return const Text('Loading');
-                }
-                return Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    if (weatherModel != null)
-                      _DisplayWeatherWidget(
-                        weatherModel: weatherModel,
-                      ),
-                    _SearchWidget(),
+            body: Container(
+              width: double.infinity,
+              height: double.infinity,
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.centerLeft,
+                  end: Alignment.bottomRight,
+                  colors: <Color>[
+                    Color.fromARGB(255, 177, 214, 248),
+                    Color.fromARGB(255, 79, 136, 185),
                   ],
-                );
-              }),
+                  tileMode: TileMode.mirror,
+                ),
+              ),
+              child: SafeArea(
+                child: ListView(
+                  children: [
+                    Center(
+                      child: Builder(builder: (context) {
+                        if (state.status == Status.loading) {
+                          return const CircularProgressIndicator();
+                        }
+                        return Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            if (weatherModel != null)
+                              TopWidget(weatherModel: weatherModel),
+                            if (weatherModel != null)
+                              MiddleWidget(weatherModel: weatherModel),
+                            SearchWidget(),
+                          ],
+                        );
+                      }),
+                    ),
+                  ],
+                ),
+              ),
             ),
           );
         },
-      ),
-    );
-  }
-}
-
-class _DisplayWeatherWidget extends StatelessWidget {
-  const _DisplayWeatherWidget({
-    Key? key,
-    required this.weatherModel,
-  }) : super(key: key);
-
-  final WeatherModel weatherModel;
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<WeatherCubit, WeatherState>(
-      builder: (context, state) {
-        return Column(
-          children: [
-            Text(
-              weatherModel.current.temperatureC.toString(),
-              style: Theme.of(context).textTheme.headline1,
-            ),
-            const SizedBox(height: 60),
-            Text(
-              weatherModel.location.city,
-              style: Theme.of(context).textTheme.headline2,
-            ),
-            const SizedBox(height: 60),
-          ],
-        );
-      },
-    );
-  }
-}
-
-class _SearchWidget extends StatelessWidget {
-  _SearchWidget({
-    Key? key,
-  }) : super(key: key);
-
-  final _controller = TextEditingController();
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20.0),
-      child: Row(
-        children: [
-          Expanded(
-            child: TextField(
-              controller: _controller,
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-                label: Text('City'),
-                hintText: 'London',
-              ),
-            ),
-          ),
-          const SizedBox(width: 20),
-          ElevatedButton(
-            onPressed: () {
-              context
-                  .read<WeatherCubit>()
-                  .getWeather(city: _controller.text);
-            },
-            child: const Text('Get'),
-          ),
-        ],
       ),
     );
   }

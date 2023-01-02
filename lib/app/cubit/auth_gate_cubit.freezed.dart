@@ -17,7 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$AuthGateState {
   User? get user => throw _privateConstructorUsedError;
-  bool? get isLoading => throw _privateConstructorUsedError;
+  Status get status => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -30,7 +30,7 @@ abstract class $AuthGateStateCopyWith<$Res> {
   factory $AuthGateStateCopyWith(
           AuthGateState value, $Res Function(AuthGateState) then) =
       _$AuthGateStateCopyWithImpl<$Res>;
-  $Res call({User? user, bool? isLoading, String? errorMessage});
+  $Res call({User? user, Status status, String? errorMessage});
 }
 
 /// @nodoc
@@ -45,7 +45,7 @@ class _$AuthGateStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? user = freezed,
-    Object? isLoading = freezed,
+    Object? status = freezed,
     Object? errorMessage = freezed,
   }) {
     return _then(_value.copyWith(
@@ -53,10 +53,10 @@ class _$AuthGateStateCopyWithImpl<$Res>
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as User?,
-      isLoading: isLoading == freezed
-          ? _value.isLoading
-          : isLoading // ignore: cast_nullable_to_non_nullable
-              as bool?,
+      status: status == freezed
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as Status,
       errorMessage: errorMessage == freezed
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
@@ -72,7 +72,7 @@ abstract class _$$_AuthGateStateCopyWith<$Res>
           _$_AuthGateState value, $Res Function(_$_AuthGateState) then) =
       __$$_AuthGateStateCopyWithImpl<$Res>;
   @override
-  $Res call({User? user, bool? isLoading, String? errorMessage});
+  $Res call({User? user, Status status, String? errorMessage});
 }
 
 /// @nodoc
@@ -89,7 +89,7 @@ class __$$_AuthGateStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? user = freezed,
-    Object? isLoading = freezed,
+    Object? status = freezed,
     Object? errorMessage = freezed,
   }) {
     return _then(_$_AuthGateState(
@@ -97,10 +97,10 @@ class __$$_AuthGateStateCopyWithImpl<$Res>
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as User?,
-      isLoading: isLoading == freezed
-          ? _value.isLoading
-          : isLoading // ignore: cast_nullable_to_non_nullable
-              as bool?,
+      status: status == freezed
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as Status,
       errorMessage: errorMessage == freezed
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
@@ -112,18 +112,20 @@ class __$$_AuthGateStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_AuthGateState implements _AuthGateState {
-  _$_AuthGateState({this.user, this.isLoading, this.errorMessage});
+  _$_AuthGateState(
+      {this.user, this.status = Status.initial, this.errorMessage});
 
   @override
   final User? user;
   @override
-  final bool? isLoading;
+  @JsonKey()
+  final Status status;
   @override
   final String? errorMessage;
 
   @override
   String toString() {
-    return 'AuthGateState(user: $user, isLoading: $isLoading, errorMessage: $errorMessage)';
+    return 'AuthGateState(user: $user, status: $status, errorMessage: $errorMessage)';
   }
 
   @override
@@ -132,7 +134,7 @@ class _$_AuthGateState implements _AuthGateState {
         (other.runtimeType == runtimeType &&
             other is _$_AuthGateState &&
             const DeepCollectionEquality().equals(other.user, user) &&
-            const DeepCollectionEquality().equals(other.isLoading, isLoading) &&
+            const DeepCollectionEquality().equals(other.status, status) &&
             const DeepCollectionEquality()
                 .equals(other.errorMessage, errorMessage));
   }
@@ -141,7 +143,7 @@ class _$_AuthGateState implements _AuthGateState {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(user),
-      const DeepCollectionEquality().hash(isLoading),
+      const DeepCollectionEquality().hash(status),
       const DeepCollectionEquality().hash(errorMessage));
 
   @JsonKey(ignore: true)
@@ -153,13 +155,13 @@ class _$_AuthGateState implements _AuthGateState {
 abstract class _AuthGateState implements AuthGateState {
   factory _AuthGateState(
       {final User? user,
-      final bool? isLoading,
+      final Status status,
       final String? errorMessage}) = _$_AuthGateState;
 
   @override
   User? get user;
   @override
-  bool? get isLoading;
+  Status get status;
   @override
   String? get errorMessage;
   @override

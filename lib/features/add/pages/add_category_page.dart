@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wydatki/app/injection/injection_container.dart';
 import 'package:wydatki/features/add/cubit/add_cubit.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AddCategoryPage extends StatefulWidget {
   const AddCategoryPage({
@@ -39,7 +40,8 @@ class _AddCategoryPageState extends State<AddCategoryPage> {
           builder: (context, state) {
             return Scaffold(
               appBar: AppBar(
-                title: const Text('Dodaj Kategorie'),
+                title: Center(
+                    child: Text(AppLocalizations.of(context)!.addCategory)),
                 actions: [
                   IconButton(
                     onPressed: categoriesName.isEmpty
@@ -53,24 +55,39 @@ class _AddCategoryPageState extends State<AddCategoryPage> {
                   ),
                 ],
               ),
-              body: ListView(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 20,
-                  vertical: 20,
-                ),
-                children: [
-                  TextField(
-                    onChanged: (newValue) {
-                      setState(() {
-                        categoriesName = newValue;
-                      });
-                    },
-                    decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      label: Text('Tytuł Kategorii'),
-                    ),
+              body: Container(
+                width: double.infinity,
+                height: double.infinity,
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.centerLeft,
+                    end: Alignment.bottomRight,
+                    colors: <Color>[
+                      Color.fromARGB(255, 177, 214, 248),
+                      Color.fromARGB(255, 79, 136, 185),
+                    ],
+                    tileMode: TileMode.mirror,
                   ),
-                ],
+                ),
+                child: ListView(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 20,
+                  ),
+                  children: [
+                    TextField(
+                      onChanged: (newValue) {
+                        setState(() {
+                          categoriesName = newValue;
+                        });
+                      },
+                      decoration: InputDecoration(
+                        border: const OutlineInputBorder(),
+                        label: Text(AppLocalizations.of(context)!.addCategory),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             );
           },

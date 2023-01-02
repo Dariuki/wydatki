@@ -14,7 +14,7 @@ class SpendingRemoteDataSource {
         .collection('users')
         .doc(userID)
         .collection('spendings')
-        .orderBy('title')
+        // .orderBy('title')
         .snapshots();
   }
 

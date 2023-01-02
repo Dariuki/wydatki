@@ -8,10 +8,10 @@ import 'package:wydatki/domain/ropositories/spending_repository.dart';
 part 'add_cubit.freezed.dart';
 part 'add_state.dart';
 
-
-@injectable 
+@injectable
 class AddCubit extends Cubit<AddState> {
-  AddCubit({required this.categoriesRepository, required this.spendingsRepository})
+  AddCubit(
+      {required this.categoriesRepository, required this.spendingsRepository})
       : super(AddState());
 
   final CategoriesRepository categoriesRepository;
@@ -33,14 +33,12 @@ class AddCubit extends Cubit<AddState> {
   }
 
   Future<void> addSpendings(
-    String title,
     String shop,
     double amount,
     String id,
   ) async {
     try {
       await spendingsRepository.addSpending(
-        title,
         shop,
         amount,
         id,
@@ -56,6 +54,4 @@ class AddCubit extends Cubit<AddState> {
       ));
     }
   }
-
-  signOut() {}
 }

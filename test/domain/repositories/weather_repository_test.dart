@@ -1,6 +1,9 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:wydatki/data/remote_data_sourse/weather_remote_data_source.dart';
 import 'package:mocktail/mocktail.dart';
+import 'package:wydatki/domain/models/condition_model.dart';
+import 'package:wydatki/domain/models/current_model.dart';
+import 'package:wydatki/domain/models/location_model.dart';
 import 'package:wydatki/domain/models/weather_model.dart';
 import 'package:wydatki/domain/ropositories/weather_repository.dart';
 
@@ -16,26 +19,29 @@ void main() {
     sut = WeatherRepository(weatherRemoteDataSource: dataSource);
   });
   group('getWeatherModel', () {
-    test('should call weatherRemoteRetroFitDataSource.getWeatherData(city) metod', () async {
+    test(
+        'should call weatherRemoteRetroFitDataSource.getWeatherData(city) metod',
+        () async {
       //1
 
       when(() => dataSource.getWeatherData('Lublin')).thenAnswer(
         (_) async => WeatherModel(
-          LocationModel('Lublin'),
+          LocationModel('Lublin', ''),
           CurrentModel(
             12.0,
             1000,
             ConditionModel(
-              '',
               'sunny',
             ),
             34.0,
-            10.2,
+            '',
+            20,
+            20,
           ),
         ),
       );
       //2
-       await sut.getWeatherModel(city: 'Lublin');
+      await sut.getWeatherModel(city: 'Lublin');
       //3
       verify(() => dataSource.getWeatherData('Lublin')).called(1);
     });

@@ -1,16 +1,27 @@
-# wydatki
+<b>Spend-count</b>
 
-A new Flutter project.
+Whit this application you can Counts all Your spendings.
 
-## Getting Started
+Also you can check the weather conditions in any city.
 
-This project is a starting point for a Flutter application.
+Keep all spendings in one place.
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+
+<p float="left">
+<img src="assets/images/1.png" width="15%" />
+<img src="assets/images/2.png" width="15%" /> 
+<img src="assets/images/3.png" width="15%" />
+<img src="assets/images/4.png" width="15%" />
+<img src="assets/images/5.png" width="15%" />
+<img src="assets/images/6.png" width="15%" />
+<img src="assets/images/1a.png" width="15%" />
+<img src="assets/images/2a.png" width="15%" /> 
+<img src="assets/images/3a.png" width="15%" />
+<img src="assets/images/4a.png" width="15%" />
+<img src="assets/images/5a.png" width="15%" />
+<img src="assets/images/6a.png" width="15%" />
+
+</p>

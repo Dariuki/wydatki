@@ -1,7 +1,10 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:wydatki/app/enum/enums.dart';
+import 'package:wydatki/app/core/enum/enums.dart';
+import 'package:wydatki/domain/models/condition_model.dart';
+import 'package:wydatki/domain/models/current_model.dart';
+import 'package:wydatki/domain/models/location_model.dart';
 import 'package:wydatki/domain/models/weather_model.dart';
 import 'package:wydatki/domain/ropositories/weather_repository.dart';
 import 'package:wydatki/features/weather/cubit/weather_cubit.dart';
@@ -21,16 +24,17 @@ void main() {
     setUp(() {
       when(() => repository.getWeatherModel(city: 'Lublin')).thenAnswer(
         (_) async => WeatherModel(
-          LocationModel('Lublin'),
+          LocationModel('Lublin', ''),
           CurrentModel(
             12.0,
             1000,
             ConditionModel(
-              '',
               'sunny',
             ),
             34.0,
-            10.2,
+            '',
+            20,
+            20,
           ),
         ),
       );
@@ -44,16 +48,17 @@ void main() {
         WeatherState(
           status: Status.success,
           results: WeatherModel(
-            LocationModel('Lublin'),
+            LocationModel('Lublin', ''),
             CurrentModel(
               12.0,
               1000,
               ConditionModel(
-                '',
                 'sunny',
               ),
               34.0,
-              10.2,
+              '',
+              20,
+              20,
             ),
           ),
         ),

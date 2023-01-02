@@ -6,8 +6,10 @@ part of 'home_cubit.dart';
 class HomeState with _$HomeState {
   factory HomeState({
   @Default([])List<CategoryModel> items,
-    bool? loadingError,
-    bool? removingError,
+  @Default([]) List<SpendingModel> allitems,
+  @Default(Status.initial) Status status,
+  String? errorMessage,
+  double? sum,
   }) = _HomeState;
 }
 
