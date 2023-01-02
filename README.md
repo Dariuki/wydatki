@@ -3,6 +3,7 @@
 Whit this application you can Counts all Your spendings.
 
 Also you can check the weather conditions in any city.
+
 Keep all spendings in one place.
 
 
